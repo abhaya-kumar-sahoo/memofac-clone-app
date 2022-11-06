@@ -51,5 +51,51 @@
 	</array>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
+
+<key>NSCameraUsageDescription</key>
+  <string>camera permission</string>
+  <key>NSContactsUsageDescription</key>
+  <string>contact permission</string>
+<key>NSPhotoLibraryAddUsageDescription</key>
+  <string>photo permission</string>
+  <key>NSPhotoLibraryUsageDescription</key>
+  <string>Photo Permission</string>
+  
+
+	<key>UIAppFonts</key>
+	<array>
+		<string>Calibri.ttf</string>
+		<string>Calibri-Bold.ttf</string>
+		<string>Calibri-Light.ttf</string>
+		<string>InkFree.ttf</string>
+		<string>AntDesign.ttf</string>
+		<string>Entypo.ttf</string>
+		<string>EvilIcons.ttf</string>
+		<string>Feather.ttf</string>
+		<string>FontAwesome.ttf</string>
+		<string>FontAwesome5_Brands.ttf</string>
+		<string>FontAwesome5_Regular.ttf</string>
+		<string>FontAwesome5_Solid.ttf</string>
+		<string>Fontisto.ttf</string>
+		<string>Foundation.ttf</string>
+		<string>Ionicons.ttf</string>
+		<string>MaterialIcons.ttf</string>
+		<string>MaterialCommunityIcons.ttf</string>
+		<string>SimpleLineIcons.ttf</string>
+		<string>Octicons.ttf</string>
+		<string>Zocial.ttf</string>
+		<string>BAHNSCHRIFT.TTF</string>
+		<string>ChaparralPro-Bold.ttf</string>
+		<string>LithosPro-Regular.otf</string>
+		<string>ComicSansMS3.ttf</string>
+		<string>design.graffiti.comicsansmsgras.ttf</string>
+		<string>impact.ttf</string>
+		<string>ComicSansMS.ttf</string>
+		<string>GillSansUltraBold.ttf</string>
+		<string>GillSans-UltraBold.ttf</string>
+	</array>
+
+
+
 </dict>
 </plist>
