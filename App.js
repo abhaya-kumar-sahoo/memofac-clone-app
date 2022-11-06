@@ -1,10 +1,4 @@
 //react-native-push-notification
-//@react-native-community/push-notification-ios
-//@gurukumparan/react-native-android-inapp-updates
-//react-native-in-app-review
-//@twotalltotems/react-native-otp-input
-//"@react-native-community/image-editor
-//react-native-keyboard-aware-scroll-view
 //react-native-skeleton-content-nonexpo
 import {
   StyleSheet,
@@ -16,11 +10,13 @@ import {
   Alert,
 } from 'react-native';
 import React from 'react';
-import PushNotificationIOS from '@react-native-community/push-notification-ios';
+
 import {AppColors} from 'assets/AppColors';
-import {CalenderIcon} from 'shared/Icon.Comp';
+
 const App = () => {
-  const Action = async () => {};
+  const Action = async () => {
+    console.log('Start');
+  };
   return (
     <SafeAreaView
       style={{
@@ -36,7 +32,6 @@ const App = () => {
         }}>
         LUNCH
       </Text>
-      <CalenderIcon />
     </SafeAreaView>
   );
 };
@@ -52,5 +47,24 @@ const styles = StyleSheet.create({
     right: 0,
     backgroundColor: 'black',
     zIndex: 0,
+  },
+  borderStyleBase: {
+    width: 30,
+    height: 45,
+  },
+
+  normalText: {
+    color: '#03DAC6',
+  },
+
+  underlineStyleBase: {
+    width: 30,
+    height: 45,
+    borderWidth: 0,
+    borderBottomWidth: 1,
+  },
+
+  underlineStyleHighLighted: {
+    borderColor: '#03DAC6',
   },
 });

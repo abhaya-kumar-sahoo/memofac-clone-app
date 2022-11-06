@@ -14,6 +14,7 @@ import java.lang.reflect.InvocationTargetException;
 import java.util.List;
 import com.brentvatne.react.ReactVideoPackage;
 import com.oblador.vectoricons.VectorIconsPackage;
+import com.ibits.react_native_in_app_review.AppReviewPackage;
 
 public class MainApplication extends Application implements ReactApplication {
 
@@ -31,7 +32,9 @@ public class MainApplication extends Application implements ReactApplication {
           // Packages that cannot be autolinked yet can be added manually here, for example:
           // packages.add(new MyReactNativePackage());
                       new ReactVideoPackage();
-                      new VectorIconsPackage();
+          new VectorIconsPackage();
+          new AppReviewPackage();
+
           return packages;
         }
 

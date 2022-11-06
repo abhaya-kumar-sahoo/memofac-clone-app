@@ -18,7 +18,8 @@ target 'Memofac' do
   pod 'Permission-PhotoLibrary', :path => "#{permissions_path}/PhotoLibrary"
   pod 'Permission-PhotoLibraryAddOnly', :path => "#{permissions_path}/PhotoLibraryAddOnly"
   pod 'BVLinearGradient', :path => '../node_modules/react-native-linear-gradient'
-  
+  pod 'react-native-in-app-review', :path => '../node_modules/react-native-in-app-review'
+
 
   use_react_native!(
     :path => config[:reactNativePath],
