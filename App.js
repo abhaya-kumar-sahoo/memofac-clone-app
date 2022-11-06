@@ -1,10 +1,5 @@
-//react-native-vector-icons
-//react-native-svg
-//react-native-svg-transformer
 //react-native-push-notification
-//@react-native-community/netinfo
 //@react-native-community/push-notification-ios
-//@react-native-picker/picker
 //@gurukumparan/react-native-android-inapp-updates
 //react-native-in-app-review
 //@twotalltotems/react-native-otp-input
@@ -21,12 +16,9 @@ import {
   Alert,
 } from 'react-native';
 import React from 'react';
-import Video from 'react-native-video';
-import {PERMISSIONS, request, check, RESULTS} from 'react-native-permissions';
-import Icon from 'react-native-vector-icons/AntDesign';
+import PushNotificationIOS from '@react-native-community/push-notification-ios';
 import {AppColors} from 'assets/AppColors';
 import {CalenderIcon} from 'shared/Icon.Comp';
-// import {AppColors} from 'assets/AppColors';
 const App = () => {
   const Action = async () => {};
   return (

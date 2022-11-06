@@ -35,33 +35,16 @@
 			</dict>
 		</dict>
 	</dict>
+	<key>NSCameraUsageDescription</key>
+	<string>camera permission</string>
+	<key>NSContactsUsageDescription</key>
+	<string>contact permission</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string></string>
-	<key>UILaunchStoryboardName</key>
-	<string>LaunchScreen</string>
-	<key>UIRequiredDeviceCapabilities</key>
-	<array>
-		<string>armv7</string>
-	</array>
-	<key>UISupportedInterfaceOrientations</key>
-	<array>
-		<string>UIInterfaceOrientationPortrait</string>
-		<string>UIInterfaceOrientationLandscapeLeft</string>
-		<string>UIInterfaceOrientationLandscapeRight</string>
-	</array>
-	<key>UIViewControllerBasedStatusBarAppearance</key>
-	<false/>
-
-<key>NSCameraUsageDescription</key>
-  <string>camera permission</string>
-  <key>NSContactsUsageDescription</key>
-  <string>contact permission</string>
-<key>NSPhotoLibraryAddUsageDescription</key>
-  <string>photo permission</string>
-  <key>NSPhotoLibraryUsageDescription</key>
-  <string>Photo Permission</string>
-  
-
+	<key>NSPhotoLibraryAddUsageDescription</key>
+	<string>photo permission</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>Photo Permission</string>
 	<key>UIAppFonts</key>
 	<array>
 		<string>Calibri.ttf</string>
@@ -94,8 +77,23 @@
 		<string>GillSansUltraBold.ttf</string>
 		<string>GillSans-UltraBold.ttf</string>
 	</array>
-
-
-
+	<key>UIBackgroundModes</key>
+	<array>
+		<string>remote-notification</string>
+	</array>
+	<key>UILaunchStoryboardName</key>
+	<string>LaunchScreen</string>
+	<key>UIRequiredDeviceCapabilities</key>
+	<array>
+		<string>armv7</string>
+	</array>
+	<key>UISupportedInterfaceOrientations</key>
+	<array>
+		<string>UIInterfaceOrientationPortrait</string>
+		<string>UIInterfaceOrientationLandscapeLeft</string>
+		<string>UIInterfaceOrientationLandscapeRight</string>
+	</array>
+	<key>UIViewControllerBasedStatusBarAppearance</key>
+	<false/>
 </dict>
 </plist>
