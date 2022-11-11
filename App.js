@@ -1,14 +1,5 @@
 //react-native-push-notification
-//react-native-skeleton-content-nonexpo
-import {
-  StyleSheet,
-  Text,
-  View,
-  SafeAreaView,
-  PermissionsAndroid,
-  Platform,
-  Alert,
-} from 'react-native';
+import {StyleSheet, Text, SafeAreaView} from 'react-native';
 import React from 'react';
 
 import {AppColors} from 'assets/AppColors';
@@ -19,6 +10,7 @@ const App = () => {
   };
   return (
     <SafeAreaView
+      // eslint-disable-next-line react-native/no-inline-styles
       style={{
         flex: 1,
         justifyContent: 'center',
@@ -26,11 +18,12 @@ const App = () => {
         backgroundColor: AppColors.DarkBG,
       }}>
       <Text
+        // eslint-disable-next-line react-native/no-inline-styles
         style={{color: 'red', fontSize: 40, fontWeight: '900'}}
         onPress={() => {
           Action();
         }}>
-        LUNCH
+        I LOVE BARSA
       </Text>
     </SafeAreaView>
   );
