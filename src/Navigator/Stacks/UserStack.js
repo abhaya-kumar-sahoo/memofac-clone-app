@@ -20,8 +20,7 @@ import { SecondaryGroup } from 'screens/Memos/SecondaryGrooup';
 import { ImageGallery } from 'screens/GalleryPicker/MyGallery/ImageGallery';
 import { ExperiencedScreen } from 'screens/Experienced/Experienced.screen';
 import { WishlistScreen } from 'screens/Wishlist/Wishlist.screen';
-import { MonthPicker } from 'screens/Calender/MonthPicker';
-import { YearPicker } from 'screens/Calender/YearPicker';
+
 import { ContactsScreen } from 'screens/Contacts/Contact.screen';
 import { UserMemos } from 'screens/Memos/UserMemos';
 import { SearchMemoScreen } from 'screens/Memos/SearchMemo/SearchMemoScreen';
@@ -108,8 +107,7 @@ export function UserStack() {
           component={ExperiencedScreen}
         />
         <Stack.Screen name={'WishlistScreen'} component={WishlistScreen} />
-        <Stack.Screen name="YearPicker" component={YearPicker} />
-        <Stack.Screen name="MonthPicker" component={MonthPicker} />
+
         <Stack.Screen name="ContactsScreen" component={ContactsScreen} />
         <Stack.Screen
           name="EditContactsScreen"

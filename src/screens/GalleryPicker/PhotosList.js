@@ -1,4 +1,4 @@
-import CameraRoll from '@react-native-community/cameraroll';
+// import CameraRoll from '@react-native-community/cameraroll';
 import React, { Component, Fragment } from 'react';
 import {
   FlatList,
@@ -31,19 +31,21 @@ import { ActivityIndicator } from 'react-native-paper';
 import { ImageGridView } from './ImageGridView';
 
 export const getPhotosFromAlbum = (groupname = '', after = '0', first = 20) => {
-  return CameraRoll.getPhotos({
-    // first,
-    // groupName: '',
-    // groupTypes: 'Album',
-    // after,
-    first: first == 0 ? 20 : first,
-    after: after,
-    assetType: 'Photos',
-    groupTypes: 'Album',
-    groupName: groupname,
-  }).then(response => {
-    return response;
-  });
+  return null;
+ 
+  // return CameraRoll.getPhotos({
+  //   // first,
+  //   // groupName: '',
+  //   // groupTypes: 'Album',
+  //   // after,
+  //   first: first == 0 ? 20 : first,
+  //   after: after,
+  //   assetType: 'Photos',
+  //   groupTypes: 'Album',
+  //   groupName: groupname,
+  // }).then(response => {
+  //   return response;
+  // });
 };
 
 export function PhotosList({ route }) {

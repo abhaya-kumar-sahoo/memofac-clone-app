@@ -21,7 +21,6 @@ import {
   VertSpace,
 } from '../../shared/Global.styles';
 import { BioDarkIcon, HelpDarkIcon } from '../../shared/Icon.Comp';
-import { useClipboard } from '@react-native-clipboard/clipboard';
 import { showToast } from 'shared/Functions/ToastFunctions';
 import { APP_APIS } from 'ApiLogic/API_URL';
 import { Modal, Portal } from 'react-native-paper';
@@ -60,7 +59,6 @@ const AppMenuOption = ({
 export function SettingsScreen({ navigation }) {
   const { signOut } = React.useContext(AuthContext);
   const userToken = useSelector(state => state.userAuth.userToken);
-  const [setFcmToken] = useClipboard();
   const { debugState } = useSelector(state => state.DebugModeReducer);
   const dispatch = useDispatch();
   const [logoutConfirmVisible, setLogoutConfirmVisible] = React.useState(false);

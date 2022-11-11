@@ -1,7 +1,7 @@
 import { useNavigation } from '@react-navigation/core';
 import React, { Component } from 'react';
 import { SafeAreaView } from 'react-native';
-import AmazingCropper from 'react-native-amazing-cropper';
+// import AmazingCropper from 'react-native-amazing-cropper';
 import { showToast } from 'shared/Functions/ToastFunctions';
 
 export const CropPhoto = ({ route }) => {
@@ -26,7 +26,7 @@ export const CropPhoto = ({ route }) => {
 
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: 'wheat' }}>
-      <AmazingCropper
+      {/* <AmazingCropper
         onDone={onDone}
         onError={onError}
         onCancel={onCancel}
@@ -35,7 +35,7 @@ export const CropPhoto = ({ route }) => {
         imageHeight={height}
         NOT_SELECTED_AREA_OPACITY={0.3}
         BORDER_WIDTH={20}
-      />
+      /> */}
     </SafeAreaView>
   );
 };

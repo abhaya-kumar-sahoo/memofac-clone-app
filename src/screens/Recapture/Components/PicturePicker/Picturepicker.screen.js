@@ -1,4 +1,4 @@
-import CameraRoll from '@react-native-community/cameraroll';
+// import CameraRoll from '@react-native-community/cameraroll';
 import React from 'react';
 import {
   FlatList,
@@ -150,26 +150,26 @@ export function RecapturePhotoList({ route }) {
       require('../../../../assets/images/MemofacLogo.png'),
     );
 
-    CameraRoll.getAlbums({ assetType: 'Photos' })
-      .then(response =>
-        response.map(albumData => {
-          const Datatoget = GetAlbumPhoto(albumData.title);
-          Datatoget.then(data => {
-            albumData.thumbnail = data.node.image.uri;
-            return albumData;
-            // return data;
-          });
-          return albumData;
-        }),
-      )
-      .then(responseData => {
-        responseData.unshift({
-          count: 0,
-          thumbnail: AllPicIndicator.uri,
-          title: 'All',
-        });
-        setAlbumArrayData(responseData);
-      });
+    // CameraRoll.getAlbums({ assetType: 'Photos' })
+    //   .then(response =>
+    //     response.map(albumData => {
+    //       const Datatoget = GetAlbumPhoto(albumData.title);
+    //       Datatoget.then(data => {
+    //         albumData.thumbnail = data.node.image.uri;
+    //         return albumData;
+    //         // return data;
+    //       });
+    //       return albumData;
+    //     }),
+    //   )
+    //   .then(responseData => {
+    //     responseData.unshift({
+    //       count: 0,
+    //       thumbnail: AllPicIndicator.uri,
+    //       title: 'All',
+    //     });
+    //     setAlbumArrayData(responseData);
+    //   });
   };
 
   const setImageListdata = (data = []) => {

@@ -1,4 +1,4 @@
-import CameraRoll, { getAlbums } from '@react-native-community/cameraroll';
+// import CameraRoll, { getAlbums } from '@react-native-community/cameraroll';
 import { AppColors } from 'assets/AppColors';
 import React, { useEffect } from 'react';
 import {
@@ -20,24 +20,24 @@ export const PhotosListScreen = () => {
   }, []);
 
   const getAllAlbumData = () => {
-    CameraRoll.getAlbums({ assetType: 'Photos' }).then(response => {
-      setAlbumList(response);
-    });
+    // CameraRoll.getAlbums({ assetType: 'Photos' }).then(response => {
+    //   setAlbumList(response);
+    // });
   };
   const getPhotos = albumName => {
-    CameraRoll.getPhotos({
-      first: 20,
-      after: '0',
-      assetType: 'Photos',
-      groupTypes: 'Album',
-      groupName: albumName,
-    })
-      .then(r => {
-        setPhotosList(r.edges);
-      })
-      .catch(err => {
-        //Error Loading Images
-      });
+    // CameraRoll.getPhotos({
+    //   first: 20,
+    //   after: '0',
+    //   assetType: 'Photos',
+    //   groupTypes: 'Album',
+    //   groupName: albumName,
+    // })
+    //   .then(r => {
+    //     setPhotosList(r.edges);
+    //   })
+    //   .catch(err => {
+    //     //Error Loading Images
+    //   });
   };
 
   return (

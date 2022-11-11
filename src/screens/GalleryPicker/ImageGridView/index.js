@@ -7,7 +7,7 @@ import {
   StyleSheet,
   View,
 } from 'react-native';
-import RoundedCheckbox from 'react-native-rounded-checkbox';
+// import RoundedCheckbox from 'react-native-rounded-checkbox';
 import Entypo from 'react-native-vector-icons/Entypo';
 import { AppDimens, GStyles, Spacing, VertSpace } from 'shared/Global.styles';
 export const checkButtonSize = AppDimens.width * 0.055;
@@ -50,7 +50,7 @@ export const ImageGridView = ({
     <Pressable onPress={onImageSelect} style={[styles.container, imageStyles]}>
       {selectable && (
         <View style={[styles.containerView, { borderRadius: size / 2.9 }]}>
-          <RoundedCheckbox
+          {/* <RoundedCheckbox
             innerSize={checkButtonSize}
             outerSize={checkButtonSize}
             checkedColor={checked ? AppColors.green : AppColors.Transparent}
@@ -63,7 +63,7 @@ export const ImageGridView = ({
               />
             }
             onPress={onImageSelect}
-          />
+          /> */}
         </View>
       )}
       {imageLoading && requiredLoader && (

@@ -52,7 +52,7 @@ import { AppFonts } from 'assets/fonts/AppFonts';
 import { syncContacts } from 'redux/reducers/Contact/contacts.reducer';
 import { GetMemofacUserApiCall } from 'redux/sagas/Contacts/api.request';
 import { Styles } from './Timeline.styles';
-import { startUpdateFlow } from '@gurukumparan/react-native-android-inapp-updates';
+// import { startUpdateFlow } from '@gurukumparan/react-native-android-inapp-updates';
 import { showToast } from 'shared/Functions/ToastFunctions';
 import {
   CloseContactList,
@@ -329,9 +329,9 @@ export function TimelineScreen({ route, bottomTabRoute }) {
     const updateModes = 'flexible';
     async function fetchData() {
       try {
-        const { isPermissionGranted } = await checkContactPermission();
+        const {isPermissionGranted} = await checkContactPermission();
         isContactPermission.current = isPermissionGranted;
-        await startUpdateFlow(updateModes);
+        // await startUpdateFlow(updateModes);
       } catch (e) {}
       // await onCompleteUpdate(i => {
       //   console.log('Complete', i);

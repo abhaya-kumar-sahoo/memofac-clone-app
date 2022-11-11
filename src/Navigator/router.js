@@ -36,7 +36,6 @@ import { LetsGoScreen } from 'screens/Auth/ProfileUpdate/LetsGoScreen/LetsGoScre
 import Modal from 'react-native-modal';
 import { AccentButton } from 'components/Mini';
 import { NointernetIcon } from 'shared/Icon.Comp';
-import RNRestart from 'react-native-restart';
 import { addEventListener } from '@react-native-community/netinfo';
 import { LetsStart } from 'screens/Auth/ProfileUpdate/LetsGoScreen/IntroVideo';
 import { WalkthroughRoute } from './Stacks/WalkThroughRoute';

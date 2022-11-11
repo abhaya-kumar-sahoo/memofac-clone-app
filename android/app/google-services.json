@@ -1,0 +1,56 @@
+{
+  "project_info": {
+    "project_number": "745807517336",
+    "firebase_url": "https://memofac-d6d5d.firebaseio.com",
+    "project_id": "memofac-d6d5d",
+    "storage_bucket": "memofac-d6d5d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:745807517336:android:4c40f259695bdc46fd62ed",
+        "android_client_info": {
+          "package_name": "com.memofac"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "745807517336-ci7l7odp8aq196v1f366rpoc2q14hm0u.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.memofac",
+            "certificate_hash": "2858f40e221939bd29a9526bf874a56768f82325"
+          }
+        },
+        {
+          "client_id": "745807517336-sr7temh3fllog1ja5ddmj3u5juj4gvmb.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.memofac",
+            "certificate_hash": "a2fd73c23c1e89ea7e4539665ca8f573c9db8f59"
+          }
+        },
+        {
+          "client_id": "745807517336-g7pcsd72dpjs1cn2bj9qbh6iv1vj91qb.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCnBQeEZYtJyGxOt1n0Uk6TcOByxannWUI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "745807517336-g7pcsd72dpjs1cn2bj9qbh6iv1vj91qb.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

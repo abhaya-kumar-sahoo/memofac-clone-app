@@ -12,7 +12,6 @@ import { LoginApiCall, SendOtpAPiCall } from '../../../ApiLogic/Auth.Api';
 import { AccentButton, Container } from '../../../components/Mini';
 import Toast from 'react-native-simple-toast';
 import DeviceInfo from 'react-native-device-info';
-import { useClipboard } from '@react-native-clipboard/clipboard';
 import { saveVerifiedNumber } from 'redux/reducers/UserAuth.reducer';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { STR_KEYS } from 'shared/Storage';
@@ -26,7 +25,6 @@ const OTP_INPUT_SIZE = 6;
 
 export function OtpVerification({ route }) {
   const navigation = useNavigation();
-  const [data, setString] = useClipboard();
   const [code, setCode] = React.useState('');
   const [apiLoad, setApiLoad] = React.useState(false);
   const { signIn } = React.useContext(AuthContext);
