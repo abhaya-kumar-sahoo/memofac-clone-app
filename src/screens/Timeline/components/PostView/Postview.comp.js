@@ -1,9 +1,8 @@
-import React, { Fragment } from 'react';
-import { ActivityIndicator, Text, TouchableOpacity, View } from 'react-native';
-import Carousel from 'react-native-snap-carousel';
-import { useDispatch, useSelector } from 'react-redux';
-import { ChatFilledIcon, HeartFillIcon } from 'shared/Icon.Comp';
-import { showToast } from 'shared/Functions/ToastFunctions';
+import React, {Fragment} from 'react';
+import {ActivityIndicator, Text, TouchableOpacity, View} from 'react-native';
+import {useDispatch, useSelector} from 'react-redux';
+import {ChatFilledIcon, HeartFillIcon} from 'shared/Icon.Comp';
+import {showToast} from 'shared/Functions/ToastFunctions';
 import {
   AppDimens,
   FontSize,
@@ -13,33 +12,33 @@ import {
   VertSpace,
   viewportWidth,
 } from 'shared/Global.styles';
-import { BioImageView } from 'components/BioImageView';
-import { AppColors } from 'assets/AppColors';
-import { AppFonts } from 'assets/fonts/AppFonts';
-import { Styles } from './Postview.styles';
+import {BioImageView} from 'components/BioImageView';
+import {AppColors} from 'assets/AppColors';
+import {AppFonts} from 'assets/fonts/AppFonts';
+import {Styles} from './Postview.styles';
 import PaginationDot from 'react-native-animated-pagination-dot';
 import Ripple from 'react-native-material-ripple';
-import { PostMenuOption } from '../MenuOption';
-import { ReactionView } from '../Reaction.comp';
-import { WishListButton } from '../Wishlist.comp';
-import { ChatButton } from '../ChatButton.comp';
-import { SliderBox } from 'react-native-image-slider-box';
-import { MemoChip } from 'screens/Memos/MemoChip';
+import {PostMenuOption} from '../MenuOption';
+import {ReactionView} from '../Reaction.comp';
+import {WishListButton} from '../Wishlist.comp';
+import {ChatButton} from '../ChatButton.comp';
+import {SliderBox} from 'react-native-image-slider-box';
+import {MemoChip} from 'screens/Memos/MemoChip';
 import ReadMore from '@fawazahmed/react-native-read-more';
-import { addToWishlistApiCall } from 'redux/sagas/wishlist/request';
+import {addToWishlistApiCall} from 'redux/sagas/wishlist/request';
 import moment from 'moment';
 import {
   removePost,
   updateReactionCount,
   updateWishListState,
 } from 'redux/reducers/Timeline/Timeline.reducer';
-import { wp } from 'shared/dimens';
-import { CarouselRenderView } from './CarouselSlider/Carousel.view';
-import { getPostReactionsComments } from 'redux/reducers/Post/PostComments.reducer';
-import { DeletePostApiCall } from 'redux/sagas/post/request';
-import { DebugText } from 'components/debugComps';
-import { useNavigation } from '@react-navigation/native';
-import { MonthNames } from 'shared/Data.shared';
+import {wp} from 'shared/dimens';
+import {CarouselRenderView} from './CarouselSlider/Carousel.view';
+import {getPostReactionsComments} from 'redux/reducers/Post/PostComments.reducer';
+import {DeletePostApiCall} from 'redux/sagas/post/request';
+import {DebugText} from 'components/debugComps';
+import {useNavigation} from '@react-navigation/native';
+import {MonthNames} from 'shared/Data.shared';
 import {
   removeUserPost,
   updateUserReactionCount,
@@ -80,7 +79,7 @@ export const PostModalData = {
   memos: [],
 };
 
-export const PostView = ({ index, item, location }) => {
+export const PostView = ({index, item, location}) => {
   const dispatch = useDispatch();
   const {
     images = [],
@@ -118,10 +117,10 @@ export const PostView = ({ index, item, location }) => {
     return newTime;
   };
 
-  const { userAuth } = useSelector(state => state);
+  const {userAuth} = useSelector(state => state);
   const navigation = useNavigation();
-  const { navigate } = { ...navigation };
-  const { userData, userToken } = { ...userAuth };
+  const {navigate} = {...navigation};
+  const {userData, userToken} = {...userAuth};
   const carouselRef = React.useRef(null);
   const [slider1ActiveSlide, setslider1ActiveSlide] = React.useState(0);
 
@@ -131,7 +130,7 @@ export const PostView = ({ index, item, location }) => {
     if (userData.id == user_id) {
       navigate('UserProfileNav');
     } else {
-      navigate('FriendsProfile', { user_id });
+      navigate('FriendsProfile', {user_id});
     }
   };
 
@@ -144,16 +143,14 @@ export const PostView = ({ index, item, location }) => {
 
   const addToWishlist = () => {
     if (location === 'T') {
-      dispatch(
-        updateWishListState({ postIndex: index, isWishlist: item.wish }),
-      );
+      dispatch(updateWishListState({postIndex: index, isWishlist: item.wish}));
     } else if (location === 'M') {
       dispatch(
-        updateUserWishListState({ postIndex: index, isWishlist: item.wish }),
+        updateUserWishListState({postIndex: index, isWishlist: item.wish}),
       );
     } else if (location === 'P') {
       dispatch(
-        updateMemoWishListState({ postIndex: index, isWishlist: item.wish }),
+        updateMemoWishListState({postIndex: index, isWishlist: item.wish}),
       );
     }
 
@@ -190,7 +187,7 @@ export const PostView = ({ index, item, location }) => {
 
   const MemoListViewSection = () => {
     return (
-      <View style={{ paddingLeft: 15, marginTop: memos.length == 0 ? 0 : 22 }}>
+      <View style={{paddingLeft: 15, marginTop: memos.length == 0 ? 0 : 22}}>
         {memos?.map((memo, index) => {
           return (
             <Fragment key={(index + index + 2).toString()}>
@@ -215,11 +212,11 @@ export const PostView = ({ index, item, location }) => {
 
   const onReactionPress = reaction => {
     if (location === 'T') {
-      dispatch(updateReactionCount({ postIndex: index, reaction }));
+      dispatch(updateReactionCount({postIndex: index, reaction}));
     } else if (location === 'M') {
-      dispatch(updateUserReactionCount({ postIndex: index, reaction }));
+      dispatch(updateUserReactionCount({postIndex: index, reaction}));
     } else if (location === 'P') {
-      dispatch(updateMemoReactionCount({ postIndex: index, reaction }));
+      dispatch(updateMemoReactionCount({postIndex: index, reaction}));
     }
   };
 
@@ -231,16 +228,14 @@ export const PostView = ({ index, item, location }) => {
           flexDirection: 'row',
           justifyContent: 'space-between',
           paddingLeft: 15,
-        }}
-      >
+        }}>
         {/* BIO VIEW */}
         <TouchableOpacity
           onPress={viewProfile}
-          style={{ flexDirection: 'row', alignItems: 'center', flex: 1 }}
-        >
+          style={{flexDirection: 'row', alignItems: 'center', flex: 1}}>
           <BioImageView imageSize={wp(60)} imageSrc={userImageLink} />
           <HoriSpace size={10} />
-          <View style={{ flexGrow: 1, maxWidth: wp(220) }}>
+          <View style={{flexGrow: 1, maxWidth: wp(220)}}>
             <Text numberOfLines={1} style={Styles.nameStyleDark}>
               {item.user_name}
             </Text>
@@ -275,8 +270,7 @@ export const PostView = ({ index, item, location }) => {
             style={{
               paddingHorizontal: 15,
               marginTop: 13,
-            }}
-          >
+            }}>
             {/* <InfiniteText text={item.text} /> */}
             <ReadMore
               style={{
@@ -300,8 +294,7 @@ export const PostView = ({ index, item, location }) => {
                 fontFamily: AppFonts.CalibriBold,
               }}
               numberOfLines={3}
-              expandOnly={true}
-            >
+              expandOnly={true}>
               {item.text}
             </ReadMore>
           </View>
@@ -322,7 +315,7 @@ export const PostView = ({ index, item, location }) => {
           marginTop: memos.length > 1 ? 25 : 30,
         }}
         imageLoadingColor={AppColors.LightDark1}
-        dotStyle={{ backgroundColor: 'wheat' }}
+        dotStyle={{backgroundColor: 'wheat'}}
         images={imagesList}
         onCurrentImagePressed={onCurrentImagePressed}
         currentImageEmitter={index => {
@@ -340,8 +333,7 @@ export const PostView = ({ index, item, location }) => {
               backgroundColor: AppColors.Transparent,
               alignItems: 'center',
               paddingTop: 10,
-            }}
-          >
+            }}>
             <PaginationDot
               activeDotColor={AppColors.MediumGrey}
               curPage={slider1ActiveSlide}
@@ -372,9 +364,8 @@ export const PostView = ({ index, item, location }) => {
       <View
         style={[
           GStyles.flexRow,
-          { paddingLeft: 15, paddingTop: carouselLength > 1 ? 10 : 27 },
-        ]}
-      >
+          {paddingLeft: 15, paddingTop: carouselLength > 1 ? 10 : 27},
+        ]}>
         <ChatButton
           post={item.id}
           onPress={() => {
@@ -400,8 +391,7 @@ export const PostView = ({ index, item, location }) => {
           paddingHorizontal: 15,
           alignItems: 'center',
           paddingTop: carouselLength > 1 ? 0 : 10,
-        }}
-      >
+        }}>
         {/* TOTAL REACTS */}
         {Number(item.total_reacts) > 0 && (
           <TouchableOpacity
@@ -416,8 +406,7 @@ export const PostView = ({ index, item, location }) => {
                   post_id: item.id,
                 }),
               );
-            }}
-          >
+            }}>
             {/* <HeartFillIcon color={AppColors.DarkGrey} size={20} /> */}
             <HoriSpace size={5} />
             <Text
@@ -426,8 +415,7 @@ export const PostView = ({ index, item, location }) => {
                 color: AppColors.white2,
                 fontFamily: AppFonts.CalibriBold,
                 fontSize: FontSize.large,
-              }}
-            >
+              }}>
               {item.total_reacts}
             </Text>
             <HoriSpace size={5} />
@@ -438,8 +426,7 @@ export const PostView = ({ index, item, location }) => {
                 fontFamily: AppFonts.CalibriRegular,
                 fontSize: FontSize.large,
                 paddingTop: 2,
-              }}
-            >
+              }}>
               Likes
             </Text>
             <HoriSpace size={10} />
@@ -452,7 +439,7 @@ export const PostView = ({ index, item, location }) => {
         {Number(item.total_comments) > 0 && (
           <Ripple
             rippleContainerBorderRadius={5}
-            style={{ flexDirection: 'row', padding: 10 }}
+            style={{flexDirection: 'row', padding: 10}}
             onPress={() => {
               dispatch(
                 getPostReactionsComments({
@@ -464,8 +451,7 @@ export const PostView = ({ index, item, location }) => {
                 post_id: item.id,
                 postindex: index,
               });
-            }}
-          >
+            }}>
             {/* <ChatFilledIcon size={20} /> */}
             <HoriSpace size={5} />
             <Text
@@ -475,8 +461,7 @@ export const PostView = ({ index, item, location }) => {
 
                 fontFamily: AppFonts.CalibriBold,
                 fontSize: FontSize.large,
-              }}
-            >
+              }}>
               {item.total_comments}
             </Text>
             <HoriSpace size={5} />
@@ -487,8 +472,7 @@ export const PostView = ({ index, item, location }) => {
                 fontFamily: AppFonts.CalibriRegular,
                 fontSize: FontSize.large,
                 paddingTop: 2,
-              }}
-            >
+              }}>
               Comments
             </Text>
           </Ripple>
@@ -507,7 +491,7 @@ export const PostSeparator = ({
 }) => {
   return (
     <View>
-      <View style={{ height: 30 }} />
+      <View style={{height: 30}} />
       <View
         style={{
           height: 0.5,
@@ -516,7 +500,7 @@ export const PostSeparator = ({
           alignSelf: 'center',
         }}
       />
-      <View style={{ height: height }} />
+      <View style={{height: height}} />
     </View>
   );
 };
@@ -527,7 +511,7 @@ export const HorizontalLine = ({
   color = AppColors.LowDark,
 }) => {
   return (
-    <View style={{ height: VerticalSpace, ...GStyles.containView }}>
+    <View style={{height: VerticalSpace, ...GStyles.containView}}>
       <View
         style={{
           height: height,
@@ -547,7 +531,7 @@ export const VerticalLine = ({
 }) => {
   return (
     <View
-      style={{ height: height, backgroundColor: backgroundColor, width: width }}
+      style={{height: height, backgroundColor: backgroundColor, width: width}}
     />
   );
 };

@@ -1,4 +1,4 @@
-import React, { Component, Fragment, useRef } from 'react';
+import React, {Component, Fragment, useRef} from 'react';
 import {
   Alert,
   Animated,
@@ -13,7 +13,7 @@ import {
   ActivityIndicator,
   SafeAreaView,
 } from 'react-native';
-import { AppHeader } from '../../components/AppHeader';
+import {AppHeader} from '../../components/AppHeader';
 import {
   AppDimens,
   FontSize,
@@ -22,10 +22,10 @@ import {
   Spacing,
   VertSpace,
 } from '../../shared/Global.styles';
-import { AppFonts } from '../../assets/fonts/AppFonts';
-import { AppColors } from '../../assets/AppColors';
-import { AccentButton, Container } from '../../components/Mini';
-import { SearchBarView, SearchInput } from '../../components/SearchComponent';
+import {AppFonts} from '../../assets/fonts/AppFonts';
+import {AppColors} from '../../assets/AppColors';
+import {AccentButton, Container} from '../../components/Mini';
+import {SearchBarView, SearchInput} from '../../components/SearchComponent';
 import {
   AddDarkIcon,
   BronzeIcon,
@@ -41,61 +41,55 @@ import {
   SilverIcon,
   StarUnFilledIcon,
 } from '../../shared/Icon.Comp';
-import { FormFillContainer } from 'components/FormContainer/FormFillContainer';
-import { FormFillInput } from '../../components/FormContainer/FormFillInput';
-import { useFocusEffect, useNavigation } from '@react-navigation/core';
-import { StackActions } from '@react-navigation/routers';
-import { GroupSaveModal } from './Components/GroupModal';
+import {FormFillContainer} from 'components/FormContainer/FormFillContainer';
+import {FormFillInput} from '../../components/FormContainer/FormFillInput';
+import {useFocusEffect, useNavigation} from '@react-navigation/core';
+import {StackActions} from '@react-navigation/routers';
+import {GroupSaveModal} from './Components/GroupModal';
 import PaginationDot from 'react-native-animated-pagination-dot';
-import Carousel from 'react-native-snap-carousel';
-import { CarouselRenderItem } from '../GalleryPicker/PhotosList';
-import { useState } from 'react';
-import { Modal, Portal } from 'react-native-paper';
-import { ModalButtons } from 'screens/Timeline/components/MenuOption';
-import { useDispatch, useSelector } from 'react-redux';
+import {CarouselRenderItem} from '../GalleryPicker/PhotosList';
+import {useState} from 'react';
+import {Modal, Portal} from 'react-native-paper';
+import {ModalButtons} from 'screens/Timeline/components/MenuOption';
+import {useDispatch, useSelector} from 'react-redux';
 import {
   GetMainCategoryList,
   RecomMemosApiCall,
 } from '../../redux/sagas/Memos/request';
-import { RecaptureApiCall } from '../../redux/sagas/post/request';
+import {RecaptureApiCall} from '../../redux/sagas/post/request';
 import Toast from 'react-native-simple-toast';
-import { MemoRateView } from './Components/MemoRateView';
-import { Gravities, showToast } from 'shared/Functions/ToastFunctions';
+import {MemoRateView} from './Components/MemoRateView';
+import {Gravities, showToast} from 'shared/Functions/ToastFunctions';
 import {
   getResizedImage,
   getResizedImageArray,
 } from 'shared/Functions/ImageResize';
-import { PhotoNames } from 'shared/Data.shared';
-import { addPostTimeline } from 'redux/reducers/Timeline/Timeline.reducer';
-import { InputText } from 'components/FormContainer/InputText/InputText';
+import {PhotoNames} from 'shared/Data.shared';
+import {addPostTimeline} from 'redux/reducers/Timeline/Timeline.reducer';
+import {InputText} from 'components/FormContainer/InputText/InputText';
 import Ripple from 'react-native-material-ripple';
-import {
-  clearList,
-  copyImageList,
-} from 'redux/reducers/Post/photoEdit.reducer';
+import {clearList, copyImageList} from 'redux/reducers/Post/photoEdit.reducer';
 import {
   setNotesRecapture,
   setRecaptureFormDefault,
   updateMemosList,
 } from 'redux/reducers/Modal/SumRecaptcure';
-import { APP_APIS } from 'ApiLogic/API_URL';
+import {APP_APIS} from 'ApiLogic/API_URL';
 import ImagePicker from 'react-native-image-crop-picker';
-import { ScreenLoader } from 'components/Loaders/ScreenLoader';
+import {ScreenLoader} from 'components/Loaders/ScreenLoader';
 import moment from 'moment';
 const GALLERY_ICON_SIZE = AppDimens.width * 0.3;
 
-export function RecaptureActivity({ route }) {
+export function RecaptureActivity({route}) {
   const navigation = useNavigation();
-  const { memoData, ratingGiven, groupSelected, notes, MemoArray } =
-    useSelector(state => state.MemoVisibilityReducer);
-  const cropImageindexRef = React.useRef(0);
+  const {groupSelected, notes, MemoArray} = useSelector(
+    state => state.MemoVisibilityReducer,
+  );
   const authData = useSelector(state => state.userAuth);
-  const UserDetailsReducer = useSelector(state => state.UserDetailsReducer);
-  const { imageList } = useSelector(state => state.photoSelectReducer);
+  const {imageList} = useSelector(state => state.photoSelectReducer);
   // const [MemoArray, setMemoArray] = useState([]);
   const [ActiveState, setActiveState] = React.useState(0);
   const [searchText, setsearchText] = React.useState('');
-  const folderRef = React.useRef('');
 
   const [savingPosts, setSavingPosts] = useState(false);
   // const [notes, setnotes] = React.useState('');
@@ -147,9 +141,9 @@ export function RecaptureActivity({ route }) {
       if (indexAvaialable == -1) {
         var sampleArray = [];
         sampleArray = [...MemoArray];
-        sampleArray.push({ ...route.params?.memoSelected, rate: 0 });
+        sampleArray.push({...route.params?.memoSelected, rate: 0});
 
-        dispatch(updateMemosList({ MemoArray: sampleArray }));
+        dispatch(updateMemosList({MemoArray: sampleArray}));
       } else {
         Toast.showWithGravity('Memo already added', Toast.LONG, Toast.CENTER);
       }
@@ -228,7 +222,7 @@ export function RecaptureActivity({ route }) {
       var requestOptions = {
         method: 'POST',
         body: formdata,
-        Headers: { 'Content-Type': 'multipart/form-data' },
+        Headers: {'Content-Type': 'multipart/form-data'},
         redirect: 'follow',
       };
       // console.log('share with is ---> ' + groupSelected.id);
@@ -258,7 +252,7 @@ export function RecaptureActivity({ route }) {
             }),
           );
         })
-        .catch(error => {
+        .catch(() => {
           showToast();
           // console.log(error);
           setSavingPosts(false);
@@ -270,33 +264,26 @@ export function RecaptureActivity({ route }) {
     }
   };
 
-  const defaultGroup = 'Public';
-  const groupReduxSelect = `${groupSelected.name}  ${
-    groupSelected.count ? `(${groupSelected.count})` : ''
-  } `;
-
   return (
-    <SafeAreaView style={{ backgroundColor: AppColors.white, flex: 1 }}>
+    <SafeAreaView style={{backgroundColor: AppColors.white, flex: 1}}>
       <Portal>
         <Modal
           visible={visible}
           onDismiss={hideModal}
-          style={{ justifyContent: 'center', alignItems: 'center' }}
+          style={{justifyContent: 'center', alignItems: 'center'}}
           contentContainerStyle={{
             backgroundColor: 'white',
             padding: 20,
             width: AppDimens.width * 0.7,
             borderRadius: 30,
-          }}
-        >
-          <View style={{ alignItems: 'flex-start' }}>
+          }}>
+          <View style={{alignItems: 'flex-start'}}>
             <Text
               style={{
                 fontSize: FontSize.xlarge,
                 color: AppColors.LightGrey,
                 fontFamily: AppFonts.CalibriBold,
-              }}
-            >
+              }}>
               Are you sure want to discard this post?
             </Text>
             <VertSpace />
@@ -305,12 +292,11 @@ export function RecaptureActivity({ route }) {
                 flexDirection: 'row',
                 justifyContent: 'space-between',
                 width: '100%',
-              }}
-            >
+              }}>
               <ModalButtons
                 IconVisible={false}
                 width={150}
-                modalStyle={{ justifyContent: 'flex-start' }}
+                modalStyle={{justifyContent: 'flex-start'}}
                 title={'Yes'}
                 onPress={() => {
                   hideModal();
@@ -344,8 +330,7 @@ export function RecaptureActivity({ route }) {
           }
         }}
         enableBack
-        preventDefault={true}
-      >
+        preventDefault={true}>
         <AccentButton disabled={PostValidation} onPress={RecapturePost} />
       </AppHeader>
 
@@ -360,11 +345,9 @@ export function RecaptureActivity({ route }) {
                 alignItems: 'center',
                 justifyContent: 'center',
                 flexDirection: 'row',
-              }}
-            >
+              }}>
               <TouchableOpacity
-                onPress={() => navigation.navigate('RecapturePhotoList')}
-              >
+                onPress={() => navigation.navigate('RecapturePhotoList')}>
                 <AddDarkIcon size={40} />
               </TouchableOpacity>
               <HoriSpace />
@@ -376,8 +359,7 @@ export function RecaptureActivity({ route }) {
                   width: 200,
                   height: 200,
                   ...GStyles.containView,
-                }}
-              >
+                }}>
                 <GalleryIcon
                   color={AppColors.LightGrey}
                   size={GALLERY_ICON_SIZE}
@@ -398,13 +380,11 @@ export function RecaptureActivity({ route }) {
                   zIndex: 20,
                   left: 40,
                   top: 70,
-                }}
-              >
+                }}>
                 <TouchableOpacity
                   onPress={() => {
                     navigation.navigate('RecapturePhotoList');
-                  }}
-                >
+                  }}>
                   <AddDarkIcon size={40} />
                 </TouchableOpacity>
               </View>
@@ -412,15 +392,15 @@ export function RecaptureActivity({ route }) {
                 horizontal
                 firstItem={imageList.length - 1}
                 containerCustomStyle={{
-                  transform: [{ scaleX: -1 }],
+                  transform: [{scaleX: -1}],
                   height: 200,
                 }}
-                columnWrapperStyle={{ backgroundColor: AppColors.LightGrey }}
+                columnWrapperStyle={{backgroundColor: AppColors.LightGrey}}
                 ref={carouselRef}
                 layout={'stack'}
-                style={{ backgroundColor: AppColors.blue, height: 300 }}
+                style={{backgroundColor: AppColors.blue, height: 300}}
                 data={imageList}
-                renderItem={({ item, index }) => {
+                renderItem={({item, index}) => {
                   return (
                     <CarouselRenderItem
                       item={item.cropped}
@@ -436,7 +416,7 @@ export function RecaptureActivity({ route }) {
                         }).then(image => {
                           const imageArrayList = [...imageList];
                           imageArrayList[index].cropped = image.path;
-                          dispatch(copyImageList({ dataList: imageArrayList }));
+                          dispatch(copyImageList({dataList: imageArrayList}));
 
                           // console.log(image);
                         });
@@ -445,7 +425,7 @@ export function RecaptureActivity({ route }) {
                         let tempdDataList = [...imageList].filter(
                           (_, imageIndx) => imageIndx !== index,
                         );
-                        dispatch(copyImageList({ dataList: tempdDataList }));
+                        dispatch(copyImageList({dataList: tempdDataList}));
                       }}
                     />
                   );
@@ -473,8 +453,7 @@ export function RecaptureActivity({ route }) {
                     backgroundColor: AppColors.Transparent,
                     alignItems: 'center',
                     paddingTop: 10,
-                  }}
-                >
+                  }}>
                   <PaginationDot
                     activeDotColor={AppColors.MediumGrey}
                     curPage={imageList.length - ActiveState - 1}
@@ -496,7 +475,7 @@ export function RecaptureActivity({ route }) {
         </Container>
 
         <Container>
-          {MemoArray.map((item, index) => {
+          {MemoArray.map(item => {
             return (
               <View key={item.id.toString()}>
                 {/* VERTISPACE */}
@@ -506,7 +485,7 @@ export function RecaptureActivity({ route }) {
                     tempMemoArray = tempMemoArray.filter(
                       memo => memo.id !== item.id,
                     );
-                    dispatch(updateMemosList({ MemoArray: tempMemoArray }));
+                    dispatch(updateMemosList({MemoArray: tempMemoArray}));
                   }}
                   ratingGiven={item.rate - 1}
                   imageUrl={item.image || null}
@@ -519,7 +498,7 @@ export function RecaptureActivity({ route }) {
                       memoItem => memoItem.id == item.id,
                     );
                     newMemoArray[position].rate = index + 1;
-                    dispatch(updateMemosList({ MemoArray: newMemoArray }));
+                    dispatch(updateMemosList({MemoArray: newMemoArray}));
                     // newMemoArray.filter
                   }}
                 />
@@ -561,8 +540,7 @@ export function RecaptureActivity({ route }) {
                 fontSize: 18,
                 color: AppColors.LowWhite,
                 fontFamily: AppFonts.CalibriRegular,
-              }}
-            >
+              }}>
               Share with ...
             </Text>
             <VertSpace />
@@ -571,9 +549,8 @@ export function RecaptureActivity({ route }) {
                 ...GStyles.flexRowCenter,
 
                 justifyContent: 'space-between',
-              }}
-            >
-              <View style={{ flexDirection: 'row' }}>
+              }}>
+              <View style={{flexDirection: 'row'}}>
                 <AppButton
                   width={AppDimens.width * 0.21}
                   height={28}
@@ -628,10 +605,10 @@ export function RecaptureActivity({ route }) {
             </View>
 
             <VertSpace size={40} />
-            <View style={{ ...GStyles.flexRow, alignItems: 'center' }}>
+            <View style={{...GStyles.flexRow, alignItems: 'center'}}>
               <GalleryIcon size={26} />
               <HoriSpace size={10} />
-              <Text style={{ color: AppColors.LowDark }}>Add photos</Text>
+              <Text style={{color: AppColors.LowDark}}>Add photos</Text>
             </View>
             <View>
               <VertSpace />
@@ -656,9 +633,7 @@ export function RecaptureActivity({ route }) {
             multiline={true}
             title={'Notes ...'}
             inputPlaceHolder={'Add notes here'}
-            onChangeText={value =>
-              dispatch(setNotesRecapture({ notes: value }))
-            }
+            onChangeText={value => dispatch(setNotesRecapture({notes: value}))}
             Icon={<NotesIcon size={40} />}
           />
         </Container>

@@ -1,8 +1,8 @@
-import { AppColors } from 'assets/AppColors';
-import { AppFonts } from 'assets/fonts/AppFonts';
-import { StyleSheet } from 'react-native';
-import { wp } from 'shared/dimens';
-import { AppDimens, FontSize } from 'shared/Global.styles';
+import {AppColors} from 'assets/AppColors';
+import {AppFonts} from 'assets/fonts/AppFonts';
+import {StyleSheet} from 'react-native';
+import {wp} from 'shared/dimens';
+import {AppDimens, FontSize} from 'shared/Global.styles';
 
 export const styles = StyleSheet.create({
   countrySelectContainer: {

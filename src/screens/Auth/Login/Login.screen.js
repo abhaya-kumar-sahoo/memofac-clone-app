@@ -1,4 +1,4 @@
-import { useNavigation } from '@react-navigation/native';
+import {useNavigation} from '@react-navigation/native';
 import React from 'react';
 import {
   Text,
@@ -15,27 +15,27 @@ import {
   Spacing,
   VertSpace,
 } from '../../../shared/Global.styles';
-import { AppColors } from '../../../assets/AppColors';
-import { AppHeader, ModalHeader } from '../../../components/AppHeader';
-import { AccentButton, Container, NextButton } from '../../../components/Mini';
-import { AppFonts } from '../../../assets/fonts/AppFonts';
+import {AppColors} from '../../../assets/AppColors';
+import {AppHeader, ModalHeader} from '../../../components/AppHeader';
+import {AccentButton, Container, NextButton} from '../../../components/Mini';
+import {AppFonts} from '../../../assets/fonts/AppFonts';
 import Country1 from '../../../assets/svg/Flags/Country1.svg';
 import Country2 from '../../../assets/svg/Flags/Country2.svg';
-import { DownArrowIcon } from '../../../shared/Icon.Comp';
+import {DownArrowIcon} from '../../../shared/Icon.Comp';
 import Ripple from 'react-native-material-ripple';
-import { Modal, Portal } from 'react-native-paper';
-import { ContactPermission } from 'screens/Contacts/ContactPermissionHandler/ContactPermission';
+import {Modal, Portal} from 'react-native-paper';
+import {ContactPermission} from 'screens/Contacts/ContactPermissionHandler/ContactPermission';
 import {
   checkContactPermission,
   getAllPermissions,
   getContactPermission,
 } from 'shared/Permission';
-import { ScreenLoader } from 'components/Loaders/ScreenLoader';
-import { showToast } from 'shared/Functions/ToastFunctions';
-import { SendOtpAPiCall } from 'ApiLogic/Auth.Api';
-import { wp } from 'shared/dimens';
-import { styles } from './index.styles';
-import { VerticalLine } from 'screens/Timeline/components/PostView/Postview.comp';
+import {ScreenLoader} from 'components/Loaders/ScreenLoader';
+import {showToast} from 'shared/Functions/ToastFunctions';
+import {SendOtpAPiCall} from 'ApiLogic/Auth.Api';
+import {wp} from 'shared/dimens';
+import {styles} from './index.styles';
+import {VerticalLine} from 'screens/Timeline/components/PostView/Postview.comp';
 
 let CountryData = {
   india: {
@@ -127,16 +127,14 @@ export function LoginScreen() {
           style={{
             alignItems: 'flex-start',
             paddingHorizontal: Spacing.xlarge,
-          }}
-        >
+          }}>
           <Text
             style={{
               color: AppColors.white1,
               fontFamily: AppFonts.GillSans,
               fontSize: 32,
               alignItems: 'flex-start',
-            }}
-          >
+            }}>
             Enter phone
           </Text>
           <VertSpace size={10} />
@@ -147,8 +145,7 @@ export function LoginScreen() {
               fontFamily: AppFonts.GillSans,
               color: AppColors.white1,
               alignItems: 'flex-start',
-            }}
-          >
+            }}>
             number
           </Text>
           {/* <VertSpace size={5} />
@@ -164,7 +161,7 @@ export function LoginScreen() {
           </Text> */}
           <VertSpace size={40} />
 
-          <View style={{ flexDirection: 'row', alignItems: 'flex-start' }}>
+          <View style={{flexDirection: 'row', alignItems: 'flex-start'}}>
             <TouchableOpacity>
               <View>
                 <Ripple
@@ -174,8 +171,7 @@ export function LoginScreen() {
                     justifyContent: 'center',
                     alignItems: 'center',
                   }}
-                  onPress={() => setcountryOptionsVisible(true)}
-                >
+                  onPress={() => setcountryOptionsVisible(true)}>
                   <View
                     style={{
                       height: 50,
@@ -186,8 +182,7 @@ export function LoginScreen() {
                       borderTopLeftRadius: 15,
                       borderBottomLeftRadius: 15,
                       width: 100,
-                    }}
-                  >
+                    }}>
                     <Text style={styles.selectionStyles}>
                       {CountryData[Country].dropdownData}
                     </Text>
@@ -248,9 +243,8 @@ export const CountrySelect = ({
           visible={isVisible}
           onDismiss={onclose}
           style={GStyles.containView}
-          contentContainerStyle={styles.countrySelectContainer}
-        >
-          <View style={{ backgroundColor: 'white', ...GStyles.ModalContainer }}>
+          contentContainerStyle={styles.countrySelectContainer}>
+          <View style={{backgroundColor: 'white', ...GStyles.ModalContainer}}>
             <View style={GStyles.ModalContainer}>
               <VertSpace size={10} />
               <Container>
@@ -265,20 +259,17 @@ export const CountrySelect = ({
                   style={{
                     ...GStyles.headerStyles,
                     fontSize: FontSize.inputText,
-                  }}
-                >
+                  }}>
                   Select a Country
                 </Text>
 
                 <VertSpace size={20} />
                 <TouchableOpacity
                   onPress={() => setCountry('india')}
-                  style={GStyles.flexRow}
-                >
+                  style={GStyles.flexRow}>
                   <View
                     rippleColor={AppColors.DarkGrey}
-                    style={GStyles.radioCircle}
-                  >
+                    style={GStyles.radioCircle}>
                     <View>
                       {Country === 'india' ? (
                         <View style={GStyles.selectedRb} />
@@ -294,8 +285,7 @@ export const CountrySelect = ({
                       fontFamily: AppFonts.CalibriRegular,
                       color: AppColors.DarkGrey,
                       fontSize: FontSize.large,
-                    }}
-                  >
+                    }}>
                     India (IN)
                   </Text>
                 </TouchableOpacity>
@@ -303,12 +293,10 @@ export const CountrySelect = ({
                 <VertSpace size={20} />
                 <TouchableOpacity
                   onPress={() => setCountry('uae')}
-                  style={GStyles.flexRow}
-                >
+                  style={GStyles.flexRow}>
                   <View
                     rippleColor={AppColors.DarkGrey}
-                    style={GStyles.radioCircle}
-                  >
+                    style={GStyles.radioCircle}>
                     <View>
                       {Country === 'uae' ? (
                         <View style={GStyles.selectedRb} />

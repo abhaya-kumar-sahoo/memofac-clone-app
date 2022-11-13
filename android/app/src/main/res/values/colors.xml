@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<resources>
+    <color name="blue">#4A6872</color>
+        <color name="colorAcent">#89CFF0</color>
+
+    <color name="appWhite">#FFFFFF</color>
+</resources>

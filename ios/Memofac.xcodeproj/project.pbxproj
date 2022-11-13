@@ -8,13 +8,25 @@
 
 /* Begin PBXBuildFile section */
 		00E356F31AD99517003FC87E /* MemofacTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* MemofacTests.m */; };
+		01FE4A07749E4C4091A461AE /* Calibri-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3AE8D91101264B11B2F13A89 /* Calibri-Light.ttf */; };
+		0858A4B99650493FA26E02FC /* GillSans-UltraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 48F3579063AF480F88B8E33A /* GillSans-UltraBold.ttf */; };
 		13B07FBC1A68108700A75B9A /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.mm */; };
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		237BFC16291E7A0C002940A1 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 237BFC15291E7A0A002940A1 /* GoogleService-Info.plist */; };
+		28A24DE40BD34AB793214BE7 /* impact.ttf in Resources */ = {isa = PBXBuildFile; fileRef = DAC5E62D5BA04D39A3A07E47 /* impact.ttf */; };
+		443826727BB645DBADFAD0D8 /* ChaparralPro-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2D88B85CAC1844CE971389B2 /* ChaparralPro-Bold.ttf */; };
+		4588A4349D0545E18DE7A9AE /* AppFonts.js in Resources */ = {isa = PBXBuildFile; fileRef = DB7759491BA54644835813C7 /* AppFonts.js */; };
+		4CA0A79C0E1E47CCAA0A2955 /* InkFree.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A973DB3B923E4363B85C3E61 /* InkFree.ttf */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
+		8A21E3C6DEB949AEA50D6A26 /* LithosPro-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 7AED3AD4A8F648F3914F0CA5 /* LithosPro-Regular.otf */; };
+		9421A5E436784A51B33E67FA /* ComicSansMS.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4CD17C607D5B4D449008C461 /* ComicSansMS.ttf */; };
+		95B42A6B583C4E5E88A0BB06 /* Calibri.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8241A0002A2A4CFCAF586116 /* Calibri.ttf */; };
+		96162F7D5479405FABA6D452 /* BAHNSCHRIFT.TTF in Resources */ = {isa = PBXBuildFile; fileRef = F6B95E814A7D45E6ABAC2EB1 /* BAHNSCHRIFT.TTF */; };
+		A044CCCA846A4D388D836FAB /* Calibri-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E32F6DBB9DCD4679843B71FF /* Calibri-Bold.ttf */; };
 		CF6241967E64BD247B64C0F5 /* libPods-Memofac.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5FE0726E027663469196EC18 /* libPods-Memofac.a */; };
 		F0F27A701A6D379F03772142 /* libPods-Memofac-MemofacTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DE1CDF50B696DD15A6BA5B4F /* libPods-Memofac-MemofacTests.a */; };
+		F394CC6DF1454FAB80B2758C /* design.graffiti.comicsansmsgras.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5021FD5AF9784D51A13A7C03 /* design.graffiti.comicsansmsgras.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,12 +50,20 @@
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = Memofac/Info.plist; sourceTree = "<group>"; };
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = Memofac/main.m; sourceTree = "<group>"; };
 		237BFC15291E7A0A002940A1 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "Memofac/GoogleService-Info.plist"; sourceTree = "<group>"; };
+		2D88B85CAC1844CE971389B2 /* ChaparralPro-Bold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "ChaparralPro-Bold.ttf"; path = "../src/assets/fonts/ChaparralPro-Bold.ttf"; sourceTree = "<group>"; };
+		3AE8D91101264B11B2F13A89 /* Calibri-Light.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Calibri-Light.ttf"; path = "../src/assets/fonts/Calibri-Light.ttf"; sourceTree = "<group>"; };
 		3B4392A12AC88292D35C810B /* Pods-Memofac.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Memofac.debug.xcconfig"; path = "Target Support Files/Pods-Memofac/Pods-Memofac.debug.xcconfig"; sourceTree = "<group>"; };
+		48F3579063AF480F88B8E33A /* GillSans-UltraBold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "GillSans-UltraBold.ttf"; path = "../src/assets/fonts/GillSans-UltraBold.ttf"; sourceTree = "<group>"; };
+		4CD17C607D5B4D449008C461 /* ComicSansMS.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = ComicSansMS.ttf; path = ../src/assets/fonts/ComicSansMS.ttf; sourceTree = "<group>"; };
+		5021FD5AF9784D51A13A7C03 /* design.graffiti.comicsansmsgras.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = design.graffiti.comicsansmsgras.ttf; path = ../src/assets/fonts/design.graffiti.comicsansmsgras.ttf; sourceTree = "<group>"; };
 		5709B34CF0A7D63546082F79 /* Pods-Memofac.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Memofac.release.xcconfig"; path = "Target Support Files/Pods-Memofac/Pods-Memofac.release.xcconfig"; sourceTree = "<group>"; };
 		5B7EB9410499542E8C5724F5 /* Pods-Memofac-MemofacTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Memofac-MemofacTests.debug.xcconfig"; path = "Target Support Files/Pods-Memofac-MemofacTests/Pods-Memofac-MemofacTests.debug.xcconfig"; sourceTree = "<group>"; };
 		5FE0726E027663469196EC18 /* libPods-Memofac.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Memofac.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		7AED3AD4A8F648F3914F0CA5 /* LithosPro-Regular.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "LithosPro-Regular.otf"; path = "../src/assets/fonts/LithosPro-Regular.otf"; sourceTree = "<group>"; };
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = Memofac/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		8241A0002A2A4CFCAF586116 /* Calibri.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = Calibri.ttf; path = ../src/assets/fonts/Calibri.ttf; sourceTree = "<group>"; };
 		89C6BE57DB24E9ADA2F236DE /* Pods-Memofac-MemofacTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Memofac-MemofacTests.release.xcconfig"; path = "Target Support Files/Pods-Memofac-MemofacTests/Pods-Memofac-MemofacTests.release.xcconfig"; sourceTree = "<group>"; };
+		A973DB3B923E4363B85C3E61 /* InkFree.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = InkFree.ttf; path = ../src/assets/fonts/InkFree.ttf; sourceTree = "<group>"; };
 		BD062F862917BE7B004E07BF /* Memofac.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = Memofac.entitlements; path = Memofac/Memofac.entitlements; sourceTree = "<group>"; };
 		BD7B4EB32917A5A5003652B2 /* MaterialCommunityIcons.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = MaterialCommunityIcons.ttf; sourceTree = "<group>"; };
 		BD7B4EB42917A5A6003652B2 /* FontAwesome.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = FontAwesome.ttf; sourceTree = "<group>"; };
@@ -61,8 +81,12 @@
 		BD7B4EC02917A5AA003652B2 /* Entypo.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Entypo.ttf; sourceTree = "<group>"; };
 		BD7B4EC12917A5AB003652B2 /* Fontisto.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Fontisto.ttf; sourceTree = "<group>"; };
 		BD7B4EC22917A5AB003652B2 /* Zocial.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Zocial.ttf; sourceTree = "<group>"; };
+		DAC5E62D5BA04D39A3A07E47 /* impact.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = impact.ttf; path = ../src/assets/fonts/impact.ttf; sourceTree = "<group>"; };
+		DB7759491BA54644835813C7 /* AppFonts.js */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = AppFonts.js; path = ../src/assets/fonts/AppFonts.js; sourceTree = "<group>"; };
 		DE1CDF50B696DD15A6BA5B4F /* libPods-Memofac-MemofacTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Memofac-MemofacTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		E32F6DBB9DCD4679843B71FF /* Calibri-Bold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Calibri-Bold.ttf"; path = "../src/assets/fonts/Calibri-Bold.ttf"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
+		F6B95E814A7D45E6ABAC2EB1 /* BAHNSCHRIFT.TTF */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = BAHNSCHRIFT.TTF; path = ../src/assets/fonts/BAHNSCHRIFT.TTF; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -118,6 +142,26 @@
 			name = Memofac;
 			sourceTree = "<group>";
 		};
+		2C3C17EBCF0F4439A539C71F /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				7AED3AD4A8F648F3914F0CA5 /* LithosPro-Regular.otf */,
+				E32F6DBB9DCD4679843B71FF /* Calibri-Bold.ttf */,
+				3AE8D91101264B11B2F13A89 /* Calibri-Light.ttf */,
+				8241A0002A2A4CFCAF586116 /* Calibri.ttf */,
+				2D88B85CAC1844CE971389B2 /* ChaparralPro-Bold.ttf */,
+				4CD17C607D5B4D449008C461 /* ComicSansMS.ttf */,
+				48F3579063AF480F88B8E33A /* GillSans-UltraBold.ttf */,
+				A973DB3B923E4363B85C3E61 /* InkFree.ttf */,
+				5021FD5AF9784D51A13A7C03 /* design.graffiti.comicsansmsgras.ttf */,
+				DAC5E62D5BA04D39A3A07E47 /* impact.ttf */,
+				DB7759491BA54644835813C7 /* AppFonts.js */,
+				F6B95E814A7D45E6ABAC2EB1 /* BAHNSCHRIFT.TTF */,
+			);
+			name = Resources;
+			path = "";
+			sourceTree = "<group>";
+		};
 		2D16E6871FA4F8E400B85C8A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -144,6 +188,7 @@
 				83CBBA001A601CBA00E9B192 /* Products */,
 				2D16E6871FA4F8E400B85C8A /* Frameworks */,
 				BBD78D7AC51CEA395F1C20DB /* Pods */,
+				2C3C17EBCF0F4439A539C71F /* Resources */,
 			);
 			indentWidth = 2;
 			sourceTree = "<group>";
@@ -291,6 +336,18 @@
 				81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 				237BFC16291E7A0C002940A1 /* GoogleService-Info.plist in Resources */,
+				8A21E3C6DEB949AEA50D6A26 /* LithosPro-Regular.otf in Resources */,
+				A044CCCA846A4D388D836FAB /* Calibri-Bold.ttf in Resources */,
+				01FE4A07749E4C4091A461AE /* Calibri-Light.ttf in Resources */,
+				95B42A6B583C4E5E88A0BB06 /* Calibri.ttf in Resources */,
+				443826727BB645DBADFAD0D8 /* ChaparralPro-Bold.ttf in Resources */,
+				9421A5E436784A51B33E67FA /* ComicSansMS.ttf in Resources */,
+				0858A4B99650493FA26E02FC /* GillSans-UltraBold.ttf in Resources */,
+				4CA0A79C0E1E47CCAA0A2955 /* InkFree.ttf in Resources */,
+				F394CC6DF1454FAB80B2758C /* design.graffiti.comicsansmsgras.ttf in Resources */,
+				28A24DE40BD34AB793214BE7 /* impact.ttf in Resources */,
+				4588A4349D0545E18DE7A9AE /* AppFonts.js in Resources */,
+				96162F7D5479405FABA6D452 /* BAHNSCHRIFT.TTF in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

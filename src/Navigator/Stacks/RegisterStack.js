@@ -11,7 +11,7 @@ import { UserGender } from 'screens/Auth/ProfileUpdate/GenderScreen/UserGender';
 import { SelectMemos } from 'screens/Auth/ProfileUpdate/SelectMemos/SelectMemos';
 import { ProfilePictureScreen } from 'screens/Auth/ProfileUpdate/ProfilePictureScreen/ProfilePictureScreen';
 import { LetsGoScreen } from 'screens/Auth/ProfileUpdate/LetsGoScreen/LetsGoScreen';
-import { RecaptureActivity } from 'screens/Recapture/RecaptureActivity';
+import { RecaptureActivity } from 'screens/Recapture/index';
 
 /**
  *
@@ -36,11 +36,7 @@ export function RegisterStack() {
         options={HeaderNone}
       />
       <Stack.Screen name="Gallery" component={Gallery} options={HeaderNone} />
-      <Stack.Screen
-        name="PhotosList"
-        component={PhotosList}
-        options={HeaderNone}
-      />
+
 
       <Stack.Screen name="UserYearOfBirth" component={UserYearOfBirth} />
       <Stack.Screen name="UserName" component={UserName} />

@@ -1,0 +1,53 @@
+{
+  "migIndex": 1,
+  "data": [
+    {
+      "path": "src/assets/fonts/AppFonts.js",
+      "sha1": "ae063098fa53cee1d12ce49c8e1d016afe5954ef"
+    },
+    {
+      "path": "src/assets/fonts/BAHNSCHRIFT.TTF",
+      "sha1": "1ca49cdabec11a9f7a5d52dfe0f01cc6b471c374"
+    },
+    {
+      "path": "src/assets/fonts/Calibri-Bold.ttf",
+      "sha1": "b26d429f381b89eb4c0fe68907a5722abd58cca2"
+    },
+    {
+      "path": "src/assets/fonts/Calibri-Light.ttf",
+      "sha1": "5ca2339e93d4527eebf01ae70204b4123ee267d3"
+    },
+    {
+      "path": "src/assets/fonts/Calibri.ttf",
+      "sha1": "18bdacade53d1ca0d7f57e4e4be5c965709fc9b0"
+    },
+    {
+      "path": "src/assets/fonts/ChaparralPro-Bold.ttf",
+      "sha1": "5c9fa91f38e32cc7e4a2e798c70d2cff2dd0fe47"
+    },
+    {
+      "path": "src/assets/fonts/ComicSansMS.ttf",
+      "sha1": "b60343e5f678c56d52e80b00e604104a73d256f2"
+    },
+    {
+      "path": "src/assets/fonts/GillSans-UltraBold.ttf",
+      "sha1": "f6520ba7d2277a3be4e2ad8224c95a6411ba4fb2"
+    },
+    {
+      "path": "src/assets/fonts/InkFree.ttf",
+      "sha1": "6eb4dd6fe26dd5afb0e4231056220205868f6152"
+    },
+    {
+      "path": "src/assets/fonts/LithosPro-Regular.otf",
+      "sha1": "c8f7a08eebecf3f86c81b8ab77a7a3bd43a1b6df"
+    },
+    {
+      "path": "src/assets/fonts/design.graffiti.comicsansmsgras.ttf",
+      "sha1": "987bf28bedf0f3e081b5cb12fc748cbea3cebd0f"
+    },
+    {
+      "path": "src/assets/fonts/impact.ttf",
+      "sha1": "ab7f8f8a1d53f454fae8bda1ba9590f4acf6ce56"
+    }
+  ]
+}

@@ -1,5 +1,5 @@
 // import CameraRoll from '@react-native-community/cameraroll';
-import React, { Component, Fragment } from 'react';
+import React, {Component, Fragment} from 'react';
 import {
   FlatList,
   Image,
@@ -8,11 +8,11 @@ import {
   View,
   SafeAreaView,
 } from 'react-native';
-import { showToast } from 'shared/Functions/ToastFunctions';
+import {showToast} from 'shared/Functions/ToastFunctions';
 import Carousel from 'react-native-snap-carousel';
-import { AppColors } from '../../assets/AppColors';
-import { AppHeader, DropdownHeader } from '../../components/AppHeader';
-import { NextButton } from '../../components/Mini';
+import {AppColors} from '../../assets/AppColors';
+import {AppHeader, DropdownHeader} from '../../components/AppHeader';
+import {NextButton} from '../../components/Mini';
 import {
   AppDimens,
   FontSize,
@@ -22,17 +22,17 @@ import {
 } from '../../shared/Global.styles';
 
 import PaginationDot from 'react-native-animated-pagination-dot';
-import { useNavigation } from '@react-navigation/native';
+import {useNavigation} from '@react-navigation/native';
 import SkeletonContent from 'react-native-skeleton-content-nonexpo';
-import { Skeletons } from '../../shared/Skeletons';
-import { GetAlbumPhoto } from './Components/GalleryFunctions';
-import { CancelIcon, CropIcon } from '../../shared/Icon.Comp';
-import { ActivityIndicator } from 'react-native-paper';
-import { ImageGridView } from './ImageGridView';
+import {Skeletons} from '../../shared/Skeletons';
+import {GetAlbumPhoto} from './Components/GalleryFunctions';
+import {CancelIcon, CropIcon} from '../../shared/Icon.Comp';
+import {ActivityIndicator} from 'react-native-paper';
+import {ImageGridView} from './ImageGridView';
 
 export const getPhotosFromAlbum = (groupname = '', after = '0', first = 20) => {
   return null;
- 
+
   // return CameraRoll.getPhotos({
   //   // first,
   //   // groupName: '',
@@ -48,9 +48,9 @@ export const getPhotosFromAlbum = (groupname = '', after = '0', first = 20) => {
   // });
 };
 
-export function PhotosList({ route }) {
+export function PhotosList({route}) {
   const navigation = useNavigation();
-  const { navigate } = { ...navigation };
+  const {navigate} = {...navigation};
   const [pickerType, setpickerType] = React.useState('multiple');
   const [AlbumArrayData, setAlbumArrayData] = React.useState([]);
   const [photoLoader, setphotoLoader] = React.useState(true);
@@ -64,7 +64,7 @@ export function PhotosList({ route }) {
   const nav = useNavigation();
 
   React.useEffect(() => {
-    const { pickerType, routeName } = route.params;
+    const {pickerType, routeName} = route.params;
     setpickerType(pickerType);
   }, []);
 
@@ -81,7 +81,7 @@ export function PhotosList({ route }) {
       require('../../assets/images/MemofacLogo.png'),
     );
 
-    CameraRoll.getAlbums({ assetType: 'Photos' })
+    CameraRoll.getAlbums({assetType: 'Photos'})
       .then(response =>
         response.map(albumData => {
           const Datatoget = GetAlbumPhoto(albumData.title);
@@ -120,7 +120,7 @@ export function PhotosList({ route }) {
     setSelectedImages(newSelectedImages);
     // crollToItem(at: index, at: .top, animated: true)
 
-    carouselRef?.current?.snapToItem({ index: 0, Animated: true });
+    carouselRef?.current?.snapToItem({index: 0, Animated: true});
   };
 
   // GET SELECTED ALBUM
@@ -147,10 +147,10 @@ export function PhotosList({ route }) {
   }, [route.params?.selectedGroup]);
 
   const CropPhoto = imagedata => {
-    navigate('CropPhoto', { imagedata });
+    navigate('CropPhoto', {imagedata});
   };
   return (
-    <SafeAreaView style={{ flex: 1, backgroundColor: AppColors.white }}>
+    <SafeAreaView style={{flex: 1, backgroundColor: AppColors.white}}>
       <AppHeader enableBack>
         <NextButton
           disabled={false}
@@ -172,16 +172,16 @@ export function PhotosList({ route }) {
             <Carousel
               firstItem={0}
               containerCustomStyle={{
-                transform: [{ scaleX: -1 }],
+                transform: [{scaleX: -1}],
                 height: 200,
               }}
-              columnWrapperStyle={{ backgroundColor: AppColors.LightGrey }}
+              columnWrapperStyle={{backgroundColor: AppColors.LightGrey}}
               ref={carouselRef}
               layout={'stack'}
-              style={{ backgroundColor: AppColors.blue, height: 300 }}
+              style={{backgroundColor: AppColors.blue, height: 300}}
               // contentContainerStyle={{ backgroundColor: 'red' }}
               data={SelectedImages}
-              renderItem={({ item, index }) => {
+              renderItem={({item, index}) => {
                 return (
                   <CarouselRenderItem
                     item={item}
@@ -218,8 +218,7 @@ export function PhotosList({ route }) {
               backgroundColor: AppColors.Transparent,
               alignItems: 'center',
               paddingTop: 10,
-            }}
-          >
+            }}>
             <PaginationDot
               activeDotColor={AppColors.MediumGrey}
               curPage={SelectedImages.length - ActiveState - 1}
@@ -230,7 +229,7 @@ export function PhotosList({ route }) {
         </Fragment>
       )}
 
-      <View style={{ paddingHorizontal: Spacing.xxlarge }}>
+      <View style={{paddingHorizontal: Spacing.xxlarge}}>
         <DropdownHeader
           onHeaderPress={() => {
             nav.navigate('Gallery', {
@@ -240,7 +239,7 @@ export function PhotosList({ route }) {
           title={`${AlbumName} ${AlbumName == 'All' ? 'Photos' : ''}`}
         />
         <SkeletonContent
-          containerStyle={{ marginTop: 20 }}
+          containerStyle={{marginTop: 20}}
           highlightColor={AppColors.SkeletonBone}
           boneColor={AppColors.VeryLightGrey}
           isLoading={photoLoader}
@@ -274,7 +273,7 @@ export function PhotosList({ route }) {
             }
             // getPosts();
           }}
-          renderItem={({ item, index, separators }) => (
+          renderItem={({item, index, separators}) => (
             <ImageGridView
               selectable={pickerType !== 'single'}
               isSelected={SelectedImages.indexOf(item.node.image.uri) !== -1}
@@ -282,9 +281,9 @@ export function PhotosList({ route }) {
               requiredLoader={false}
               imageUrl={item.node.image.uri}
               onPress={checkedvalue => {
-                const { routeName } = route.params;
+                const {routeName} = route.params;
                 if (pickerType === 'single') {
-                  nav.navigate(routeName, { imageList: [item.node.image.uri] });
+                  nav.navigate(routeName, {imageList: [item.node.image.uri]});
                 } else {
                   CollectSelectedImages(item);
                 }
@@ -297,22 +296,21 @@ export function PhotosList({ route }) {
   );
 }
 
-const ImageOptionsView = ({ onRemove = () => {}, onCrop = () => {} }) => {
+const ImageOptionsView = ({onRemove = () => {}, onCrop = () => {}}) => {
   return (
-    <View style={{ position: 'absolute', zIndex: 20, right: 0 }}>
+    <View style={{position: 'absolute', zIndex: 20, right: 0}}>
       <View
         style={{
           flexDirection: 'row',
           backgroundColor: '#00000011',
           borderRadius: 30,
           padding: 10,
-        }}
-      >
-        <TouchableOpacity onPress={() => onRemove()} style={{ padding: 10 }}>
+        }}>
+        <TouchableOpacity onPress={() => onRemove()} style={{padding: 10}}>
           <CancelIcon size={FontSize.medium} color={AppColors.white} />
         </TouchableOpacity>
 
-        <TouchableOpacity onPress={() => onCrop()} style={{ padding: 10 }}>
+        <TouchableOpacity onPress={() => onCrop()} style={{padding: 10}}>
           <CropIcon size={FontSize.medium} color={AppColors.white} />
         </TouchableOpacity>
       </View>
@@ -332,9 +330,8 @@ export const CarouselRenderItem = ({
         width: 200,
         height: 200,
         borderRadius: 30,
-        transform: [{ scaleX: -1 }],
-      }}
-    >
+        transform: [{scaleX: -1}],
+      }}>
       <View
         style={{
           backgroundColor: AppColors.VeryLightGrey,
@@ -343,8 +340,7 @@ export const CarouselRenderItem = ({
           borderRadius: 30,
           borderWidth: 5,
           borderColor: AppColors.white,
-        }}
-      >
+        }}>
         <ImageOptionsView onCrop={onCrop} onRemove={onRemove} />
         <Image
           resizeMethod={'auto'}
@@ -355,7 +351,7 @@ export const CarouselRenderItem = ({
             height: 190,
             borderRadius: 26,
           }}
-          source={{ uri: item }}
+          source={{uri: item}}
         />
       </View>
     </View>

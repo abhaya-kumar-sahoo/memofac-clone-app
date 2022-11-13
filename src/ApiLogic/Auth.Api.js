@@ -1,8 +1,8 @@
-import React, { Component } from 'react';
-import { processResponse } from './Api.Components';
-import { API_TYPE, API_URL, APP_APIS } from './API_URL';
+import React, {Component} from 'react';
+import {processResponse} from './Api.Components';
+import {API_TYPE, API_URL, APP_APIS} from './API_URL';
 import request from 'ApiLogic/axios.config';
-import { Platform } from 'react-native';
+import {Platform} from 'react-native';
 
 //  FOR SENSING OTP
 export const SendOtpAPiCall = (formData, onResponse, onError) => {

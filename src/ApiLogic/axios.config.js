@@ -1,15 +1,15 @@
 import axios from 'axios';
-import { APP_APIS } from './API_URL';
+import {APP_APIS} from './API_URL';
 /**
  * Request Wrapper with default success/error actions
  */
 
-const headerDefault = { 'Content-Type': 'application/json' };
+const headerDefault = {'Content-Type': 'application/json'};
 
 const request = async function (
   options,
   isHeader = true,
-  headersData = { ...headerDefault },
+  headersData = {...headerDefault},
 ) {
   let authHeader = null;
 

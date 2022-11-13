@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:drawable="@drawable/bgwallpaper"/>
+
+    <item
+        android:width="200dp"
+        android:height="50dp"
+        android:drawable="@mipmap/logo"
+        android:gravity="center" />
+
+
+</layer-list>

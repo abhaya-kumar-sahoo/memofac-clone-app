@@ -70,7 +70,7 @@ export const RecaptureActivity = ({ route }) => {
   const [List, setList] = useState([]);
 
   const onSearchPress = () =>
-    navigate('SearchScreen', { select: 'RecaptureActivity' });
+    navigate('SearchScreen', {select: 'RecaptureActivity'});
 
   const onRateCallback = (memoItem, rateIndex) => {
     setMemos(

@@ -1,9 +1,9 @@
-import { addEventListener } from '@react-native-community/netinfo';
-import { applyMiddleware, compose, createStore } from 'redux';
-import { persistStore } from 'redux-persist';
+import {addEventListener} from '@react-native-community/netinfo';
+import {applyMiddleware, compose, createStore} from 'redux';
+import {persistStore} from 'redux-persist';
 import createSagaMiddleware from 'redux-saga';
 import RootReducer from '../reducers/index';
-import { watcherSaga } from '../sagas/rootSaga';
+import {watcherSaga} from '../sagas/rootSaga';
 
 const sagaMiddleWare = createSagaMiddleware();
 const middleWare = [sagaMiddleWare];
@@ -23,6 +23,6 @@ addEventListener(state => {
   }
 });
 
-const persistor = persistStore(store);
+const persister = persistStore(store);
 
-export { store, persistor };
+export {store, persister};
