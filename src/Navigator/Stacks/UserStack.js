@@ -1,49 +1,48 @@
 import React from 'react';
-import { createStackNavigator } from '@react-navigation/stack';
-import { BottomTabNavigation } from './BottomTabs';
+import {createStackNavigator} from '@react-navigation/stack';
+import {BottomTabNavigation} from './BottomTabs';
 // import { RecaptureActivity } from 'screens/Recapture/RecaptureActivity';
-import { Gallery } from 'screens/GalleryPicker/Gallery';
-import { PhotosList } from 'screens/GalleryPicker/PhotosList';
-import { SettingsScreen } from 'screens/Settings/Settings.screen';
-import { SearchScreen } from 'screens/Search/Search.Nav';
+import {Gallery} from 'screens/GalleryPicker/Gallery';
+import {SettingsScreen} from 'screens/Settings/Settings.screen';
+import {SearchScreen} from 'screens/Search/Search.Nav';
 import {
   ExperiencedContacts,
   ViewRatings,
 } from 'screens/Timeline/components/ListContacts.screen';
-import { CommentScreen } from 'screens/Comments/comments.screen';
-import { ImageViewScreen } from 'screens/ImageView/ViewImage';
-import { MemosPage, SamplePage } from 'screens/Memos/Memos.Nav';
-import { ViewMemo } from 'screens/Memos/View_Memo';
-import { SavetoCollection } from 'screens/Memos/SavetoCollection';
-import { CreateNewMemo } from 'screens/Memos/CreateNewMemo';
-import { SecondaryGroup } from 'screens/Memos/SecondaryGrooup';
-import { ImageGallery } from 'screens/GalleryPicker/MyGallery/ImageGallery';
-import { ExperiencedScreen } from 'screens/Experienced/Experienced.screen';
-import { WishlistScreen } from 'screens/Wishlist/Wishlist.screen';
+import {CommentScreen} from 'screens/Comments/comments.screen';
+import {ImageViewScreen} from 'screens/ImageView/ViewImage';
+import {MemosPage, SamplePage} from 'screens/Memos/Memos.Nav';
+import {ViewMemo} from 'screens/Memos/View_Memo';
+import {SavetoCollection} from 'screens/Memos/SavetoCollection';
+import {CreateNewMemo} from 'screens/Memos/CreateNewMemo';
+import {SecondaryGroup} from 'screens/Memos/SecondaryGrooup';
+import {ImageGallery} from 'screens/GalleryPicker/MyGallery/ImageGallery';
+import {ExperiencedScreen} from 'screens/Experienced/Experienced.screen';
+import {WishlistScreen} from 'screens/Wishlist/Wishlist.screen';
 
-import { ContactsScreen } from 'screens/Contacts/Contact.screen';
-import { UserMemos } from 'screens/Memos/UserMemos';
-import { SearchMemoScreen } from 'screens/Memos/SearchMemo/SearchMemoScreen';
-import { UpdateProfile } from 'screens/MyProfile/EditProfile/UpdateProfile';
-import { ContactsWithReaction } from 'screens/Comments/Components/ListContacts.screen';
-import { FriendsProfile } from 'screens/MyProfile/FriendsProfile/FriendsProfile';
-import { WishlistMemos } from 'screens/Wishlist/WishlistMemos';
-import { SaveMemoExp } from 'screens/Auth/SaveExperiences/SaveMemoExp';
-import { WishListImageGallery } from 'screens/Wishlist/WishListImageGallery';
-import { CropPhoto } from 'screens/GalleryPicker/Cropper/CropPhoto';
-import { RecapturePhotoList } from 'screens/Recapture/Components/PicturePicker/Picturepicker.screen';
-import { EditContactsScreen } from 'screens/Contacts/Group/EditContacts.screen';
-import { MemoImageGallery } from 'screens/Memos/MemoImageGallery';
-import { TrendingScreen } from 'screens/Trending/Trending.screen';
-import { SinglePostScreen } from 'screens/Timeline/SinglePost/SinglePost.screen';
-import { ReportProblem } from 'screens/ReportProblem/ReportProlemScreen';
-import { ReportMemoScreen } from 'screens/Memos/ReportMemo/ReportMemo';
-import { RecaptureActivity } from 'screens/Recapture';
-import { ShareWithScreen } from 'screens/Recapture/Components/ShareWith';
-import { MultipleImageViewScreen } from 'screens/MultipleImageView';
-import { MemoDetailsView } from 'screens/Memos/MemoDetailsView';
-import { ViewPhoto } from 'screens/GalleryPicker/ViewPhoto';
-import { StatusBar } from 'react-native';
+import {ContactsScreen} from 'screens/Contacts/Contact.screen';
+import {UserMemos} from 'screens/Memos/UserMemos';
+import {SearchMemoScreen} from 'screens/Memos/SearchMemo/SearchMemoScreen';
+import {UpdateProfile} from 'screens/MyProfile/EditProfile/UpdateProfile';
+import {ContactsWithReaction} from 'screens/Comments/Components/ListContacts.screen';
+import {FriendsProfile} from 'screens/MyProfile/FriendsProfile/FriendsProfile';
+import {WishlistMemos} from 'screens/Wishlist/WishlistMemos';
+import {SaveMemoExp} from 'screens/Auth/SaveExperiences/SaveMemoExp';
+import {WishListImageGallery} from 'screens/Wishlist/WishListImageGallery';
+import {CropPhoto} from 'screens/GalleryPicker/Cropper/CropPhoto';
+import {RecapturePhotoList} from 'screens/Recapture/Components/PicturePicker/Picturepicker.screen';
+import {EditContactsScreen} from 'screens/Contacts/Group/EditContacts.screen';
+import {MemoImageGallery} from 'screens/Memos/MemoImageGallery';
+import {TrendingScreen} from 'screens/Trending/Trending.screen';
+import {SinglePostScreen} from 'screens/Timeline/SinglePost/SinglePost.screen';
+import {ReportProblem} from 'screens/ReportProblem/ReportProlemScreen';
+import {ReportMemoScreen} from 'screens/Memos/ReportMemo/ReportMemo';
+import {RecaptureActivity} from 'screens/Recapture';
+import {ShareWithScreen} from 'screens/Recapture/Components/ShareWith';
+import {MultipleImageViewScreen} from 'screens/MultipleImageView';
+import {MemoDetailsView} from 'screens/Memos/MemoDetailsView';
+import {ViewPhoto} from 'screens/GalleryPicker/ViewPhoto';
+import {StatusBar} from 'react-native';
 
 export function UserStack() {
   const Stack = createStackNavigator();
@@ -52,8 +51,7 @@ export function UserStack() {
     <>
       <Stack.Navigator
         initialRouteName={'BottomTabNavigation'}
-        screenOptions={{ headerShown: false, gestureEnabled: false }}
-      >
+        screenOptions={{headerShown: false, gestureEnabled: false}}>
         <Stack.Screen
           name={'BottomTabNavigation'}
           children={BottomTabNavigation}
@@ -101,7 +99,6 @@ export function UserStack() {
           name={'WishListImageGallery'}
           component={WishListImageGallery}
         />
-        <Stack.Screen name="PhotosList" component={PhotosList} />
         <Stack.Screen
           name={'ExperiencedScreen'}
           component={ExperiencedScreen}

@@ -50,20 +50,20 @@
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = Memofac/Info.plist; sourceTree = "<group>"; };
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = Memofac/main.m; sourceTree = "<group>"; };
 		237BFC15291E7A0A002940A1 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "Memofac/GoogleService-Info.plist"; sourceTree = "<group>"; };
-		2D88B85CAC1844CE971389B2 /* ChaparralPro-Bold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "ChaparralPro-Bold.ttf"; path = "../src/assets/fonts/ChaparralPro-Bold.ttf"; sourceTree = "<group>"; };
-		3AE8D91101264B11B2F13A89 /* Calibri-Light.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Calibri-Light.ttf"; path = "../src/assets/fonts/Calibri-Light.ttf"; sourceTree = "<group>"; };
+		2D88B85CAC1844CE971389B2 /* ChaparralPro-Bold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "ChaparralPro-Bold.ttf"; path = "../src/assets/fonts/ChaparralPro-Bold.ttf"; sourceTree = "<group>"; };
+		3AE8D91101264B11B2F13A89 /* Calibri-Light.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Calibri-Light.ttf"; path = "../src/assets/fonts/Calibri-Light.ttf"; sourceTree = "<group>"; };
 		3B4392A12AC88292D35C810B /* Pods-Memofac.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Memofac.debug.xcconfig"; path = "Target Support Files/Pods-Memofac/Pods-Memofac.debug.xcconfig"; sourceTree = "<group>"; };
-		48F3579063AF480F88B8E33A /* GillSans-UltraBold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "GillSans-UltraBold.ttf"; path = "../src/assets/fonts/GillSans-UltraBold.ttf"; sourceTree = "<group>"; };
-		4CD17C607D5B4D449008C461 /* ComicSansMS.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = ComicSansMS.ttf; path = ../src/assets/fonts/ComicSansMS.ttf; sourceTree = "<group>"; };
-		5021FD5AF9784D51A13A7C03 /* design.graffiti.comicsansmsgras.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = design.graffiti.comicsansmsgras.ttf; path = ../src/assets/fonts/design.graffiti.comicsansmsgras.ttf; sourceTree = "<group>"; };
+		48F3579063AF480F88B8E33A /* GillSans-UltraBold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "GillSans-UltraBold.ttf"; path = "../src/assets/fonts/GillSans-UltraBold.ttf"; sourceTree = "<group>"; };
+		4CD17C607D5B4D449008C461 /* ComicSansMS.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = ComicSansMS.ttf; path = ../src/assets/fonts/ComicSansMS.ttf; sourceTree = "<group>"; };
+		5021FD5AF9784D51A13A7C03 /* design.graffiti.comicsansmsgras.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = design.graffiti.comicsansmsgras.ttf; path = ../src/assets/fonts/design.graffiti.comicsansmsgras.ttf; sourceTree = "<group>"; };
 		5709B34CF0A7D63546082F79 /* Pods-Memofac.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Memofac.release.xcconfig"; path = "Target Support Files/Pods-Memofac/Pods-Memofac.release.xcconfig"; sourceTree = "<group>"; };
 		5B7EB9410499542E8C5724F5 /* Pods-Memofac-MemofacTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Memofac-MemofacTests.debug.xcconfig"; path = "Target Support Files/Pods-Memofac-MemofacTests/Pods-Memofac-MemofacTests.debug.xcconfig"; sourceTree = "<group>"; };
 		5FE0726E027663469196EC18 /* libPods-Memofac.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Memofac.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		7AED3AD4A8F648F3914F0CA5 /* LithosPro-Regular.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "LithosPro-Regular.otf"; path = "../src/assets/fonts/LithosPro-Regular.otf"; sourceTree = "<group>"; };
+		7AED3AD4A8F648F3914F0CA5 /* LithosPro-Regular.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "LithosPro-Regular.otf"; path = "../src/assets/fonts/LithosPro-Regular.otf"; sourceTree = "<group>"; };
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = Memofac/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		8241A0002A2A4CFCAF586116 /* Calibri.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = Calibri.ttf; path = ../src/assets/fonts/Calibri.ttf; sourceTree = "<group>"; };
+		8241A0002A2A4CFCAF586116 /* Calibri.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Calibri.ttf; path = ../src/assets/fonts/Calibri.ttf; sourceTree = "<group>"; };
 		89C6BE57DB24E9ADA2F236DE /* Pods-Memofac-MemofacTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Memofac-MemofacTests.release.xcconfig"; path = "Target Support Files/Pods-Memofac-MemofacTests/Pods-Memofac-MemofacTests.release.xcconfig"; sourceTree = "<group>"; };
-		A973DB3B923E4363B85C3E61 /* InkFree.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = InkFree.ttf; path = ../src/assets/fonts/InkFree.ttf; sourceTree = "<group>"; };
+		A973DB3B923E4363B85C3E61 /* InkFree.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = InkFree.ttf; path = ../src/assets/fonts/InkFree.ttf; sourceTree = "<group>"; };
 		BD062F862917BE7B004E07BF /* Memofac.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = Memofac.entitlements; path = Memofac/Memofac.entitlements; sourceTree = "<group>"; };
 		BD7B4EB32917A5A5003652B2 /* MaterialCommunityIcons.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = MaterialCommunityIcons.ttf; sourceTree = "<group>"; };
 		BD7B4EB42917A5A6003652B2 /* FontAwesome.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = FontAwesome.ttf; sourceTree = "<group>"; };
@@ -81,12 +81,12 @@
 		BD7B4EC02917A5AA003652B2 /* Entypo.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Entypo.ttf; sourceTree = "<group>"; };
 		BD7B4EC12917A5AB003652B2 /* Fontisto.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Fontisto.ttf; sourceTree = "<group>"; };
 		BD7B4EC22917A5AB003652B2 /* Zocial.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Zocial.ttf; sourceTree = "<group>"; };
-		DAC5E62D5BA04D39A3A07E47 /* impact.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = impact.ttf; path = ../src/assets/fonts/impact.ttf; sourceTree = "<group>"; };
-		DB7759491BA54644835813C7 /* AppFonts.js */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = AppFonts.js; path = ../src/assets/fonts/AppFonts.js; sourceTree = "<group>"; };
+		DAC5E62D5BA04D39A3A07E47 /* impact.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = impact.ttf; path = ../src/assets/fonts/impact.ttf; sourceTree = "<group>"; };
+		DB7759491BA54644835813C7 /* AppFonts.js */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = AppFonts.js; path = ../src/assets/fonts/AppFonts.js; sourceTree = "<group>"; };
 		DE1CDF50B696DD15A6BA5B4F /* libPods-Memofac-MemofacTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Memofac-MemofacTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		E32F6DBB9DCD4679843B71FF /* Calibri-Bold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Calibri-Bold.ttf"; path = "../src/assets/fonts/Calibri-Bold.ttf"; sourceTree = "<group>"; };
+		E32F6DBB9DCD4679843B71FF /* Calibri-Bold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Calibri-Bold.ttf"; path = "../src/assets/fonts/Calibri-Bold.ttf"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
-		F6B95E814A7D45E6ABAC2EB1 /* BAHNSCHRIFT.TTF */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = BAHNSCHRIFT.TTF; path = ../src/assets/fonts/BAHNSCHRIFT.TTF; sourceTree = "<group>"; };
+		F6B95E814A7D45E6ABAC2EB1 /* BAHNSCHRIFT.TTF */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = BAHNSCHRIFT.TTF; path = ../src/assets/fonts/BAHNSCHRIFT.TTF; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -159,7 +159,6 @@
 				F6B95E814A7D45E6ABAC2EB1 /* BAHNSCHRIFT.TTF */,
 			);
 			name = Resources;
-			path = "";
 			sourceTree = "<group>";
 		};
 		2D16E6871FA4F8E400B85C8A /* Frameworks */ = {
@@ -601,6 +600,7 @@
 			baseConfigurationReference = 3B4392A12AC88292D35C810B /* Pods-Memofac.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Memofac/Memofac.entitlements;
 				CURRENT_PROJECT_VERSION = 1;
@@ -628,6 +628,7 @@
 			baseConfigurationReference = 5709B34CF0A7D63546082F79 /* Pods-Memofac.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Memofac/Memofac.entitlements;
 				CURRENT_PROJECT_VERSION = 1;

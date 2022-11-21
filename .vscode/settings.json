@@ -36,9 +36,15 @@
     "metro.config.js": true,
     "react-native.config.js": true,
     "yarn.lock": true,
-    "node_modules": true,
+    "node_modules": false,
     "yarn-error.log": true,
-    ".gitignore": true
+    ".gitignore": true,
+    ".bundle":true,
+    "__tests__":true,
+    "patches":true,
+    ".node-version":true,
+    ".ruby-version":true,
+    "Gemfile":true
   },
   "cSpell.words": [
     "Dimens",

@@ -1,12 +1,5 @@
 import React, {useRef} from 'react';
-import {
-  Alert,
-  LogBox,
-  StatusBar,
-  BackHandler,
-  Platform,
-  Text,
-} from 'react-native';
+import {Alert, LogBox, StatusBar, BackHandler, Platform} from 'react-native';
 import 'react-native-gesture-handler';
 import PushNotificationIOS from '@react-native-community/push-notification-ios';
 import {NavigationContainer} from '@react-navigation/native';
@@ -28,7 +21,7 @@ import {AppFonts} from 'assets/fonts/AppFonts';
 import {STR_KEYS} from 'shared/Storage';
 
 // import { showToast } from 'shared/Functions/ToastFunctions';
-// import { NotificationWrapper } from 'Notification/NotificationWrapper';
+import {NotificationWrapper} from 'Notification/NotificationWrapper';
 // import {
 //   setJSExceptionHandler,
 //   setNativeExceptionHandler,
@@ -76,8 +69,6 @@ export const reporter = error => {
   // console.log(error); // sample
 };
 function App() {
-
-
   const isClicked = useRef(false);
   React.useEffect(() => {
     CheckPermission();
@@ -181,20 +172,18 @@ function App() {
   return (
     <StoreProvider store={store}>
       <PersistGate loading={null} persistor={persister}>
-        {/* <NotificationWrapper> */}
-        <PaperProvider theme={theme}>
-          <NetworkProvider>
-            <NavigationContainer linking={linking} ref={navigationRef}>
-              <FirebasePushHandler>
-                <StatusBar backgroundColor="black" barStyle="light-content" />
-                <RootStack />
-                {/* <Text>Abhaya</Text> */}
-              </FirebasePushHandler>
-            </NavigationContainer>
-          </NetworkProvider>
-        </PaperProvider>
-
-        {/* </NotificationWrapper> */}
+        <NotificationWrapper>
+          <PaperProvider theme={theme}>
+            <NetworkProvider>
+              <NavigationContainer linking={linking} ref={navigationRef}>
+                <FirebasePushHandler>
+                  <StatusBar backgroundColor="black" barStyle="light-content" />
+                  <RootStack />
+                </FirebasePushHandler>
+              </NavigationContainer>
+            </NetworkProvider>
+          </PaperProvider>
+        </NotificationWrapper>
       </PersistGate>
     </StoreProvider>
   );

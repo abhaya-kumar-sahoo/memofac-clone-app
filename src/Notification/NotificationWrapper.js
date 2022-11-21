@@ -1,8 +1,8 @@
-import { navigate } from 'Notification';
-import React, { useEffect } from 'react';
+import {navigate} from 'Notification';
+import React, {useEffect} from 'react';
 import NotificationService from './NotificationService';
 
-export const NotificationWrapper = ({ children }) => {
+export const NotificationWrapper = ({children}) => {
   // const navigation = useNavigation();
   const onRegister = response => {
     // console.log('\n\nonRegister====================================');
@@ -13,15 +13,15 @@ export const NotificationWrapper = ({ children }) => {
   const onNotification = response => {
     // console.log('\n\nonNotification====================================');
 
-    const { data, userInteraction } = { ...response };
+    const {data, userInteraction} = {...response};
     // console.log('abhaya kumar sahoo', data);
-    const { title, body, sound, image, data: payload } = { ...data };
+    const {title, body, sound, image, data: payload} = {...data};
     // console.log('====================================\n\n');
 
     if (payload) {
       const ParsedPayload = JSON.parse(payload);
       // console.log('parsed Payload', ParsedPayload);
-      const { Type, user, memoDetails, post } = { ...ParsedPayload };
+      const {Type, user, memoDetails, post} = {...ParsedPayload};
       // console.log('PAYLOAD TYPE ', Type);
       // console.log('              ');
       // console.log('PAYLOAD user ', user);
@@ -36,13 +36,13 @@ export const NotificationWrapper = ({ children }) => {
         if (userInteraction) {
           switch (Type) {
             case 'comment':
-              navigate('SinglePostScreen', { post: post.id });
+              navigate('SinglePostScreen', {post: post.id});
               break;
             case 'reaction':
-              navigate('SinglePostScreen', { post: post.id });
+              navigate('SinglePostScreen', {post: post.id});
               break;
             case 'contact_joined':
-              navigate('FriendsProfile', { user_id: user.id });
+              navigate('FriendsProfile', {user_id: user.id});
               break;
             case 'rated_an_experience':
               navigate('ViewMemo', {

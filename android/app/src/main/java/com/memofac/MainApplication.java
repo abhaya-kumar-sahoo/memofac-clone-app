@@ -15,6 +15,9 @@ import java.util.List;
 import com.brentvatne.react.ReactVideoPackage;
 import com.oblador.vectoricons.VectorIconsPackage;
 import com.ibits.react_native_in_app_review.AppReviewPackage;
+import com.dieam.reactnativepushnotification.ReactNativePushNotificationPackage;
+
+
 
 public class MainApplication extends Application implements ReactApplication {
 
@@ -31,9 +34,10 @@ public class MainApplication extends Application implements ReactApplication {
           List<ReactPackage> packages = new PackageList(this).getPackages();
           // Packages that cannot be autolinked yet can be added manually here, for example:
           // packages.add(new MyReactNativePackage());
-                      new ReactVideoPackage();
+          new ReactVideoPackage();
           new VectorIconsPackage();
           new AppReviewPackage();
+          new ReactNativePushNotificationPackage();
 
           return packages;
         }
