@@ -1,40 +1,30 @@
-import { ListLoader } from 'components/Loaders/ListLoader';
-import React, { useRef, useState } from 'react';
-import { FlatList, StyleSheet, Text, View } from 'react-native';
+/* eslint-disable react-native/no-inline-styles */
+import {ListLoader} from 'components/Loaders/ListLoader';
+import React, {useRef, useState} from 'react';
+import {FlatList, Text, View} from 'react-native';
 import FastImage from 'react-native-fast-image';
-import { ScrollView } from 'react-native-gesture-handler';
+import {ScrollView} from 'react-native-gesture-handler';
 import Ripple from 'react-native-material-ripple';
-import { SafeAreaView } from 'react-native-safe-area-context';
-import { useDispatch, useSelector } from 'react-redux';
-import { ExpGrantModal } from 'screens/Recapture/ExpGrantModal';
-import { SummarizedRecapture } from 'screens/Recapture/summarizedRecapture';
-import { hp, wp } from 'shared/dimens';
-import { AppColors } from '../../../assets/AppColors';
-import { AppFonts } from '../../../assets/fonts/AppFonts';
-import { AppHeader } from '../../../components/AppHeader';
-import { AccentButton, Container } from '../../../components/Mini';
-import { MemosListApiCall } from '../../../redux/sagas/Memos/request';
+import {SafeAreaView} from 'react-native-safe-area-context';
+import {useSelector} from 'react-redux';
+import {ExpGrantModal} from 'screens/Recapture/ExpGrantModal';
+import {SummarizedRecapture} from 'screens/Recapture/summarizedRecapture';
+import {hp, wp} from 'shared/dimens';
+import {AppColors} from '../../../assets/AppColors';
+import {AppFonts} from '../../../assets/fonts/AppFonts';
+import {AppHeader} from '../../../components/AppHeader';
+import {AccentButton, Container} from '../../../components/Mini';
+import {MemosListApiCall} from '../../../redux/sagas/Memos/request';
 import {
   AppDimens,
-  FontSize,
   GStyles,
   HoriSpace,
   Spacing,
   VertSpace,
 } from '../../../shared/Global.styles';
 
-const SampleData = [
-  { name: 'All' },
-  { name: 'Entertainment' },
-  { name: 'Travel' },
-  { name: 'Restuarant' },
-  { name: 'Vlog' },
-  { name: 'Dance' },
-  { name: 'Travel' },
-];
-
 // SAVE YOUR EXPERIENCES
-export function SaveMemoExp({ route, navigation }) {
+export function SaveMemoExp({route, navigation}) {
   const pageRef = useRef(1);
   const pageEndRef = useRef(false);
   const [summarizedModal, setSummarizedModal] = useState(false);
@@ -47,26 +37,25 @@ export function SaveMemoExp({ route, navigation }) {
   const [MemosList, setMemosList] = useState([]);
   const [searchText, setSearchText] = useState('');
   const [memosLoading, setMemosLoading] = useState(true);
-  const dispatch = useDispatch();
   const [selectedGroup, setSelectedGroup] = useState({
     id: -1,
     category_name: 'Movie',
     type: 'year',
     icon: null,
   });
-  const [Secondary, setSecondary] = useState({ id: 1, category_name: '' });
+  const [Secondary, setSecondary] = useState({id: 1, category_name: ''});
   const rateGiven = useRef(-1);
-  const { selectedGroupData } = { ...route.params };
+  const {selectedGroupData} = {...route.params};
   const selectedGroupDataRef = useRef({
     name: 'Public',
     id: 3,
     count: 0,
   });
-  const { userAuth, subCategoryRedux, SaveMemoExpReducer } = useSelector(
+  const {userAuth, subCategoryRedux, SaveMemoExpReducer} = useSelector(
     state => state,
   );
-  const { subcategoryList } = { ...subCategoryRedux };
-  const { ratedMemosList } = { ...SaveMemoExpReducer };
+  const {subcategoryList} = {...subCategoryRedux};
+  const {ratedMemosList} = {...SaveMemoExpReducer};
 
   // console.log('====================================');
   // console.log({ subcategoryList });
@@ -85,7 +74,7 @@ export function SaveMemoExp({ route, navigation }) {
           setMemosList(response.content.data);
         }
       })
-      .catch(error => {
+      .catch(() => {
         setMemosLoading(false);
       });
   };
@@ -179,14 +168,13 @@ export function SaveMemoExp({ route, navigation }) {
             marginHorizontal: -Spacing.xxlarge,
             height: 80,
           }}
-          horizontal={true}
-        >
+          horizontal={true}>
           <HoriSpace size={Spacing.xxlarge} />
           {subCategoryRedux &&
             subCategoryRedux?.dataLoading == false &&
-            subCategoryRedux.subcategoryList.map((dataObj, index) => {
+            subCategoryRedux.subcategoryList.map(dataObj => {
               return (
-                <View style={{ flexDirection: 'row' }} key={dataObj.id}>
+                <View style={{flexDirection: 'row'}} key={dataObj.id}>
                   <Ripple
                     onPress={() => {
                       pageRef.current = 1;
@@ -205,14 +193,13 @@ export function SaveMemoExp({ route, navigation }) {
                       paddingHorizontal: 16,
                       flexDirection: 'row',
                       alignItems: 'center',
-                    }}
-                  >
+                    }}>
                     <FastImage
                       style={{
                         width: hp(26),
                         height: hp(26),
                       }}
-                      source={{ uri: dataObj.icon }}
+                      source={{uri: dataObj.icon}}
                       resizeMethod="scale"
                       resizeMode="contain"
                     />
@@ -225,8 +212,7 @@ export function SaveMemoExp({ route, navigation }) {
                             ? AppColors.DarkGrey2
                             : AppColors.MediumGrey,
                         fontSize: 20,
-                      }}
-                    >
+                      }}>
                       {dataObj.category_name}
                     </Text>
                   </Ripple>
@@ -254,8 +240,7 @@ export function SaveMemoExp({ route, navigation }) {
                 style={{
                   height: 200,
                   alignItems: 'center',
-                }}
-              >
+                }}>
                 <ListLoader
                   message={'Loading memos'}
                   when={memosLoading && MemosList.length !== 0}
@@ -268,7 +253,7 @@ export function SaveMemoExp({ route, navigation }) {
           showsVerticalScrollIndicator={false}
           ListHeaderComponent={() => {
             return (
-              <View style={{ alignItems: 'center' }}>
+              <View style={{alignItems: 'center'}}>
                 <ListLoader
                   message={'Loading memos'}
                   when={memosLoading && MemosList.length == 0}
@@ -281,7 +266,7 @@ export function SaveMemoExp({ route, navigation }) {
           ItemSeparatorComponent={() => <VertSpace />}
           keyExtractor={(_, index) => index.toString()}
           data={MemosList}
-          renderItem={({ item }) => {
+          renderItem={({item}) => {
             return (
               <MemoAddView
                 memoTitle={item.title}
@@ -302,27 +287,23 @@ export function SaveMemoExp({ route, navigation }) {
 
 //  MEMO ADDED VIEW
 const MemoAddView = ({
-  attempted = false,
   memoTitle = 'Memotitle',
   description = '2017',
   onPress = () => {},
-  image = null,
 }) => {
   return (
     <View
       style={{
         ...GStyles.flexRowSpaceBetween,
-      }}
-    >
+      }}>
       <View
         style={{
           flexDirection: 'row',
           paddingVertical: 5,
           paddingBottom: 10,
           ...GStyles.containView,
-        }}
-      >
-        <View style={{ maxWidth: wp(240) }}>
+        }}>
+        <View style={{maxWidth: wp(240)}}>
           <Text
             style={{
               fontSize: 22,
@@ -330,8 +311,7 @@ const MemoAddView = ({
               fontFamily: AppFonts.CalibriBold,
               width: AppDimens.width * 0.66,
             }}
-            numberOfLines={1}
-          >
+            numberOfLines={1}>
             {memoTitle}
           </Text>
           {description == '' || description == undefined ? (
@@ -346,8 +326,7 @@ const MemoAddView = ({
                 paddingLeft: 2,
                 width: AppDimens.width * 0.6,
               }}
-              numberOfLines={1}
-            >
+              numberOfLines={1}>
               - - - -
             </Text>
           ) : (
@@ -361,8 +340,7 @@ const MemoAddView = ({
                 textAlign: 'left',
                 width: AppDimens.width * 0.6,
               }}
-              numberOfLines={1}
-            >
+              numberOfLines={1}>
               {description}
             </Text>
           )}
@@ -378,68 +356,11 @@ const MemoAddView = ({
         </View>
       </View>
       <AccentButton
-        textStyle={{ fontSize: 15 }}
-        style={{ paddingHorizontal: 20 }}
+        textStyle={{fontSize: 15}}
+        style={{paddingHorizontal: 20}}
         title="Rate"
         onPress={() => onPress()}
       />
     </View>
   );
 };
-const HeaderTitle = () => {
-  return (
-    <Text style={{ fontSize: FontSize.xxlarge, fontFamily: AppFonts.InkFree }}>
-      Save your Favourite Experiences
-    </Text>
-  );
-};
-
-const MemoDataArray = [
-  {
-    attempted: false,
-    memoTitle: 'Lakshya',
-    description: '2004',
-  },
-  {
-    attempted: false,
-    memoTitle: '3 Idiots',
-    description: '2004',
-  },
-  {
-    attempted: true,
-    memoTitle: 'Zindagi na milegi Dobara',
-    description: '2004',
-  },
-  {
-    attempted: false,
-    memoTitle: 'Taare Zameen Par',
-    description: '2004',
-  },
-  {
-    attempted: false,
-    memoTitle: 'Ratatoille',
-    description: '....',
-  },
-  {
-    attempted: false,
-    memoTitle: 'Dil chahata Hai',
-    description: '2008',
-  },
-];
-
-const Styles = StyleSheet.create({
-  headerView: {
-    backgroundColor: AppColors.Transparent,
-    width: '100%',
-    // height: 100,
-    paddingBottom: 40,
-    zIndex: 20,
-    position: 'absolute',
-    top: 0,
-  },
-  headerTextView: {
-    fontFamily: AppFonts.CalibriBold,
-    color: AppColors.DarkGrey,
-    fontSize: Spacing.xxlarge,
-  },
-});

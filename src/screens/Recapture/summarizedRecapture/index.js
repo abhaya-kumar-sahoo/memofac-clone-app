@@ -1,44 +1,30 @@
-import { AppColors } from 'assets/AppColors';
-import { AppFonts } from 'assets/fonts/AppFonts';
-import { AppButton, AppButtonFlex } from 'components/AppButton';
-import { ModalHeader } from 'components/AppHeader';
-import { FormFillContainer } from 'components/FormContainer/FormFillContainer';
-import { InputText } from 'components/FormContainer/InputText/InputText';
-import { AccentButton } from 'components/Mini';
-import { ToastLoader } from 'components/ToastLoader';
-import React, { useRef, useState } from 'react';
-import { ActivityIndicator, Alert, Pressable } from 'react-native';
-import { Button, Text, View } from 'react-native';
+/* eslint-disable react-native/no-inline-styles */
+import {AppColors} from 'assets/AppColors';
+import {AppFonts} from 'assets/fonts/AppFonts';
+import {AppButtonFlex} from 'components/AppButton';
+import {ModalHeader} from 'components/AppHeader';
+import {AccentButton} from 'components/Mini';
+import React, {useRef, useState} from 'react';
+import {ActivityIndicator, Pressable} from 'react-native';
+import {Text, View} from 'react-native';
 import Ripple from 'react-native-material-ripple';
-import { useDispatch, useSelector } from 'react-redux';
-import { UpdateRecomMemosAction } from 'redux/reducers/Memos/RecomMemos.reducer';
-import { setNotesRecapture } from 'redux/reducers/Modal/SumRecaptcure';
-import {
-  GetUserDetailsAction,
-  UpdateUserDetailsAction,
-} from 'redux/reducers/UserProfile/userprofile.reducer';
-import { MemoDetailsApi, RateMemos } from 'redux/sagas/Memos/request';
-import { wp } from 'shared/dimens';
-import { Gravities, showToast } from 'shared/Functions/ToastFunctions';
-import {
-  AppDimens,
-  FontSize,
-  GStyles,
-  HoriSpace,
-  VertSpace,
-} from 'shared/Global.styles';
-import { GalleryIcon, NotesIcon, ShareIcon } from 'shared/Icon.Comp';
-import { MemoRateView } from '../Components/MemoRateView';
-import { MoreButton } from '../Components/SumRecapture';
-import { styles } from './index.styles';
-const { Portal, Modal } = require('react-native-paper');
+import {useDispatch} from 'react-redux';
+import {UpdateRecomMemosAction} from 'redux/reducers/Memos/RecomMemos.reducer';
+import {UpdateUserDetailsAction} from 'redux/reducers/UserProfile/userprofile.reducer';
+import {RateMemos} from 'redux/sagas/Memos/request';
+import {wp} from 'shared/dimens';
+import {Gravities, showToast} from 'shared/Functions/ToastFunctions';
+import {GStyles, VertSpace} from 'shared/Global.styles';
+import {MemoRateView} from '../Components/MemoRateView';
+import {styles} from './index.styles';
+const {Portal, Modal} = require('react-native-paper');
 
 /**
  * visible: determines whether the modal will be visible at that point or not.
  * onExitModal:
  */
 
-const SummarizedRecapture = ({
+export const SummarizedRecapture = ({
   navigation,
   visible,
   onExitModal,
@@ -48,7 +34,7 @@ const SummarizedRecapture = ({
   onSuccessRating = () => null,
   memoListIndex = null,
 }) => {
-  const memoData = { ...memoForRating };
+  const memoData = {...memoForRating};
   const [loading, setLoading] = useState(false);
   const [disable, setDisable] = useState(false);
   const isCancel = React.useRef(true);
@@ -112,11 +98,10 @@ const SummarizedRecapture = ({
         <Modal
           dismissable={false}
           visible={visible}
-          contentContainerStyle={styles.contentContainerStyle}
-        >
+          contentContainerStyle={styles.contentContainerStyle}>
           <>
             <View style={[styles.modalViewDark]}>
-              <View style={[styles.headerView, { paddingHorizontal: -20 }]}>
+              <View style={[styles.headerView, {paddingHorizontal: -20}]}>
                 <ModalHeader enableBack onBackPress={onExitModal}>
                   {loading ? (
                     <View
@@ -125,8 +110,7 @@ const SummarizedRecapture = ({
                         paddingHorizontal: 10,
 
                         borderRadius: 30,
-                      }}
-                    >
+                      }}>
                       <ActivityIndicator color={AppColors.MediumGrey} />
                     </View>
                   ) : (
@@ -157,8 +141,7 @@ const SummarizedRecapture = ({
                     fontSize: 18,
                     color: AppColors.MediumGrey,
                     fontFamily: AppFonts.CalibriRegular,
-                  }}
-                >
+                  }}>
                   Share with ...
                 </Text>
                 <VertSpace />
@@ -180,7 +163,7 @@ const SummarizedRecapture = ({
                   onPress={() => {
                     const summarizedRecaptureProps = {
                       shareWithGroup: SelectButtonGroupId,
-                      memoData: { ...memoData },
+                      memoData: {...memoData},
                       Addedrate: rateGiven.current,
                     };
                     onExitModal();
@@ -192,16 +175,14 @@ const SummarizedRecapture = ({
                     ...GStyles.flexRow,
                     alignItems: 'center',
                     marginHorizontal: -10,
-                  }}
-                >
+                  }}>
                   {/* <GalleryIcon size={26} /> */}
                   <Text
                     style={{
                       color: AppColors.white1,
                       fontFamily: AppFonts.CalibriBold,
                       fontSize: 18,
-                    }}
-                  >
+                    }}>
                     Add photos and notes
                   </Text>
                 </Ripple>
@@ -218,5 +199,3 @@ const SummarizedRecapture = ({
     </>
   );
 };
-
-export { SummarizedRecapture };

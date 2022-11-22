@@ -1,43 +1,23 @@
-import { useNavigation } from '@react-navigation/core';
-import React, { Component, useState } from 'react';
-import {
-  FlatList,
-  Image,
-  SafeAreaView,
-  ScrollView,
-  Text,
-  View,
-} from 'react-native';
-import LinearGradient from 'react-native-linear-gradient';
-import Ripple from 'react-native-material-ripple';
-import { TouchableRipple } from 'react-native-paper';
-import { AppColors } from '../../assets/AppColors';
-import { AppFonts } from '../../assets/fonts/AppFonts';
-import { AppButton } from '../../components/AppButton';
-import { AppHeader, SearchHeader } from '../../components/AppHeader';
-import { Container, NextButton } from '../../components/Mini';
-import { MemosData } from '../../shared/Data.shared';
+import {useNavigation} from '@react-navigation/core';
+import React from 'react';
+import {FlatList, Image, SafeAreaView, Text, View} from 'react-native';
+import {TouchableRipple} from 'react-native-paper';
+import {AppFonts} from '../../assets/fonts/AppFonts';
+import {SearchHeader} from '../../components/AppHeader';
+import {Container} from '../../components/Mini';
+import {MemosData} from '../../shared/Data.shared';
 import {
   FontSize,
-  GStyles,
   HoriSpace,
   Spacing,
   VertSpace,
 } from '../../shared/Global.styles';
-import {
-  AddDarkIcon,
-  DoneFillIcon,
-  RadioButtonGreen,
-  RadioButtonOff,
-  SearchNavIcon,
-} from '../../shared/Icon.Comp';
 
 export const SecondaryGroup = () => {
-  const [data, setdata] = useState(true);
   const navigation = useNavigation();
   return (
-    <SafeAreaView style={{ backgroundColor: '#000000', flex: 1 }}>
-      <SearchHeader enableBack></SearchHeader>
+    <SafeAreaView style={{backgroundColor: '#000000', flex: 1}}>
+      <SearchHeader enableBack />
 
       <Container>
         <VertSpace />
@@ -46,26 +26,24 @@ export const SecondaryGroup = () => {
           showsVerticalScrollIndicator={false}
           ItemSeparatorComponent={() => <VertSpace size={Spacing.xxlarge} />}
           keyExtractor={(item, index) => index.toString()}
-          renderItem={({ item, index }) => (
+          renderItem={({item, index}) => (
             <TouchableRipple
               onPress={() => {
                 navigation.navigate('CreateNewMemo');
-              }}
-            >
-              <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+              }}>
+              <View style={{flexDirection: 'row', alignItems: 'center'}}>
                 <Image
-                  style={{ width: 50, height: 50 }}
+                  style={{width: 50, height: 50}}
                   resizeMode={'contain'}
                   resizeMethod={'resize'}
-                  source={{ uri: item.imageUrl }}
+                  source={{uri: item.imageUrl}}
                 />
                 <HoriSpace />
                 <Text
                   style={{
                     fontSize: FontSize.inputText,
                     fontFamily: AppFonts.CalibriBold,
-                  }}
-                >
+                  }}>
                   {item.name}
                 </Text>
               </View>

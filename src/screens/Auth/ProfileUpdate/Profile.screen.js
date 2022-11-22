@@ -1,3 +1,4 @@
+/* eslint-disable react-native/no-inline-styles */
 import React from 'react';
 
 import {
@@ -6,7 +7,7 @@ import {
   Spacing,
   VertSpace,
 } from '../../../shared/Global.styles';
-import { useNavigation } from '@react-navigation/native';
+import {useNavigation} from '@react-navigation/native';
 import {
   Image,
   Text,
@@ -18,28 +19,28 @@ import {
   StyleSheet,
   SafeAreaView,
 } from 'react-native';
-import { AppColors } from '../../../assets/AppColors';
-import { AppHeader } from '../../../components/AppHeader';
-import { Container, NextButton } from 'components/Mini';
-import { BioCircleIcon, CameraWhiteIcon } from '../../../shared/Icon.Comp';
-import { AppFonts } from '../../../assets/fonts/AppFonts';
+import {AppColors} from '../../../assets/AppColors';
+import {AppHeader} from '../../../components/AppHeader';
+import {Container, NextButton} from 'components/Mini';
+import {CameraWhiteIcon} from '../../../shared/Icon.Comp';
+import {AppFonts} from '../../../assets/fonts/AppFonts';
 import Spinner from '../../../components/Spinner';
-import { ImgSourceCheck } from 'components/BioImageView';
-import { useDispatch, useSelector } from 'react-redux';
+import {ImgSourceCheck} from 'components/BioImageView';
+import {useDispatch, useSelector} from 'react-redux';
 import DeviceInfo from 'react-native-device-info';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import { saveProgress } from 'redux/reducers/UserAuth.reducer';
-import { STR_KEYS } from 'shared/Storage';
-import { firebase } from '@react-native-firebase/messaging';
-import { SelectableRadioButton } from 'components/SelectableRadioButton';
-import { APP_APIS } from 'ApiLogic/API_URL';
-import { showToast } from 'shared/Functions/ToastFunctions';
-import { wp } from 'shared/dimens';
+import {saveProgress} from 'redux/reducers/UserAuth.reducer';
+import {STR_KEYS} from 'shared/Storage';
+import {firebase} from '@react-native-firebase/messaging';
+import {SelectableRadioButton} from 'components/SelectableRadioButton';
+import {APP_APIS} from 'ApiLogic/API_URL';
+import {showToast} from 'shared/Functions/ToastFunctions';
+import {wp} from 'shared/dimens';
 import DefaultImage from 'assets/images/DefaultIcon.png';
 import ImagePicker from 'react-native-image-crop-picker';
-import { AuthContext } from 'Navigator/router';
+import {AuthContext} from 'Navigator/router';
 
-export const CameraButtonWhite = ({ size }) => {
+export const CameraButtonWhite = ({size}) => {
   return (
     <View
       style={{
@@ -48,8 +49,7 @@ export const CameraButtonWhite = ({ size }) => {
         height: size,
         borderRadius: size / 2,
         backgroundColor: AppColors.DarkGrey,
-      }}
-    >
+      }}>
       <CameraWhiteIcon size={parseInt(size * 0.5)} />
     </View>
   );
@@ -83,8 +83,7 @@ export const ProfilePicker = ({
           borderRadius: size,
           alignItems: 'center',
           justifyContent: 'center',
-        }}
-      >
+        }}>
         <Image
           resizeMode={'cover'}
           resizeMethod="resize"
@@ -97,12 +96,12 @@ export const ProfilePicker = ({
           source={
             imageUrlParmas == null
               ? DefaultImage
-              : { uri: ImgSourceCheck(imageUrlParmas) }
+              : {uri: ImgSourceCheck(imageUrlParmas)}
           }
           // source={{ uri: `https://picsum.photos/id/1/${size}` }}
         />
         {show && (
-          <View style={{ position: 'absolute', bottom: 35, right: 0 }}>
+          <View style={{position: 'absolute', bottom: 35, right: 0}}>
             <CameraButtonWhite size={size / 4.5} />
           </View>
         )}
@@ -125,17 +124,17 @@ export const GenderOptions = [
     text: 'Others',
   },
 ];
-export function ProfileScreen({ route }) {
+export function ProfileScreen({route}) {
   const dispatch = useDispatch();
-  const { verifiedNumber } = useSelector(state => state.userAuth);
+  const {verifiedNumber} = useSelector(state => state.userAuth);
   // const [disabled, setdisabled] = React.useState(false);
 
   const [loading, setLoading] = React.useState(false);
   const [Username, setUsername] = React.useState('');
   const [BirthDate, setBirthDate] = React.useState('');
   const [imageUri, setimageUri] = React.useState(null);
-  const [Gender, setGender] = React.useState({ key: 1, text: 'male' });
-  const { signIn } = React.useContext(AuthContext);
+  const [Gender, setGender] = React.useState({key: 1, text: 'male'});
+  const {signIn} = React.useContext(AuthContext);
   const navigation = useNavigation();
   const CropPhoto = imagedata => {
     // file:///storage/emulated/0/Pictures/271df2f9-0bb4-49ee-a8b7-36141ef126bf.jpg {"height": 540, "width": 540}
@@ -152,7 +151,7 @@ export function ProfileScreen({ route }) {
 
     Image.getSize(imagedata, (width, height) => {
       navigation.navigate('CropPhotoRegister', {
-        imagedata: { uri: imagedata, width, height },
+        imagedata: {uri: imagedata, width, height},
         routeName: 'ProfileScreen',
       });
     }).catch(error => showToast('', error.toString()));
@@ -258,8 +257,7 @@ export function ProfileScreen({ route }) {
 
   return (
     <SafeAreaView
-      style={[GStyles.containerFlex, { backgroundColor: AppColors.white }]}
-    >
+      style={[GStyles.containerFlex, {backgroundColor: AppColors.white}]}>
       <AppHeader>
         <NextButton
           disabled={Username == '' || BirthDate.length !== 4}
@@ -274,13 +272,13 @@ export function ProfileScreen({ route }) {
 
         <VertSpace size={50} />
         <Container padding={Spacing.xxlarge}>
-          <View style={{ alignItems: 'center' }}>
+          <View style={{alignItems: 'center'}}>
             {/* <AppButton title="tets" onPress={() => CropPhoto()} /> */}
             <ProfilePicker imageUrlParmas={imageUri} />
           </View>
 
           <VertSpace size={60} />
-          <View style={{ paddingLeft: 10 }}>
+          <View style={{paddingLeft: 10}}>
             <Label title={'Username'} />
             <View
               style={{
@@ -289,8 +287,7 @@ export function ProfileScreen({ route }) {
                   Username.length == 0
                     ? AppColors.LightGrey
                     : AppColors.MediumGrey,
-              }}
-            >
+              }}>
               <TextInput
                 autoFocus={false}
                 style={{
@@ -309,7 +306,7 @@ export function ProfileScreen({ route }) {
             <VertSpace size={Spacing.size40} />
           </View>
 
-          <View style={{ paddingLeft: 10 }}>
+          <View style={{paddingLeft: 10}}>
             <Label title={'Year of birth'} />
             <View
               style={{
@@ -320,8 +317,7 @@ export function ProfileScreen({ route }) {
                   BirthDate.length == 0
                     ? AppColors.LightGrey
                     : AppColors.MediumGrey,
-              }}
-            >
+              }}>
               <TextInput
                 style={{
                   fontFamily: AppFonts.CalibriBold,
@@ -366,23 +362,21 @@ export function ProfileScreen({ route }) {
   );
 }
 
-export const Label = ({ title = 'Title', required = false }) => {
+export const Label = ({title = 'Title', required = false}) => {
   return (
     <View
       style={{
         flexDirection: 'row',
         justifyContent: 'space-between',
         // backgroundColor: 'wheat',
-      }}
-    >
+      }}>
       <Text
         style={{
           color: AppColors.MediumGrey,
           fontFamily: AppFonts.CalibriBold,
           fontSize: FontSize.large,
           lineHeight: FontSize.large,
-        }}
-      >
+        }}>
         {title}
       </Text>
 
@@ -393,8 +387,7 @@ export const Label = ({ title = 'Title', required = false }) => {
             fontFamily: AppFonts.CalibriBold,
             fontSize: FontSize.large,
             lineHeight: FontSize.large,
-          }}
-        >
+          }}>
           *
         </Text>
       )}

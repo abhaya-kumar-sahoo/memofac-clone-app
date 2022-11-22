@@ -1,16 +1,17 @@
-import { useNavigation } from '@react-navigation/native';
-import { AppColors } from 'assets/AppColors';
-import { AppFonts } from 'assets/fonts/AppFonts';
-import React, { useState } from 'react';
-import { Linking, Platform, StyleSheet, Text, View } from 'react-native';
-import { Portal, TouchableRipple, Modal } from 'react-native-paper';
-import { HorizontalLine } from 'screens/Timeline/components/PostView/Postview.comp';
-import { INVITING_MESSAGE1 } from 'shared/content/whatsapp.content';
-import { AppDimens, FontSize, GStyles } from 'shared/Global.styles';
-import { MenuIconsDark } from 'shared/Icon.Comp';
+/* eslint-disable react-native/no-inline-styles */
+import {useNavigation} from '@react-navigation/native';
+import {AppColors} from 'assets/AppColors';
+import {AppFonts} from 'assets/fonts/AppFonts';
+import React, {useState} from 'react';
+import {Platform, StyleSheet, Text, View} from 'react-native';
+import {Portal, TouchableRipple, Modal} from 'react-native-paper';
+import {HorizontalLine} from 'screens/Timeline/components/PostView/Postview.comp';
+import {INVITING_MESSAGE1} from 'shared/content/whatsapp.content';
+import {AppDimens, FontSize, GStyles} from 'shared/Global.styles';
+import {MenuIconsDark} from 'shared/Icon.Comp';
 import Shares from 'react-native-share';
 
-export const PopupActionsModal = ({ memoId, memoDetails }) => {
+export const PopupActionsModal = ({memoId, memoDetails}) => {
   const navigation = useNavigation();
   const [isVisible, setVisible] = useState(false);
   const toggleModal = () => setVisible(!isVisible);
@@ -109,18 +110,16 @@ export const PopupActionsModal = ({ memoId, memoDetails }) => {
         <Modal
           visible={isVisible}
           onDismiss={toggleModal}
-          style={{ justifyContent: 'center', alignItems: 'center' }}
+          style={{justifyContent: 'center', alignItems: 'center'}}
           contentContainerStyle={{
             width: AppDimens.width * 0.7,
             backgroundColor: AppColors.Skeleton,
             borderRadius: 10,
-          }}
-        >
+          }}>
           <View
             style={{
               ...GStyles.containView,
-            }}
-          >
+            }}>
             <Text onPress={onShare} style={styles.textStyleDark}>
               Share
             </Text>
@@ -132,10 +131,9 @@ export const PopupActionsModal = ({ memoId, memoDetails }) => {
             <Text
               onPress={() => {
                 toggleModal();
-                navigation.navigate('ReportMemoScreen', { memoId });
+                navigation.navigate('ReportMemoScreen', {memoId});
               }}
-              style={styles.textStyleDark}
-            >
+              style={styles.textStyleDark}>
               Report
             </Text>
           </View>

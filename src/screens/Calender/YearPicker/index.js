@@ -1,11 +1,11 @@
-import { useNavigation } from '@react-navigation/native';
-import React, { Component, Fragment } from 'react';
-import { ScrollView, StyleSheet, Text, View, SafeAreaView } from 'react-native';
-import { TouchableRipple } from 'react-native-paper';
-import { AppColors } from '../../../assets/AppColors';
-import { AppFonts } from '../../../assets/fonts/AppFonts';
-import { AppHeader } from '../../../components/AppHeader';
-import { Container } from '../../../components/Mini';
+/* eslint-disable react-native/no-inline-styles */
+import {useNavigation} from '@react-navigation/native';
+import React, {Fragment} from 'react';
+import {ScrollView, StyleSheet, Text, View, SafeAreaView} from 'react-native';
+import {TouchableRipple} from 'react-native-paper';
+import {AppColors} from '../../../assets/AppColors';
+import {AppFonts} from '../../../assets/fonts/AppFonts';
+import {AppHeader} from '../../../components/AppHeader';
 import {
   FontSize,
   GStyles,
@@ -15,16 +15,16 @@ import {
 } from '../../../shared/Global.styles';
 
 const dataArray = [
-  { name: 1950 },
-  { name: 1960 },
-  { name: 1970 },
-  { name: 1980 },
-  { name: 1990 },
-  { name: 2000 },
-  { name: 2010 },
-  { name: 2020 },
+  {name: 1950},
+  {name: 1960},
+  {name: 1970},
+  {name: 1980},
+  {name: 1990},
+  {name: 2000},
+  {name: 2010},
+  {name: 2020},
 ];
-export const YearPicker = ({ route }) => {
+export const YearPicker = ({route}) => {
   const navigation = useNavigation();
   const [YearSelected, setYearSelected] = React.useState('2021');
   // const { routename } = route.params;
@@ -36,33 +36,30 @@ export const YearPicker = ({ route }) => {
   const tempArray = new Array(10).fill({});
 
   return (
-    <SafeAreaView style={{ backgroundColor: '#000000', flex: 1 }}>
+    <SafeAreaView style={{backgroundColor: '#000000', flex: 1}}>
       <AppHeader enableBack />
 
       <ScrollView
         snapToInterval={200}
         pagingEnabled
         snapToAlignment={'center'}
-        decelerationRate="fast"
-      >
-        <View style={{ height: 200 }} />
+        decelerationRate="fast">
+        <View style={{height: 200}} />
         {dataArray.map((yearData, index) => {
           return (
             <View
               key={index.toString()}
-              style={{ height: 200, margin: Spacing.large }}
-            >
+              style={{height: 200, margin: Spacing.large}}>
               <Text style={styles.monthFontStyles}>
                 {yearData.name}
-                <Text style={{ fontSize: FontSize.x4large }}>s</Text>
+                <Text style={{fontSize: FontSize.x4large}}>s</Text>
               </Text>
               <VertSpace />
               {/* YEAR LIST */}
               <ScrollView
-                style={{ margin: -Spacing.large }}
+                style={{margin: -Spacing.large}}
                 showsHorizontalScrollIndicator={false}
-                horizontal={true}
-              >
+                horizontal={true}>
                 <HoriSpace />
                 {tempArray.map((_, index) => {
                   var yearString = yearData.name + index;
@@ -84,8 +81,7 @@ export const YearPicker = ({ route }) => {
                             yearString == YearSelected
                               ? AppColors.DarkGrey
                               : AppColors.VeryLightGrey,
-                        }}
-                      >
+                        }}>
                         <Text
                           style={[
                             styles.dateStyles,
@@ -95,8 +91,7 @@ export const YearPicker = ({ route }) => {
                                   ? AppColors.white
                                   : AppColors.DarkGrey,
                             },
-                          ]}
-                        >
+                          ]}>
                           {yearString}
                         </Text>
                       </TouchableRipple>
@@ -108,7 +103,7 @@ export const YearPicker = ({ route }) => {
             </View>
           );
         })}
-        <View style={{ height: 400 }} />
+        <View style={{height: 400}} />
       </ScrollView>
     </SafeAreaView>
   );

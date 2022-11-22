@@ -1,4 +1,5 @@
-import React, { useRef } from 'react';
+/* eslint-disable react-native/no-inline-styles */
+import React, {useRef} from 'react';
 import {
   StatusBar,
   Text,
@@ -9,7 +10,7 @@ import {
   SafeAreaView,
   Platform,
 } from 'react-native';
-import { AppColors } from 'assets/AppColors';
+import {AppColors} from 'assets/AppColors';
 import {
   AppDimens,
   FontSize,
@@ -23,52 +24,49 @@ import {
   DoneFillIcon,
   SettingsDarkIcon,
 } from 'shared/Icon.Comp';
-import { useNavigation } from '@react-navigation/native';
-import { styles } from './UserProfile.style';
-import { AppFonts } from 'assets/fonts/AppFonts';
+import {useNavigation} from '@react-navigation/native';
+import {styles} from './UserProfile.style';
+import {AppFonts} from 'assets/fonts/AppFonts';
 import Ripple from 'react-native-material-ripple';
-import { Container } from 'components/Mini';
-import { useSelector, useDispatch } from 'react-redux';
+import {Container} from 'components/Mini';
+import {useSelector, useDispatch} from 'react-redux';
 
-import { GetUserDetailsAction } from 'redux/reducers/UserProfile/userprofile.reducer';
+import {GetUserDetailsAction} from 'redux/reducers/UserProfile/userprofile.reducer';
 import {
   HorizontalLine,
   PostSeparator,
   PostView,
 } from 'screens/Timeline/components/PostView/Postview.comp';
-import { wp } from 'shared/dimens';
-import { UserMemos } from 'screens/Memos/UserMemos';
-import { SelectButtons } from './index';
-import { WishlistScreen } from 'screens/Wishlist/Wishlist.screen';
-import { WishlistMemos } from 'screens/Wishlist/WishlistMemos';
-import { ImageGallery } from 'screens/GalleryPicker/MyGallery/ImageGallery';
-import { WishListImageGallery } from 'screens/Wishlist/WishListImageGallery';
-import { Skeletons } from 'shared/Skeletons';
-import { DefaultGallery } from 'screens/GalleryPicker/DefaultGallery';
+import {wp} from 'shared/dimens';
+import {UserMemos} from 'screens/Memos/UserMemos';
+import {SelectButtons} from './index';
+import {WishlistScreen} from 'screens/Wishlist/Wishlist.screen';
+import {WishlistMemos} from 'screens/Wishlist/WishlistMemos';
+import {ImageGallery} from 'screens/GalleryPicker/MyGallery/ImageGallery';
+import {WishListImageGallery} from 'screens/Wishlist/WishListImageGallery';
+import {Skeletons} from 'shared/Skeletons';
+import {DefaultGallery} from 'screens/GalleryPicker/DefaultGallery';
 export const HEADER_HEIGHT = 300 + StatusBar.currentHeight;
 const PROFILE_PICTURE_SIZE = 90;
 import DefaultImage from 'assets/images/DefaultIcon.png';
-import { TextNoDataView } from 'components/NodataView/TextNodata';
-import { GetUserPostAction } from 'redux/reducers/UserProfile/UserPost_reducer';
-import { isIOS } from 'components/AppHeader';
+import {TextNoDataView} from 'components/NodataView/TextNodata';
+import {GetUserPostAction} from 'redux/reducers/UserProfile/UserPost_reducer';
+import {isIOS} from 'components/AppHeader';
 
-export const UserProfile = ({ navigation, route }) => {
-  const { userProfileData, dataLoading, categoryMemoList } = useSelector(
+export const UserProfile = ({navigation, route}) => {
+  const {userProfileData, dataLoading, categoryMemoList} = useSelector(
     state => state.UserDetailsReducer,
   );
-  const isCancel = useRef(true);
   const [SelectButton, setSelectButton] = React.useState(1);
   const [SelectSwitch, setSelectSwitch] = React.useState(true);
-  const { user, content } = { ...userProfileData };
-  const { gallery, rated_memo } = { ...content };
-  const { image, id, name, total_rated_memo } = { ...user };
+  const {user, content} = {...userProfileData};
+  const {gallery, rated_memo} = {...content};
+  const {image, id, name, total_rated_memo} = {...user};
   const dispatch = useDispatch();
-  const authData = useSelector(state => state.userAuth);
-  const { userData } = { ...authData };
 
-  const { navigate } = useNavigation();
+  const {navigate} = useNavigation();
 
-  const { userAuth } = useSelector(state => state);
+  const {userAuth} = useSelector(state => state);
   const [modalVisible, setModalVisible] = React.useState(false);
 
   return (
@@ -81,19 +79,18 @@ export const UserProfile = ({ navigation, route }) => {
         isModalVisible={modalVisible}
         onRequestClose={() => setModalVisible(!modalVisible)}
         onPressViewImage={() => {
-          navigation.navigate('ViewPhoto', { image: image }),
+          navigation.navigate('ViewPhoto', {image: image}),
             setModalVisible(!modalVisible);
         }}
       />
       <VertSpace size={55} />
 
       <SkeletonContent
-        containerStyle={{ flexDirection: 'column' }}
+        containerStyle={{flexDirection: 'column'}}
         boneColor={AppColors.RecomBoneDark}
         highlightColor={AppColors.SkeletonBone}
         isLoading={dataLoading}
-        layout={ProfilePictureSkeleton}
-      >
+        layout={ProfilePictureSkeleton}>
         <ProfilePicture
           userImage={image == undefined ? null : image}
           name={name == undefined ? '' : name}
@@ -171,7 +168,7 @@ export const MyPostView = () => {
           onRefresh={onRefresh}
         />
       }
-      style={{ paddingTop: 30 }}
+      style={{paddingTop: 30}}
       ItemSeparatorComponent={() => (
         <PostSeparator
           backgroundColor={AppColors.Skeleton}
@@ -203,15 +200,14 @@ export const MyPostView = () => {
       keyExtractor={(_, index) => index.toString()}
       //data={RecaptureList}
       data={userPostData.data}
-      renderItem={({ item, index }) => (
+      renderItem={({item, index}) => (
         <SkeletonContent
           key={index}
-          containerStyle={{ flexDirection: 'column' }}
+          containerStyle={{flexDirection: 'column'}}
           boneColor={AppColors.RecomBoneDark}
           highlightColor={AppColors.SkeletonBone}
           isLoading={userPostData.dataLoading}
-          layout={Skeletons.timeline}
-        >
+          layout={Skeletons.timeline}>
           <PostView item={item} index={index} location={'M'} />
         </SkeletonContent>
       )}
@@ -236,8 +232,7 @@ export const ProfilePicture = ({
         paddingLeft: 10,
         flexDirection: 'row',
         marginBottom: Platform.OS === 'android' ? 30 : 40,
-      }}
-    >
+      }}>
       {userImage === null ? (
         <Ripple onLongPress={onLongPress}>
           <Image
@@ -259,12 +254,12 @@ export const ProfilePicture = ({
               borderRadius: 100,
               marginLeft: 10,
             }}
-            source={{ uri: userImage }}
+            source={{uri: userImage}}
           />
         </Ripple>
       )}
       <HoriSpace />
-      <View style={{ width: AppDimens.width * 0.68 }}>
+      <View style={{width: AppDimens.width * 0.68}}>
         <Text
           style={{
             fontSize: 22,
@@ -272,20 +267,18 @@ export const ProfilePicture = ({
             color: AppColors.white3,
           }}
           numberOfLines={2}
-          ellipsizeMode="clip"
-        >
+          ellipsizeMode="clip">
           {name}
         </Text>
         <VertSpace size={5} />
-        <View style={{ ...GStyles.flexRow, alignItems: 'center' }}>
+        <View style={{...GStyles.flexRow, alignItems: 'center'}}>
           <DoneFillIcon size={10} />
           <Text
             style={{
               fontSize: 13,
               color: AppColors.LowDark1,
               paddingLeft: 5,
-            }}
-          >
+            }}>
             {RattedMemoNum}
           </Text>
         </View>
@@ -298,8 +291,8 @@ const SettingsContactButton = ({
   onPressContact = () => {},
 }) => {
   return (
-    <View style={[styles.settingsView, { top: isIOS ? 40 : 10 }]}>
-      <View style={{ ...GStyles.flexRow }}>
+    <View style={[styles.settingsView, {top: isIOS ? 40 : 10}]}>
+      <View style={{...GStyles.flexRow}}>
         <Ripple onPress={onPressContact}>
           <ContactsDarkIcon size={30} />
         </Ripple>
@@ -312,16 +305,15 @@ const SettingsContactButton = ({
   );
 };
 
-export const NoMemoryView = ({ show = false }) => {
+export const NoMemoryView = ({show = false}) => {
   if (show) {
     return (
-      <View style={{ height: 200, ...GStyles.containView }}>
+      <View style={{height: 200, ...GStyles.containView}}>
         <Text
           style={{
             fontFamily: AppFonts.InkFree,
             fontSize: FontSize.xxlarge,
-          }}
-        >
+          }}>
           No memories yet
         </Text>
       </View>

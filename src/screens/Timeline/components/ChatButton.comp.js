@@ -1,12 +1,11 @@
-import { AppColors } from '../../../assets/AppColors';
+/* eslint-disable react-native/no-inline-styles */
+import {AppColors} from '../../../assets/AppColors';
 import React from 'react';
-import { ChatIcon, ChatIconDark } from '../../../shared/Icon.Comp';
+import {ChatIconDark} from '../../../shared/Icon.Comp';
 import Ripple from 'react-native-material-ripple';
-import { useSelector } from 'react-redux';
-const { View, Text, Pressable, Animated, StyleSheet } = require('react-native');
-const { Portal, Modal } = require('react-native-paper');
+const {View} = require('react-native');
 
-export const ChatButton = ({ post, onPress = () => [] }) => {
+export const ChatButton = ({onPress = () => []}) => {
   // const [visible, setVisible] = React.useState(false);
   // const showModal = () => setVisible(true);
   // const hideModal = () => setVisible(false);
@@ -26,8 +25,7 @@ export const ChatButton = ({ post, onPress = () => [] }) => {
           height: 40,
           justifyContent: 'center',
           alignItems: 'center',
-        }}
-      >
+        }}>
         <ChatIconDark size={30} />
       </Ripple>
     </View>

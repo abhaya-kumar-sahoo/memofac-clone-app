@@ -1,23 +1,22 @@
-import React, { useCallback, useRef, useState } from 'react';
-import { ActivityIndicator, FlatList, Text, View } from 'react-native';
-import { useDispatch, useSelector } from 'react-redux';
-import { showToast } from 'shared/Functions/ToastFunctions';
-import { HoriSpace, VertSpace } from 'shared/Global.styles';
-import { AppColors } from 'assets/AppColors';
-import { MemosPostMemo } from './RMemo.comp';
+import React, {useCallback, useRef, useState} from 'react';
+import {ActivityIndicator, FlatList, Text, View} from 'react-native';
+import {useDispatch, useSelector} from 'react-redux';
+import {showToast} from 'shared/Functions/ToastFunctions';
+import {HoriSpace, VertSpace} from 'shared/Global.styles';
+import {AppColors} from 'assets/AppColors';
+import {MemosPostMemo} from './RMemo.comp';
 import {
   GetRecomMemosAction,
-  updateExperience,
   updateWish,
 } from 'redux/reducers/Memos/RecomMemos.reducer';
-import { addMemoWishlistApiCall } from 'redux/sagas/wishlist/request';
-import { hp, wp } from 'shared/dimens';
-import { SkeletonRecommendedMemos } from '../components/Recommended.skeleton';
-import { setSeenMemoApiCall } from 'redux/sagas/Memos/request';
-import { styles } from './RMemos.styles';
-import { ListFetchTypes } from 'redux/constants.redux';
-import { SummarizedRecapture } from 'screens/Recapture/summarizedRecapture';
-import { ExpGrantModal } from 'screens/Recapture/ExpGrantModal';
+import {addMemoWishlistApiCall} from 'redux/sagas/wishlist/request';
+import {hp, wp} from 'shared/dimens';
+import {SkeletonRecommendedMemos} from '../components/Recommended.skeleton';
+import {setSeenMemoApiCall} from 'redux/sagas/Memos/request';
+import {styles} from './RMemos.styles';
+import {ListFetchTypes} from 'redux/constants.redux';
+import {SummarizedRecapture} from 'screens/Recapture/summarizedRecapture';
+import {ExpGrantModal} from 'screens/Recapture/ExpGrantModal';
 
 export const RecommendedMemos = ({
   route,
@@ -34,8 +33,8 @@ export const RecommendedMemos = ({
   const closeModal = () => setVisibility(false);
   const openModal = () => setVisibility(true);
   const refContainer = useRef(null);
-  const { RecomMemosRedux } = useSelector(state => state);
-  const { rmemos, dataLoading } = useSelector(state => state.RecomMemosRedux);
+  const {RecomMemosRedux} = useSelector(state => state);
+  const {rmemos, dataLoading} = useSelector(state => state.RecomMemosRedux);
   const userAuth = useSelector(state => state.userAuth);
   const dispatch = useDispatch();
   const PageRef = useRef(1);
@@ -47,7 +46,7 @@ export const RecommendedMemos = ({
     count: 0,
   });
   const rateGiven = useRef(-1);
-  const { selectedGroupData } = { ...bottomTabRoute.params };
+  const {selectedGroupData} = {...bottomTabRoute.params};
 
   const getRecomndedMemos = () => {
     PageRef.current = PageRef.current + 1;
@@ -67,7 +66,7 @@ export const RecommendedMemos = ({
           ? 'Memo added to wishlist'
           : 'Memo removed from wishlist',
       );
-      dispatch(updateWish({ memo: item }));
+      dispatch(updateWish({memo: item}));
 
       if (item.seen == 0) {
         setSeenMemoApiCall(userAuth.userToken, item.id);
@@ -81,7 +80,7 @@ export const RecommendedMemos = ({
     setMemoForRating(memoData);
   };
   const renderItem = useCallback(
-    ({ item, index }) => (
+    ({item, index}) => (
       <MemosPostMemo
         userData={userAuth}
         item={item}
@@ -167,13 +166,12 @@ export const RecommendedMemos = ({
         style={{
           backgroundColor: AppColors.Transparent,
           height: hp(310),
-        }}
-      >
+        }}>
         {/* {!RecomMemosRedux.dataLoading && ( */}
         {rmemos.length > 1 && (
           <FlatList
             horizontal
-            contentOffset={{ x: wp(120), y: 0 }}
+            contentOffset={{x: wp(120), y: 0}}
             ref={refContainer}
             removeClippedSubviews={true}
             maxToRenderPerBatch={30}

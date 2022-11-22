@@ -1,5 +1,6 @@
-import { useNavigation } from '@react-navigation/core';
-import React, { Fragment, useState, useEffect } from 'react';
+/* eslint-disable react-native/no-inline-styles */
+import {useNavigation} from '@react-navigation/core';
+import React, {Fragment, useState, useEffect} from 'react';
 import {
   ScrollView,
   Text,
@@ -8,32 +9,26 @@ import {
   RefreshControl,
   SafeAreaView,
 } from 'react-native';
-import { useSelector } from 'react-redux';
-import { SwitchButton } from 'screens/Wishlist/SwitchButton';
-import { AppColors } from '../../assets/AppColors';
-import { AppHeader, HeadingBar } from '../../components/AppHeader';
-import { ChipButton } from '../../components/ChipButton';
-import { Container } from '../../components/Mini';
-import { GetMemosfromCategoryApiCall } from '../../redux/sagas/Memos/request';
+import {useSelector} from 'react-redux';
+import {AppColors} from '../../assets/AppColors';
+import {ChipButton} from '../../components/ChipButton';
+import {Container} from '../../components/Mini';
 import SkeletonContent from 'react-native-skeleton-content-nonexpo';
 import {
   AppDimens,
-  FontSize,
   GStyles,
   HoriSpace,
-  Spacing,
   VertSpace,
 } from '../../shared/Global.styles';
-import { AddDarkIcon, AddIcon } from '../../shared/Icon.Comp';
-import { MemoSection } from 'screens/Journey/Journey.screen';
-import { Skeletons } from 'shared/Skeletons';
-import { TextNoDataView } from 'components/NodataView/TextNodata';
-import { TouchableOpacity } from 'react-native-gesture-handler';
-import { MiniRating } from './MemoChip';
-import { AppFonts } from 'assets/fonts/AppFonts';
+import {AddIcon} from '../../shared/Icon.Comp';
+import {Skeletons} from 'shared/Skeletons';
+import {TextNoDataView} from 'components/NodataView/TextNodata';
+import {TouchableOpacity} from 'react-native-gesture-handler';
+import {MiniRating} from './MemoChip';
+import {AppFonts} from 'assets/fonts/AppFonts';
 import Ripple from 'react-native-material-ripple';
 
-export const MemoLists = ({ memo, memoId }) => {
+export const MemoLists = ({memo, memoId}) => {
   const navigation = useNavigation();
 
   return (
@@ -43,17 +38,16 @@ export const MemoLists = ({ memo, memoId }) => {
         // alignItems: 'center',
         justifyContent: 'space-between',
       }}
-      onPress={() => navigation.navigate('ViewMemo', { memoId })}
-    >
-      <View style={{ ...GStyles.flexRow }}>
+      onPress={() => navigation.navigate('ViewMemo', {memoId})}>
+      <View style={{...GStyles.flexRow}}>
         <Image
           resizeMode={'contain'}
           resizeMethod={'resize'}
-          style={{ width: 50, height: 50 }}
-          source={{ uri: memo.image }}
+          style={{width: 50, height: 50}}
+          source={{uri: memo.image}}
         />
         <HoriSpace />
-        <View style={{ justifyContent: 'center' }}>
+        <View style={{justifyContent: 'center'}}>
           <Text
             style={{
               fontSize: 22,
@@ -62,8 +56,7 @@ export const MemoLists = ({ memo, memoId }) => {
               width: AppDimens.width * 0.57,
               // paddingTop: memo.description == '' ? 10 : 0,
             }}
-            numberOfLines={1}
-          >
+            numberOfLines={1}>
             {memo.title}
           </Text>
 
@@ -77,8 +70,7 @@ export const MemoLists = ({ memo, memoId }) => {
                 paddingLeft: 2,
                 width: AppDimens.width * 0.57,
               }}
-              numberOfLines={1}
-            >
+              numberOfLines={1}>
               - - - -
             </Text>
           ) : (
@@ -90,8 +82,7 @@ export const MemoLists = ({ memo, memoId }) => {
                 textAlign: 'left',
                 width: AppDimens.width * 0.57,
               }}
-              numberOfLines={1}
-            >
+              numberOfLines={1}>
               {memo.description}
             </Text>
           )}
@@ -119,7 +110,7 @@ export function UserMemos({
   MemoCategoryList,
 }) {
   const navigation = useNavigation();
-  const { userToken, userData } = useSelector(state => state.userAuth);
+  const {userToken, userData} = useSelector(state => state.userAuth);
   const isCancel = React.useRef(false);
 
   const [FilterMemos, setFilterMemos] = React.useState(Memosuser);
@@ -148,7 +139,7 @@ export function UserMemos({
   };
 
   return (
-    <SafeAreaView style={{ flex: 1 }}>
+    <SafeAreaView style={{flex: 1}}>
       <Container>
         {Memosuser.length == 0 && mymemosLoading == false ? (
           <>
@@ -168,8 +159,7 @@ export function UserMemos({
                         backgroundColor: AppColors.Red,
                         ...GStyles.flexRowCenter,
                         marginRight: 11,
-                      }}
-                    >
+                      }}>
                       <AddIcon color="white" size={15} />
                     </View>
                   )}
@@ -190,8 +180,7 @@ export function UserMemos({
             style={{
               paddingTop: 30,
             }}
-            contentContainerStyle={{ paddingBottom: 100 }}
-          >
+            contentContainerStyle={{paddingBottom: 100}}>
             <View>
               {userData.id === userid || userData.id == undefined ? (
                 <ChipButton
@@ -207,8 +196,7 @@ export function UserMemos({
                         backgroundColor: AppColors.Red,
                         ...GStyles.flexRowCenter,
                         marginRight: 11,
-                      }}
-                    >
+                      }}>
                       <AddIcon color="white" size={15} />
                     </View>
                   )}
@@ -252,21 +240,18 @@ export function UserMemos({
             height: 50,
             paddingTop: 15,
             width: AppDimens.width,
-          }}
-        >
+          }}>
           <TouchableOpacity
             onPress={() => {
               setFilterMemos(Memosuser), setSelectId(-1);
-            }}
-          >
+            }}>
             <Text
               style={{
                 color: selectId == -1 ? AppColors.white : '#666666',
                 paddingRight: 10,
                 fontSize: 16,
                 fontWeight: '900',
-              }}
-            >
+              }}>
               All
             </Text>
           </TouchableOpacity>
@@ -279,16 +264,14 @@ export function UserMemos({
                   FilterMemo(i.category_id);
                   setSelectId(k);
                 }}
-                style={{ paddingRight: 10 }}
-              >
+                style={{paddingRight: 10}}>
                 <Text
                   style={{
                     color: k == selectId ? AppColors.white : '#666666',
                     paddingLeft: 10,
                     fontSize: 16,
                     fontWeight: '900',
-                  }}
-                >
+                  }}>
                   {i.category_name}
                 </Text>
               </TouchableOpacity>

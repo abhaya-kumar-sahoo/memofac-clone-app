@@ -8,7 +8,6 @@ import {
   SafeAreaView,
 } from 'react-native';
 import {
-  AppDimens,
   FontSize,
   GStyles,
   HoriSpace,
@@ -21,19 +20,11 @@ import {AccentButton, Container, NextButton} from '../../../components/Mini';
 import {AppFonts} from '../../../assets/fonts/AppFonts';
 import Country1 from '../../../assets/svg/Flags/Country1.svg';
 import Country2 from '../../../assets/svg/Flags/Country2.svg';
-import {DownArrowIcon} from '../../../shared/Icon.Comp';
 import Ripple from 'react-native-material-ripple';
 import {Modal, Portal} from 'react-native-paper';
-import {ContactPermission} from 'screens/Contacts/ContactPermissionHandler/ContactPermission';
-import {
-  checkContactPermission,
-  getAllPermissions,
-  getContactPermission,
-} from 'shared/Permission';
 import {ScreenLoader} from 'components/Loaders/ScreenLoader';
 import {showToast} from 'shared/Functions/ToastFunctions';
 import {SendOtpAPiCall} from 'ApiLogic/Auth.Api';
-import {wp} from 'shared/dimens';
 import {styles} from './index.styles';
 import {VerticalLine} from 'screens/Timeline/components/PostView/Postview.comp';
 
@@ -58,7 +49,6 @@ let CountryData = {
 export function LoginScreen() {
   const navigation = useNavigation();
   const [loading, setLoading] = React.useState(false);
-  const [contactPermVisible, setContactPermVisible] = React.useState(false);
   const [MobileNumber, setMobileNumber] = React.useState('');
   const [countryOptionsVisible, setcountryOptionsVisible] =
     React.useState(false);
@@ -90,7 +80,7 @@ export function LoginScreen() {
           showToast('Wrong OTP, try again');
         }
       },
-      onError => {
+      () => {
         setLoading(false);
       },
     );

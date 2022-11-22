@@ -1,30 +1,16 @@
+/* eslint-disable react-native/no-inline-styles */
 import React from 'react';
-import {
-  View,
-  Modal,
-  Alert,
-  BackHandler,
-  Dimensions,
-  Image,
-  SafeAreaView,
-  TouchableOpacity,
-} from 'react-native';
-import { AppColors } from '../../assets/AppColors';
+import {Dimensions, SafeAreaView} from 'react-native';
+import {AppColors} from '../../assets/AppColors';
 import ImageViewer from 'react-native-image-zoom-viewer';
-import { AppHeader } from '../../components/AppHeader';
-import { useNavigation } from '@react-navigation/native';
-import { AppButton } from 'components/AppButton';
-import { useSelector } from 'react-redux';
-import { GStyles } from 'shared/Global.styles';
-import { BackArrowIcon } from 'shared/Icon.Comp';
+import {AppHeader} from '../../components/AppHeader';
+import {GStyles} from 'shared/Global.styles';
 
-export const MultipleImageViewScreen = ({ route }) => {
-  const { imagesList = [], clickedImageIndex = 0 } = route.params;
-  const [visible, setvisible] = React.useState(true);
-  const nav = useNavigation();
+export const MultipleImageViewScreen = ({route}) => {
+  const {imagesList = [], clickedImageIndex = 0} = route.params;
   const refImageList = React.useRef(null);
 
-  const imagesListArray = imagesList?.map(item => ({ url: item })) || [];
+  const imagesListArray = imagesList?.map(item => ({url: item})) || [];
 
   return (
     <SafeAreaView style={GStyles.Dark}>

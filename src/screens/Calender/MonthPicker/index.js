@@ -1,3 +1,4 @@
+/* eslint-disable react-native/no-inline-styles */
 import React from 'react';
 import {
   View,
@@ -8,12 +9,12 @@ import {
   SafeAreaView,
 } from 'react-native';
 import moment from 'moment';
-import { CalendarList } from 'react-native-calendars';
-import { AppColors } from '../../../assets/AppColors';
-import { AppFonts } from '../../../assets/fonts/AppFonts';
-import { AppHeader, DropdownHeader } from '../../../components/AppHeader';
-import { Container, NextButton } from '../../../components/Mini';
-import { MonthNames } from '../../../shared/Data.shared';
+import {CalendarList} from 'react-native-calendars';
+import {AppColors} from '../../../assets/AppColors';
+import {AppFonts} from '../../../assets/fonts/AppFonts';
+import {AppHeader, DropdownHeader} from '../../../components/AppHeader';
+import {Container, NextButton} from '../../../components/Mini';
+import {MonthNames} from '../../../shared/Data.shared';
 import {
   FontSize,
   GStyles,
@@ -21,9 +22,9 @@ import {
   Spacing,
   VertSpace,
 } from 'shared/Global.styles';
-import { NoideaIcon } from 'shared/Icon.Comp';
+import {NoideaIcon} from 'shared/Icon.Comp';
 import Ripple from 'react-native-material-ripple';
-import { useNavigation } from '@react-navigation/core';
+import {useNavigation} from '@react-navigation/core';
 
 export const stringvalueDate = (date, month, year) => {
   var dateString = `${date}`,
@@ -39,20 +40,20 @@ export const stringvalueDate = (date, month, year) => {
 };
 
 // MONTH PICKER
-export const MonthPicker = ({ route }) => {
+export const MonthPicker = ({route}) => {
   const calenderRef = React.useRef(null);
   const [Data, setData] = React.useState(null);
   const [YearSelected, setYearSelected] = React.useState('2021');
   const [MonthIndex, setMonthIndex] = React.useState(0);
   const [SelectedDate, setSelectedDate] = React.useState();
   const navigation = useNavigation();
-  const { routename, subRoutename } = route.params;
+  const {routename, subRoutename} = route.params;
   const [MarkedDate, setMarkedDate] = React.useState({});
   // MarkedDate[`${SelectedDate}`] = { selected: true };
 
   React.useEffect(() => {
     let tempMarkedDate = {};
-    tempMarkedDate[`${SelectedDate}`] = { selected: true };
+    tempMarkedDate[`${SelectedDate}`] = {selected: true};
     setMarkedDate(tempMarkedDate);
   }, [SelectedDate]);
 
@@ -76,14 +77,13 @@ export const MonthPicker = ({ route }) => {
   // };
 
   return (
-    <SafeAreaView style={{ backgroundColor: '#000000', flex: 1 }}>
+    <SafeAreaView style={{backgroundColor: '#000000', flex: 1}}>
       <AppHeader enableBack>
-        <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+        <View style={{flexDirection: 'row', alignItems: 'center'}}>
           <Ripple
             onPress={() => {
-              navigation.navigate('RecaptureActivity', { DatePicked: false });
-            }}
-          >
+              navigation.navigate('RecaptureActivity', {DatePicked: false});
+            }}>
             {/* <Image
               width={40}
               height={40}
@@ -164,7 +164,7 @@ export const MonthPicker = ({ route }) => {
   );
 };
 
-const MonthList = ({ MonthIndex, onMonthPress = () => {} }) => {
+const MonthList = ({MonthIndex, onMonthPress = () => {}}) => {
   const [MonthSelected, setMonthSelected] = React.useState(-1);
   React.useEffect(() => {
     setMonthSelected(MonthIndex);
@@ -173,12 +173,11 @@ const MonthList = ({ MonthIndex, onMonthPress = () => {} }) => {
     <ScrollView
       showsHorizontalScrollIndicator={false}
       horizontal
-      style={{ marginHorizontal: -Spacing.large }}
-    >
+      style={{marginHorizontal: -Spacing.large}}>
       <HoriSpace size={Spacing.large} />
       {MonthNames.map((month, index) => {
         return (
-          <View key={index.toString()} style={{ flexDirection: 'row' }}>
+          <View key={index.toString()} style={{flexDirection: 'row'}}>
             <Ripple
               onPress={() => {
                 onMonthPress(index);
@@ -194,8 +193,7 @@ const MonthList = ({ MonthIndex, onMonthPress = () => {} }) => {
                     : index == MonthSelected
                     ? AppColors.DarkGrey
                     : AppColors.LightGrey,
-              }}
-            >
+              }}>
               <Text
                 style={{
                   ...styles.monthFontStyles,
@@ -205,8 +203,7 @@ const MonthList = ({ MonthIndex, onMonthPress = () => {} }) => {
                       : index == MonthSelected
                       ? AppColors.white
                       : AppColors.DarkGrey,
-                }}
-              >
+                }}>
                 {month}
               </Text>
             </Ripple>

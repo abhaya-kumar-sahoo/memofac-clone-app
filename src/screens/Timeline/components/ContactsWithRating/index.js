@@ -1,24 +1,23 @@
-import { AppColors } from 'assets/AppColors';
-import { AppFonts } from 'assets/fonts/AppFonts';
-import { BioImageView } from 'components/BioImageView';
+/* eslint-disable react-native/no-inline-styles */
+import {AppColors} from 'assets/AppColors';
+import {AppFonts} from 'assets/fonts/AppFonts';
+import {BioImageView} from 'components/BioImageView';
 import React from 'react';
-import { StyleSheet, Text } from 'react-native';
-import { TouchableOpacity, View } from 'react-native';
-import { useSelector } from 'react-redux';
-import { MiniRating } from 'screens/Memos/MemoChip';
-import { wp } from 'shared/dimens';
-import { FontSize, GStyles, HoriSpace } from 'shared/Global.styles';
-import { GlobalIcon } from 'shared/Icon.Comp';
+import {StyleSheet, Text} from 'react-native';
+import {TouchableOpacity, View} from 'react-native';
+import {MiniRating} from 'screens/Memos/MemoChip';
+import {wp} from 'shared/dimens';
+import {FontSize, GStyles, HoriSpace} from 'shared/Global.styles';
+import {GlobalIcon} from 'shared/Icon.Comp';
 
-export const PublicIndicator = ({ image, type }) => {
+export const PublicIndicator = ({image, type}) => {
   return (
     <View
       style={{
         backgroundColor: AppColors.Transparent,
         marginBottom: 5,
         marginRight: 5,
-      }}
-    >
+      }}>
       <BioImageView imageSize={50} imageSrc={image} />
       {type == '3' && (
         <View
@@ -32,8 +31,7 @@ export const PublicIndicator = ({ image, type }) => {
             borderRadius: 20,
             elevation: 3,
             ...GStyles.containView,
-          }}
-        >
+          }}>
           <GlobalIcon size={15} />
         </View>
       )}
@@ -41,17 +39,16 @@ export const PublicIndicator = ({ image, type }) => {
   );
 };
 
-export const ContactsListView = ({ item, _, onPress }) => {
-  const { name, rating, image, type, id } = { ...item };
+export const ContactsListView = ({item, _, onPress}) => {
+  const {name, rating, image, type, id} = {...item};
 
   return (
     <TouchableOpacity
       onPress={() => onPress(id)}
       style={{
         ...GStyles.flexRowSpaceBetween,
-      }}
-    >
-      <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+      }}>
+      <View style={{flexDirection: 'row', alignItems: 'center'}}>
         <PublicIndicator image={image} type={type} />
         <HoriSpace size={10} />
 
@@ -62,8 +59,7 @@ export const ContactsListView = ({ item, _, onPress }) => {
             fontFamily: AppFonts.CalibriBold,
             color: AppColors.white1,
             fontSize: FontSize.xlarge,
-          }}
-        >
+          }}>
           {name}
         </Text>
       </View>

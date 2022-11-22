@@ -1,5 +1,6 @@
-import { useNavigation } from '@react-navigation/core';
-import React, { Fragment, useState } from 'react';
+/* eslint-disable react-native/no-inline-styles */
+import {useNavigation} from '@react-navigation/core';
+import React, {useState} from 'react';
 import {
   FlatList,
   Image,
@@ -11,10 +12,10 @@ import {
   SafeAreaView,
 } from 'react-native';
 import Ripple from 'react-native-material-ripple';
-import { Modal, Portal } from 'react-native-paper';
-import { AppColors } from 'assets/AppColors';
-import { AppFonts } from 'assets/fonts/AppFonts';
-import { AppHeader } from 'components/AppHeader';
+import {Modal, Portal} from 'react-native-paper';
+import {AppColors} from 'assets/AppColors';
+import {AppFonts} from 'assets/fonts/AppFonts';
+import {AppHeader} from 'components/AppHeader';
 import SkeletonContent from 'react-native-skeleton-content-nonexpo';
 import {
   AppDimens,
@@ -24,29 +25,24 @@ import {
   Spacing,
   VertSpace,
 } from 'shared/Global.styles';
-import {
-  AddDarkIcon,
-  EditIcon,
-  RadioButtonGreen,
-  RadioButtonOff,
-} from 'shared/Icon.Comp';
-import { useDispatch, useSelector } from 'react-redux';
-import { reqSecondaryFolderApiCall } from 'redux/sagas/Memos/request';
-import { Gravities, showToast } from 'shared/Functions/ToastFunctions';
-import { Skeletons } from 'shared/Skeletons';
-import { hp } from 'shared/dimens';
-import { AccentButton, Container } from 'components/Mini';
-import { ModalButtons } from 'screens/Timeline/components/MenuOption';
+import {AddDarkIcon, RadioButtonGreen, RadioButtonOff} from 'shared/Icon.Comp';
+import {useDispatch, useSelector} from 'react-redux';
+import {reqSecondaryFolderApiCall} from 'redux/sagas/Memos/request';
+import {Gravities, showToast} from 'shared/Functions/ToastFunctions';
+import {Skeletons} from 'shared/Skeletons';
+import {hp} from 'shared/dimens';
+import {AccentButton, Container} from 'components/Mini';
+import {ModalButtons} from 'screens/Timeline/components/MenuOption';
 
-export const SavetoCollection = ({ route }) => {
+export const SavetoCollection = ({route}) => {
   const [secondaryList, setsecondaryList] = useState({});
   const navigation = useNavigation();
   const [routePrimaryInfo, setRoutePrimaryInfo] = useState('');
-  const [Category, setCategory] = useState({ id: 0, name: 'All' });
+  const [Category, setCategory] = useState({id: 0, name: 'All'});
   const userToken = useSelector(state => state.userAuth.userToken);
-  const { MaincategoryList } = useSelector(state => state.MainCategoryRedux);
+  const {MaincategoryList} = useSelector(state => state.MainCategoryRedux);
 
-  const { subcategoryList, dataLoading } = useSelector(
+  const {subcategoryList, dataLoading} = useSelector(
     state => state.subCategoryRedux,
   );
   const dispatch = useDispatch();
@@ -62,7 +58,7 @@ export const SavetoCollection = ({ route }) => {
   return (
     <SafeAreaView style={GStyles.Dark}>
       <AppHeader enableBack>
-        <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+        <View style={{flexDirection: 'row', alignItems: 'center'}}>
           {/* SEARCH SECONDARY GROUP */}
 
           {/* DONE BUTTON */}
@@ -128,7 +124,7 @@ export const SavetoCollection = ({ route }) => {
   );
 };
 
-export const BottomView = ({ title = 'Just another title' }) => {
+export const BottomView = ({title = 'Just another title'}) => {
   return (
     <View
       style={{
@@ -140,21 +136,19 @@ export const BottomView = ({ title = 'Just another title' }) => {
         height: 50,
         backgroundColor: AppColors.DarkBG,
         width: '100%',
-      }}
-    >
+      }}>
       <Text
         style={{
           color: AppColors.white3,
           fontFamily: AppFonts.CalibriRegular,
           fontSize: FontSize.medium,
-        }}
-      >
+        }}>
         {title}
       </Text>
     </View>
   );
 };
-export const PrimaryGroupList = ({ dataSet, onCategorySelect = () => {} }) => {
+export const PrimaryGroupList = ({dataSet, onCategorySelect = () => {}}) => {
   const [selected, setselected] = useState(0);
   return (
     <View
@@ -162,15 +156,13 @@ export const PrimaryGroupList = ({ dataSet, onCategorySelect = () => {} }) => {
         flexDirection: 'row',
         backgroundColor: 'white',
         marginRight: -Spacing.large,
-      }}
-    >
+      }}>
       {/* ADD PRIMARY BUTTON */}
-      <View style={{ position: 'absolute', zIndex: 10, height: 50, width: 50 }}>
+      <View style={{position: 'absolute', zIndex: 10, height: 50, width: 50}}>
         <Ripple
           rippleContainerBorderRadius={10}
           onPress={() => {}}
-          style={{ position: 'absolute', zIndex: 10 }}
-        >
+          style={{position: 'absolute', zIndex: 10}}>
           <AddDarkIcon />
         </Ripple>
       </View>
@@ -178,12 +170,11 @@ export const PrimaryGroupList = ({ dataSet, onCategorySelect = () => {} }) => {
       <ScrollView
         showsHorizontalScrollIndicator={false}
         horizontal={true}
-        contentContainerStyle={{ flexDirection: 'row' }}
-      >
+        contentContainerStyle={{flexDirection: 'row'}}>
         <HoriSpace size={Spacing.size40} />
         {dataSet.map((item, index) => {
           return (
-            <View style={{ flexDirection: 'row' }} key={index.toString()}>
+            <View style={{flexDirection: 'row'}} key={index.toString()}>
               {selected === index ? (
                 <Ripple
                   onPress={() => onCategorySelect(item)}
@@ -194,15 +185,13 @@ export const PrimaryGroupList = ({ dataSet, onCategorySelect = () => {} }) => {
                     backgroundColor: AppColors.DarkGrey,
                     height: 40,
                     borderRadius: 20,
-                  }}
-                >
+                  }}>
                   <Text
                     style={{
                       fontFamily: AppFonts.CalibriBold,
                       fontSize: FontSize.xlarge,
                       color: AppColors.white,
-                    }}
-                  >
+                    }}>
                     {item.name}
                   </Text>
                 </Ripple>
@@ -219,15 +208,13 @@ export const PrimaryGroupList = ({ dataSet, onCategorySelect = () => {} }) => {
                     backgroundColor: AppColors.VeryLightGrey,
                     height: 40,
                     borderRadius: 20,
-                  }}
-                >
+                  }}>
                   <Text
                     style={{
                       fontFamily: AppFonts.CalibriBold,
                       fontSize: FontSize.xlarge,
                       color: AppColors.DarkGrey,
-                    }}
-                  >
+                    }}>
                     {item.name}
                   </Text>
                 </Ripple>
@@ -244,7 +231,7 @@ export const PrimaryGroupList = ({ dataSet, onCategorySelect = () => {} }) => {
   );
 };
 // MemosData
-export const ChoiceGroup = ({ value = false }) => {
+export const ChoiceGroup = ({value = false}) => {
   // const [RadioValue, setRadioValue] = useState(value)
   return <View>{value ? <RadioButtonGreen /> : <RadioButtonOff />}</View>;
 };
@@ -257,13 +244,13 @@ export const SecondaryGroupList = ({
   height = '75%',
   footerHeight = 0,
 }) => {
-  const renderItem = ({ item, index }) => {
+  const renderItem = ({item, index}) => {
     return (
       <View key={index.toString()}>
         <Ripple
           onPress={() => {
             if (multiple) {
-              let SelectedData = { ...secondaryList };
+              let SelectedData = {...secondaryList};
               if (SelectedData[item.id]) {
                 delete SelectedData[item.id];
               } else {
@@ -279,7 +266,7 @@ export const SecondaryGroupList = ({
               }
               onSelect(SelectedData);
             } else {
-              const test = { id: item };
+              const test = {id: item};
               item.id == test.id;
 
               test[item.id] = test['id'];
@@ -298,20 +285,18 @@ export const SecondaryGroupList = ({
             ...GStyles.flexRow,
             paddingLeft: 20,
             marginBottom: 20,
-          }}
-        >
+          }}>
           <View
             style={{
               flexDirection: 'row',
               alignItems: 'center',
-            }}
-          >
+            }}>
             {/* <ChoiceGroup value={secondaryList[item?.id]} /> */}
             {/* <HoriSpace /> */}
             <Image
-              style={{ width: 45, height: 45 }}
+              style={{width: 45, height: 45}}
               resizeMode={'contain'}
-              source={{ uri: item.icon == '' ? null : item.icon }}
+              source={{uri: item.icon == '' ? null : item.icon}}
             />
             <HoriSpace />
             <Text
@@ -319,8 +304,7 @@ export const SecondaryGroupList = ({
                 fontSize: 25,
                 fontFamily: AppFonts.CalibriBold,
                 color: AppColors.white1,
-              }}
-            >
+              }}>
               {item.category_name}
             </Text>
           </View>
@@ -330,7 +314,7 @@ export const SecondaryGroupList = ({
     );
   };
   return (
-    <View style={{ height: height }}>
+    <View style={{height: height}}>
       <FlatList
         data={dataSet}
         showsVerticalScrollIndicator={false}
@@ -341,7 +325,7 @@ export const SecondaryGroupList = ({
   );
 };
 
-const AddSecondaryGroup = ({ Category = { id: 0, name: 'All' } }) => {
+const AddSecondaryGroup = ({Category = {id: 0, name: 'All'}}) => {
   const [visible, setVisible] = React.useState(false);
   const secondaryGroupName = React.useRef('');
 
@@ -379,7 +363,7 @@ const AddSecondaryGroup = ({ Category = { id: 0, name: 'All' } }) => {
         <Modal
           visible={visible}
           onDismiss={hideModal}
-          style={{ justifyContent: 'center', alignItems: 'center' }}
+          style={{justifyContent: 'center', alignItems: 'center'}}
           contentContainerStyle={{
             backgroundColor: AppColors.DarkBG,
             padding: 20,
@@ -387,15 +371,13 @@ const AddSecondaryGroup = ({ Category = { id: 0, name: 'All' } }) => {
             borderRadius: 30,
             borderWidth: 1,
             borderColor: AppColors.white,
-          }}
-        >
+          }}>
           <Text
             style={{
               fontSize: FontSize.xxlarge,
               fontFamily: AppFonts.CalibriBold,
               color: AppColors.white,
-            }}
-          >
+            }}>
             Request to add a Secondary group
           </Text>
           <VertSpace />
@@ -413,8 +395,8 @@ const AddSecondaryGroup = ({ Category = { id: 0, name: 'All' } }) => {
           />
 
           <VertSpace />
-          <View style={{ flexDirection: 'row', height: 50 }}>
-            <View style={{ flex: 0.5, ...GStyles.containView }}>
+          <View style={{flexDirection: 'row', height: 50}}>
+            <View style={{flex: 0.5, ...GStyles.containView}}>
               <ModalButtons
                 ButtonIcon={() => null}
                 onPress={hideModal}
@@ -422,7 +404,7 @@ const AddSecondaryGroup = ({ Category = { id: 0, name: 'All' } }) => {
                 color={AppColors.VeryLightGrey}
               />
             </View>
-            <View style={{ flex: 0.5, ...GStyles.containView }}>
+            <View style={{flex: 0.5, ...GStyles.containView}}>
               <ModalButtons
                 ButtonIcon={() => null}
                 onPress={onSecondaryCreate}
@@ -466,5 +448,5 @@ const Styles = StyleSheet.create({
     fontSize: 38,
     color: AppColors.white1,
   },
-  containerStyle: { flexDirection: 'column', marginTop: 20 },
+  containerStyle: {flexDirection: 'column', marginTop: 20},
 });

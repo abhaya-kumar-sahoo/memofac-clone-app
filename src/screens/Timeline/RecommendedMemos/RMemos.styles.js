@@ -1,9 +1,8 @@
-import React from 'react';
-import { Platform, StyleSheet } from 'react-native';
-import { FontSize, GStyles } from '../../../shared/Global.styles';
-import { hp, wp } from 'shared/dimens';
-import { AppColors } from 'assets/AppColors';
-import { AppFonts } from 'assets/fonts/AppFonts';
+import {Platform, StyleSheet} from 'react-native';
+import {FontSize, GStyles} from '../../../shared/Global.styles';
+import {hp, wp} from 'shared/dimens';
+import {AppColors} from 'assets/AppColors';
+import {AppFonts} from 'assets/fonts/AppFonts';
 
 export const styles = StyleSheet.create({
   footerContainer: {
@@ -96,8 +95,8 @@ export const styles = StyleSheet.create({
 
     // left: -8 * index,
   },
-  dashDark: { color: AppColors.white3 },
-  dashLight: { color: AppColors.LowDark },
+  dashDark: {color: AppColors.white3},
+  dashLight: {color: AppColors.LowDark},
   totalExpLight: {
     // backgroundColor: 'wheat',
     color: AppColors.DarkGrey,

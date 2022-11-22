@@ -1,16 +1,14 @@
+/* eslint-disable react-native/no-inline-styles */
 import React, {Fragment} from 'react';
-import {ActivityIndicator, Text, TouchableOpacity, View} from 'react-native';
+import {Text, TouchableOpacity, View} from 'react-native';
 import {useDispatch, useSelector} from 'react-redux';
-import {ChatFilledIcon, HeartFillIcon} from 'shared/Icon.Comp';
 import {showToast} from 'shared/Functions/ToastFunctions';
 import {
   AppDimens,
   FontSize,
   GStyles,
   HoriSpace,
-  Spacing,
   VertSpace,
-  viewportWidth,
 } from 'shared/Global.styles';
 import {BioImageView} from 'components/BioImageView';
 import {AppColors} from 'assets/AppColors';
@@ -33,7 +31,6 @@ import {
   updateWishListState,
 } from 'redux/reducers/Timeline/Timeline.reducer';
 import {wp} from 'shared/dimens';
-import {CarouselRenderView} from './CarouselSlider/Carousel.view';
 import {getPostReactionsComments} from 'redux/reducers/Post/PostComments.reducer';
 import {DeletePostApiCall} from 'redux/sagas/post/request';
 import {DebugText} from 'components/debugComps';
@@ -121,7 +118,6 @@ export const PostView = ({index, item, location}) => {
   const navigation = useNavigation();
   const {navigate} = {...navigation};
   const {userData, userToken} = {...userAuth};
-  const carouselRef = React.useRef(null);
   const [slider1ActiveSlide, setslider1ActiveSlide] = React.useState(0);
 
   let carouselLength = images.length;
@@ -377,7 +373,6 @@ export const PostView = ({index, item, location}) => {
           }}
         />
         <ReactionView onReaction={onReactionPress} post={item} />
-        {/* <ExperiencedButton expProps={!item.exp} onPress={onExperience} /> */}
         <WishListButton
           // disabled={userData.id == item.user_id}
           onAddtoWishList={addToWishlist}

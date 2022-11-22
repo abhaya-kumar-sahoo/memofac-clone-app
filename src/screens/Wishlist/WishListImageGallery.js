@@ -1,17 +1,18 @@
-import React, { useRef, useState, useEffect } from 'react';
-import { FlatList, View, SafeAreaView } from 'react-native';
-import { AppDimens, GStyles, Spacing, VertSpace } from 'shared/Global.styles';
-import { Container } from 'components/Mini';
-import { AppColors } from 'assets/AppColors';
-import { useNavigation } from '@react-navigation/core';
-import { useSelector } from 'react-redux';
-import { getWishlistGallery } from 'redux/sagas/wishlist/request';
-import { ImageGridView } from 'screens/GalleryPicker/ImageGridView';
+/* eslint-disable react-native/no-inline-styles */
+import React, {useRef, useState, useEffect} from 'react';
+import {FlatList, View, SafeAreaView} from 'react-native';
+import {AppDimens, GStyles, Spacing, VertSpace} from 'shared/Global.styles';
+import {Container} from 'components/Mini';
+import {AppColors} from 'assets/AppColors';
+import {useNavigation} from '@react-navigation/core';
+import {useSelector} from 'react-redux';
+import {getWishlistGallery} from 'redux/sagas/wishlist/request';
+import {ImageGridView} from 'screens/GalleryPicker/ImageGridView';
 import SkeletonContent from 'react-native-skeleton-content-nonexpo';
 
 const IMAGE_GRID_SIZE = AppDimens.width * 0.3;
 
-export const WishListImageGallery = ({ userId }) => {
+export const WishListImageGallery = ({userId}) => {
   const userAuth = useSelector(state => state.userAuth);
   const navigation = useNavigation();
   const [galleryImages, setgalleryImages] = useState([]);
@@ -74,7 +75,7 @@ export const WishListImageGallery = ({ userId }) => {
           }
           ListHeaderComponent={<VertSpace size={Spacing.xxlarge} />}
           ItemSeparatorComponent={() => <VertSpace size={8} />}
-          renderItem={({ item, index, separators }) => {
+          renderItem={({item, index, separators}) => {
             if (item.image === null) {
               return (
                 <View

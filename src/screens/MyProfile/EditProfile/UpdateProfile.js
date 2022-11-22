@@ -1,4 +1,5 @@
-import React, { useState, useEffect, useRef, useContext } from 'react';
+/* eslint-disable react-native/no-inline-styles */
+import React, {useState, useEffect, useRef, useContext} from 'react';
 import {
   AppDimens,
   FontSize,
@@ -6,7 +7,7 @@ import {
   Spacing,
   VertSpace,
 } from 'shared/Global.styles';
-import { useNavigation } from '@react-navigation/native';
+import {useNavigation} from '@react-navigation/native';
 import {
   Image,
   PermissionsAndroid,
@@ -27,29 +28,29 @@ import {
   PERMISSIONS,
   RESULTS,
 } from 'react-native-permissions';
-import { AppColors } from 'assets/AppColors';
-import { AppHeader } from 'components/AppHeader';
-import { AccentButton } from 'components/Mini';
-import { BioCircleIcon, CameraWhiteIcon } from 'shared/Icon.Comp';
-import { AppFonts } from 'assets/fonts/AppFonts';
-import { useDispatch, useSelector } from 'react-redux';
-import { updateUserData } from 'redux/reducers/UserAuth.reducer';
-import { STR_KEYS } from 'shared/Storage';
-import { showToast } from 'shared/Functions/ToastFunctions';
+import {AppColors} from 'assets/AppColors';
+import {AppHeader} from 'components/AppHeader';
+import {AccentButton} from 'components/Mini';
+import {BioCircleIcon, CameraWhiteIcon} from 'shared/Icon.Comp';
+import {AppFonts} from 'assets/fonts/AppFonts';
+import {useDispatch, useSelector} from 'react-redux';
+import {updateUserData} from 'redux/reducers/UserAuth.reducer';
+import {STR_KEYS} from 'shared/Storage';
+import {showToast} from 'shared/Functions/ToastFunctions';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import Spinner from 'components/Spinner';
-import { wp } from 'shared/dimens';
-import { APP_APIS } from 'ApiLogic/API_URL';
+import {wp} from 'shared/dimens';
+import {APP_APIS} from 'ApiLogic/API_URL';
 import axios from 'axios';
 import ImagePicker from 'react-native-image-crop-picker';
-import { GetUserDetailsAction } from 'redux/reducers/UserProfile/userprofile.reducer';
+import {GetUserDetailsAction} from 'redux/reducers/UserProfile/userprofile.reducer';
 import * as ImagePickers from 'react-native-image-picker';
 import Ripple from 'react-native-material-ripple';
 import Modals from 'react-native-modal';
-import { HorizontalLine } from 'screens/Timeline/components/PostView/Postview.comp';
-import { AuthContext } from 'Navigator/router';
+import {HorizontalLine} from 'screens/Timeline/components/PostView/Postview.comp';
+import {AuthContext} from 'Navigator/router';
 
-export const CameraButtonWhite = ({ size }) => {
+export const CameraButtonWhite = ({size}) => {
   return (
     <View
       style={{
@@ -58,8 +59,7 @@ export const CameraButtonWhite = ({ size }) => {
         height: size,
         borderRadius: size / 2,
         backgroundColor: AppColors.Red,
-      }}
-    >
+      }}>
       <CameraWhiteIcon size={parseInt(size * 0.5)} />
     </View>
   );
@@ -74,20 +74,19 @@ export const ProfilePicker = ({
   // PHOTO LIST
 
   return (
-    <View style={{ width: size, height: size, ...GStyles.flexRowCenter }}>
+    <View style={{width: size, height: size, ...GStyles.flexRowCenter}}>
       {imageUrlParmas != null ? (
-        <View style={{ width: size, height: size }}>
+        <View style={{width: size, height: size}}>
           <TouchableOpacity
             onPress={() =>
-              navigation.navigate('ViewPhoto', { image: imageUrlParmas })
+              navigation.navigate('ViewPhoto', {image: imageUrlParmas})
             }
             activeOpacity={0.9}
             style={{
               width: size,
               height: size,
               borderRadius: size / 2,
-            }}
-          >
+            }}>
             <Image
               resizeMode={'cover'}
               style={{
@@ -95,35 +94,32 @@ export const ProfilePicker = ({
                 height: size,
                 borderRadius: size / 2,
               }}
-              source={{ uri: imageUrlParmas }}
+              source={{uri: imageUrlParmas}}
               // source={{ uri: `https://picsum.photos/id/1/${size}` }}
             />
           </TouchableOpacity>
 
           <Ripple
             onPress={onSelected}
-            style={{ position: 'absolute', bottom: 0, right: 20 }}
-          >
+            style={{position: 'absolute', bottom: 0, right: 20}}>
             <CameraButtonWhite size={size / 4} />
           </Ripple>
         </View>
       ) : (
-        <View style={{ width: size, height: size }}>
+        <View style={{width: size, height: size}}>
           <TouchableOpacity
             activeOpacity={0.9}
             style={{
               width: size,
               height: size,
               ...GStyles.flexRowCenter,
-            }}
-          >
+            }}>
             <BioCircleIcon size={size + 70} />
           </TouchableOpacity>
 
           <Ripple
             onPress={onSelected}
-            style={{ position: 'absolute', bottom: 0, right: 20 }}
-          >
+            style={{position: 'absolute', bottom: 0, right: 20}}>
             <CameraButtonWhite size={size / 4} />
           </Ripple>
         </View>
@@ -141,12 +137,12 @@ export function UpdateProfile() {
   const [prevUsername, setprevUsername] = useState('');
   const [imageUri, setimageUri] = useState(null);
   const [prevImageuri, setPrevImageuri] = useState(null);
-  const [Gender, setGender] = useState({ key: 1, text: 'male' });
+  const [Gender, setGender] = useState({key: 1, text: 'male'});
   const dispatch = useDispatch();
-  const { userToken } = useSelector(state => state.userAuth);
-  const { userProfileData } = useSelector(state => state.UserDetailsReducer);
-  const { user } = { ...userProfileData };
-  const { dob, gender, image, username, phone } = {
+  const {userToken} = useSelector(state => state.userAuth);
+  const {userProfileData} = useSelector(state => state.UserDetailsReducer);
+  const {user} = {...userProfileData};
+  const {dob, gender, image, username, phone} = {
     ...user,
   };
   const isCancel = useRef(false);
@@ -223,7 +219,7 @@ export function UpdateProfile() {
                       onPress: () => console.log('Cancel Pressed'),
                       style: 'cancel',
                     },
-                    { text: 'OK', onPress: () => console.log('ok boss') },
+                    {text: 'OK', onPress: () => console.log('ok boss')},
                   ],
                 );
                 break;
@@ -249,7 +245,7 @@ export function UpdateProfile() {
                       onPress: () => console.log('Cancel Pressed'),
                       style: 'cancel',
                     },
-                    { text: 'OK', onPress: () => openSettings() },
+                    {text: 'OK', onPress: () => openSettings()},
                   ],
                 );
                 break;
@@ -288,7 +284,7 @@ export function UpdateProfile() {
                       onPress: () => console.log('Cancel Pressed'),
                       style: 'cancel',
                     },
-                    { text: 'OK', onPress: () => openSettings() },
+                    {text: 'OK', onPress: () => openSettings()},
                   ],
                 );
                 break;
@@ -303,7 +299,7 @@ export function UpdateProfile() {
       console.warn(err);
     }
   };
-  const { signOut } = useContext(AuthContext);
+  const {signOut} = useContext(AuthContext);
 
   useEffect(() => {
     if (Object.keys(userProfileData).length > 0 && !isCancel.current) {
@@ -341,7 +337,7 @@ export function UpdateProfile() {
       .post(APP_APIS.EDIT_PROFILE, formData)
       .then(async response => {
         dispatch(GetUserDetailsAction(userToken));
-        dispatch(updateUserData({ payload: { ...response.data.content } }));
+        dispatch(updateUserData({payload: {...response.data.content}}));
         const USER_DATA = [
           STR_KEYS.USERDATA,
           JSON.stringify(response.data.content),
@@ -390,8 +386,7 @@ export function UpdateProfile() {
   };
   return (
     <SafeAreaView
-      style={[GStyles.containerFlex, { backgroundColor: AppColors.DarkBG }]}
-    >
+      style={[GStyles.containerFlex, {backgroundColor: AppColors.DarkBG}]}>
       <AppHeader enableBack>
         <AccentButton
           title={'Update'}
@@ -411,9 +406,8 @@ export function UpdateProfile() {
           style={{
             paddingHorizontal: Spacing.xlarge,
             height: AppDimens.height * 0.8,
-          }}
-        >
-          <View style={{ alignItems: 'center' }}>
+          }}>
+          <View style={{alignItems: 'center'}}>
             <ProfilePicker
               onSelected={() => launchImageLibrary()}
               // size={211}
@@ -423,7 +417,7 @@ export function UpdateProfile() {
 
           <VertSpace size={60} />
 
-          <View style={{ paddingLeft: 10 }}>
+          <View style={{paddingLeft: 10}}>
             {/* <Label title={'Username'} required /> */}
 
             <TextInput
@@ -450,9 +444,8 @@ export function UpdateProfile() {
           <Modals
             onBackdropPress={() => setModalOpen(false)}
             onBackButtonPress={() => setModalOpen(false)}
-            isVisible={ModalOpen}
-          >
-            <View style={{ flex: 1, ...GStyles.flexRowCenter }}>
+            isVisible={ModalOpen}>
+            <View style={{flex: 1, ...GStyles.flexRowCenter}}>
               <View
                 style={{
                   width: 300,
@@ -460,8 +453,7 @@ export function UpdateProfile() {
                   paddingHorizontal: 20,
                   backgroundColor: AppColors.LightDark,
                   borderRadius: 10,
-                }}
-              >
+                }}>
                 <VertSpace size={30} />
 
                 <Text style={styles.modalTitleDark}>
@@ -478,8 +470,7 @@ export function UpdateProfile() {
                     color: AppColors.white1,
                     fontSize: 12,
                     textAlign: 'center',
-                  }}
-                >
+                  }}>
                   If you delete your account, you will permanently lose your
                   profile , messages, posts, photos and memos ratings. if you
                   delete your account, this action cannot be undone.
@@ -494,8 +485,7 @@ export function UpdateProfile() {
                     position: 'absolute',
                     bottom: 40,
                     width: 300,
-                  }}
-                >
+                  }}>
                   <TouchableOpacity
                     style={{
                       width: AppDimens.width * 0.7,
@@ -509,18 +499,16 @@ export function UpdateProfile() {
                       shadowOpacity: Platform.OS === 'android' ? 1.5 : 0,
                       elevation: 8,
                       shadowRadius: 20,
-                      shadowOffset: { width: 1, height: 13 },
+                      shadowOffset: {width: 1, height: 13},
                       backgroundColor: AppColors.white,
                     }}
-                    onPress={DeleteAccount}
-                  >
+                    onPress={DeleteAccount}>
                     <Text
                       style={{
                         fontFamily: AppFonts.CalibriBold,
                         fontSize: 17,
                         color: AppColors.Red,
-                      }}
-                    >
+                      }}>
                       Delete My Account
                     </Text>
                   </TouchableOpacity>
@@ -540,17 +528,15 @@ export function UpdateProfile() {
                       shadowOpacity: Platform.OS === 'android' ? 1.5 : 0,
                       elevation: 8,
                       shadowRadius: 20,
-                      shadowOffset: { width: 1, height: 13 },
+                      shadowOffset: {width: 1, height: 13},
                       backgroundColor: AppColors.white,
-                    }}
-                  >
+                    }}>
                     <Text
                       style={{
                         fontFamily: AppFonts.CalibriBold,
                         fontSize: 17,
                         color: AppColors.LowWhite,
-                      }}
-                    >
+                      }}>
                       Cancel
                     </Text>
                   </TouchableOpacity>
@@ -566,8 +552,7 @@ export function UpdateProfile() {
             alignItems: 'center',
             justifyContent: 'center',
             width: AppDimens.width * 1,
-          }}
-        >
+          }}>
           <Text
             onPress={() => setModalOpen(true)}
             style={{
@@ -577,8 +562,7 @@ export function UpdateProfile() {
               textAlign: 'center',
               fontStyle: 'italic',
               fontFamily: AppFonts.CalibriRegular,
-            }}
-          >
+            }}>
             Delete account
           </Text>
         </View>

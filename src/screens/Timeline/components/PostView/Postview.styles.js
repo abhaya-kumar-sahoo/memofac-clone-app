@@ -1,7 +1,7 @@
-import { StyleSheet } from 'react-native';
-import { AppColors } from 'assets/AppColors';
-import { AppFonts } from 'assets/fonts/AppFonts';
-import { FontSize } from 'shared/Global.styles';
+import {StyleSheet} from 'react-native';
+import {AppColors} from 'assets/AppColors';
+import {AppFonts} from 'assets/fonts/AppFonts';
+import {FontSize} from 'shared/Global.styles';
 
 export const Styles = StyleSheet.create({
   nameStyle: {

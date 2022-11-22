@@ -1,12 +1,12 @@
-import { StyleSheet, Text, View, TextInput, SafeAreaView } from 'react-native';
-import React, { useState } from 'react';
-import { AppColors } from 'assets/AppColors';
-import { AppHeader } from 'components/AppHeader';
-import { AccentButton, Container } from 'components/Mini';
-import { AppDimens, GStyles, VertSpace } from 'shared/Global.styles';
-import { AppFonts } from 'assets/fonts/AppFonts';
-import { useNavigation } from '@react-navigation/native';
-import { showToast } from 'shared/Functions/ToastFunctions';
+/* eslint-disable react-native/no-inline-styles */
+import {StyleSheet, Text, View, TextInput, SafeAreaView} from 'react-native';
+import React, {useState} from 'react';
+import {AppColors} from 'assets/AppColors';
+import {AppHeader} from 'components/AppHeader';
+import {AccentButton, Container} from 'components/Mini';
+import {AppDimens, GStyles, VertSpace} from 'shared/Global.styles';
+import {AppFonts} from 'assets/fonts/AppFonts';
+import {useNavigation} from '@react-navigation/native';
 
 export const UserName = () => {
   const navigation = useNavigation();
@@ -19,7 +19,7 @@ export const UserName = () => {
             title={'Next'}
             disabled={Name === ''}
             onPress={() => {
-              navigation.navigate('UserGender', { name: Name });
+              navigation.navigate('UserGender', {name: Name});
             }}
           />
         </AppHeader>
@@ -31,8 +31,7 @@ export const UserName = () => {
               fontSize: 42,
               color: AppColors.white1,
               fontFamily: AppFonts.GillSans,
-            }}
-          >
+            }}>
             Enter your
           </Text>
 
@@ -42,8 +41,7 @@ export const UserName = () => {
               color: AppColors.white1,
               fontFamily: AppFonts.GillSans,
               marginTop: -5,
-            }}
-          >
+            }}>
             name
           </Text>
           <VertSpace size={40} />
@@ -76,7 +74,7 @@ export const UserName = () => {
   );
 };
 
-export const PageDots = ({ PageNum = 0 }) => {
+export const PageDots = ({PageNum = 0}) => {
   return (
     <View
       style={{
@@ -87,8 +85,7 @@ export const PageDots = ({ PageNum = 0 }) => {
         paddingHorizontal: 10,
         paddingVertical: 20,
         width: AppDimens.width * 1,
-      }}
-    >
+      }}>
       {[1, 2, 3, 4].map((item, key) => {
         return (
           <View

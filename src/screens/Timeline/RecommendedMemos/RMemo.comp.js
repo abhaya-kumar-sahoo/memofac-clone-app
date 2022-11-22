@@ -1,56 +1,18 @@
-import { useNavigation } from '@react-navigation/core';
-import { ImgSourceCheck } from 'components/BioImageView';
-import React, { useState } from 'react';
-import {
-  Dimensions,
-  Platform,
-  Text,
-  TouchableOpacity,
-  View,
-} from 'react-native';
-import { hp, wp } from 'shared/dimens';
-import { AppColors } from '../../../assets/AppColors';
-import { AppFonts } from '../../../assets/fonts/AppFonts';
-import { FontSize, GStyles, VertSpace } from '../../../shared/Global.styles';
-import { DoneFillIcon, DoneIcon } from '../../../shared/Icon.Comp';
-import { setSeenMemoApiCall } from 'redux/sagas/Memos/request';
+/* eslint-disable react-native/no-inline-styles */
+import {useNavigation} from '@react-navigation/core';
+import {ImgSourceCheck} from 'components/BioImageView';
+import React, {useState} from 'react';
+import {Platform, Text, TouchableOpacity, View} from 'react-native';
+import {hp, wp} from 'shared/dimens';
+import {AppColors} from '../../../assets/AppColors';
+import {AppFonts} from '../../../assets/fonts/AppFonts';
+import {FontSize, GStyles, VertSpace} from '../../../shared/Global.styles';
+import {DoneFillIcon, DoneIcon} from '../../../shared/Icon.Comp';
+import {setSeenMemoApiCall} from 'redux/sagas/Memos/request';
 import FastImage from 'react-native-fast-image';
-import { AccentButton } from 'components/Mini';
-import { MiniRating } from 'screens/Memos/MemoChip';
-import { styles } from './RMemos.styles';
-import { useDispatch } from 'react-redux';
-
-const AverageView = ({ averageRating = 0 }) => {
-  // const hasDecimal = num => {
-  //   return !!(num % 1);
-  // };
-
-  if (averageRating == 0) {
-    return null;
-  } else {
-    return (
-      <View
-        style={{
-          ...GStyles.containView,
-          backgroundColor: AppColors.greyLighter,
-          height: 22,
-          width: 43,
-          borderRadius: 30,
-          flexDirection: 'row',
-        }}
-      >
-        <MiniRating
-          rateNumber={averageRating}
-          rateSize={wp(10)}
-          toFixedDecimal={1}
-          fontFamily={AppFonts.CalibriBold}
-          color={AppColors.LowGrey}
-          RATESIZE={15}
-        />
-      </View>
-    );
-  }
-};
+import {AccentButton} from 'components/Mini';
+import {styles} from './RMemos.styles';
+import {useDispatch} from 'react-redux';
 
 export function MemosPost({
   item,
@@ -61,18 +23,18 @@ export function MemosPost({
 }) {
   const nav = useNavigation();
 
-  const { exp, wish, average_rating } = { ...item };
+  const {exp, wish, average_rating} = {...item};
   const [wishlist, setWishlist] = useState(item.wish);
   const dispatch = useDispatch();
   const onContactPress = () => {
-    nav.navigate('ExperiencedContacts', { MemoData: item });
+    nav.navigate('ExperiencedContacts', {MemoData: item});
     if (item.seen == 0) {
       setSeenMemoApiCall(userData.userToken, item.id);
     }
   };
 
   const onViewMemoPress = () => {
-    nav.navigate('MemoDetailsView', { memoId: item.id, memoItem: item });
+    nav.navigate('MemoDetailsView', {memoId: item.id, memoItem: item});
   };
 
   const onWishlistPress = () => {
@@ -89,8 +51,7 @@ export function MemosPost({
           backgroundColor:
             item.me > 0 ? AppColors.DarkBG : AppColors.LightDark1,
         },
-      ]}
-    >
+      ]}>
       {/* <View
         style={{
           paddingHorizontal: wp(12),
@@ -120,14 +81,12 @@ export function MemosPost({
         style={{
           height: hp(70),
           marginBottom: Platform.OS === 'android' ? hp(20) : hp(0),
-        }}
-      >
+        }}>
         <TouchableOpacity
           onPress={onViewMemoPress}
           style={{
             ...GStyles.containView,
-          }}
-        >
+          }}>
           <Text numberOfLines={1} style={styles.RecomMemoTitleDark}>
             {item.title}
           </Text>
@@ -146,8 +105,7 @@ export function MemosPost({
                 fontFamily: AppFonts.CalibriRegular,
                 color: AppColors.MediumGrey,
                 paddingTop: Platform.OS === 'android' ? 3 : 4,
-              }}
-            >
+              }}>
               {item.description}
             </Text>
           )}
@@ -156,9 +114,8 @@ export function MemosPost({
         <VertSpace size={hp(10)} />
 
         <TouchableOpacity
-          style={{ ...GStyles.containView }}
-          onPress={onContactPress}
-        >
+          style={{...GStyles.containView}}
+          onPress={onContactPress}>
           <KnownOnesMini memodata={item} onContactPress={onContactPress} />
         </TouchableOpacity>
       </View>
@@ -167,8 +124,7 @@ export function MemosPost({
         style={{
           ...GStyles.containView,
           // paddingBottom: hp(20),
-        }}
-      >
+        }}>
         <AccentButton
           title="Rate"
           onPress={() => {
@@ -188,7 +144,7 @@ export function MemosPost({
 
 export const MemosPostMemo = React.memo(MemosPost);
 
-const DoneIconButton = ({ onPress = () => {}, status = true }) => {
+const DoneIconButton = ({onPress = () => {}, status = true}) => {
   return (
     <TouchableOpacity onPress={onPress}>
       {/* <DoneIcon /> */}
@@ -197,8 +153,8 @@ const DoneIconButton = ({ onPress = () => {}, status = true }) => {
   );
 };
 
-const KnownOnesMini = ({ memodata, onContactPress }) => {
-  const { users = [], totalExp } = { ...memodata };
+const KnownOnesMini = ({memodata, onContactPress}) => {
+  const {users = [], totalExp} = {...memodata};
 
   return (
     <>
@@ -206,8 +162,7 @@ const KnownOnesMini = ({ memodata, onContactPress }) => {
         style={{
           height: hp(35),
           flexDirection: 'row',
-        }}
-      >
+        }}>
         <View
           style={{
             backgroundColor: 'transparent',
@@ -215,9 +170,8 @@ const KnownOnesMini = ({ memodata, onContactPress }) => {
             marginBottom: hp(10),
             alignItems: 'center',
             flexDirection: 'row',
-          }}
-        >
-          <Text style={{ marginTop: hp(5) }}>
+          }}>
+          <Text style={{marginTop: hp(5)}}>
             <DoneFillIcon size={9} />
           </Text>
           <Text style={styles.totalExpDark}>{totalExp}</Text>

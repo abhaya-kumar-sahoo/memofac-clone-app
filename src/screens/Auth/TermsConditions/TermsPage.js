@@ -1,3 +1,4 @@
+/* eslint-disable react-native/no-inline-styles */
 import React from 'react';
 import {
   Image,
@@ -7,25 +8,19 @@ import {
   SafeAreaView,
   ScrollView,
 } from 'react-native';
-import { Term_Styles } from './Terms.styles';
+import {Term_Styles} from './Terms.styles';
 import {
   AppDimens,
   FontSize,
   GStyles,
   VertSpace,
 } from '../../../shared/Global.styles';
-import { AppButton } from '../../../components/AppButton';
-import { AppColors } from '../../../assets/AppColors';
-import { useNavigation } from '@react-navigation/native';
-import ImgSrc from '../../../assets/images/ImageIndex';
-import { TermsConditionsModal } from './Terms.comps';
-import ImageBackground from 'react-native/Libraries/Image/ImageBackground';
-import { hp, wp } from 'shared/dimens';
-import { AppFonts } from 'assets/fonts/AppFonts';
-import {
-  HorizontalLine,
-  VerticalLine,
-} from 'screens/Timeline/components/PostView/Postview.comp';
+import {AppButton} from '../../../components/AppButton';
+import {AppColors} from '../../../assets/AppColors';
+import {useNavigation} from '@react-navigation/native';
+import {TermsConditionsModal} from './Terms.comps';
+import {hp, wp} from 'shared/dimens';
+import {AppFonts} from 'assets/fonts/AppFonts';
 
 const img1 = require('assets/images/boarding/a.png');
 const img2 = require('assets/images/boarding/b.png');
@@ -40,14 +35,11 @@ const img10 = require('assets/images/boarding/j.png');
 
 const ladderNum = [img1, img2, img3, img4, img5, img6, img7, img8, img9, img10];
 
-import Icon from 'react-native-vector-icons/AntDesign';
-import { ContactPermission } from 'screens/Contacts/ContactPermissionHandler/ContactPermission';
+import {ContactPermission} from 'screens/Contacts/ContactPermissionHandler/ContactPermission';
 import {
   checkContactPermission,
   getAllPermissions,
   getContactPermission,
-  checkStoragePermission,
-  checkAllPermissions,
 } from 'shared/Permission';
 
 export function TermsPage() {
@@ -55,7 +47,7 @@ export function TermsPage() {
   const [contactPermVisible, setContactPermVisible] = React.useState(false);
 
   const onMount = async () => {
-    const { isPermissionGranted, result } = await checkContactPermission();
+    const {isPermissionGranted, result} = await checkContactPermission();
 
     if (!isPermissionGranted) {
       setContactPermVisible(true);
@@ -68,14 +60,13 @@ export function TermsPage() {
   return (
     <SafeAreaView style={GStyles.Dark}>
       <VertSpace size={30} />
-      <View style={{ ...GStyles.containView, flex: 2 }}>
+      <View style={{...GStyles.containView, flex: 2}}>
         <Text
           style={{
             fontFamily: AppFonts.Chaparral,
             fontSize: Platform.OS === 'android' ? 38 : 42,
             color: AppColors.white1,
-          }}
-        >
+          }}>
           Find reviews
         </Text>
         <Text
@@ -84,8 +75,7 @@ export function TermsPage() {
             fontSize: Platform.OS === 'android' ? 17 : 19,
             color: AppColors.LowDark,
             marginTop: Platform.OS === 'ios' ? 4 : 0,
-          }}
-        >
+          }}>
           of anything like ...
         </Text>
       </View>
@@ -95,8 +85,7 @@ export function TermsPage() {
           marginTop: AppDimens.height * 0.06,
           flex: 8,
           // paddingTop: 20,
-        }}
-      >
+        }}>
         <ScrollView horizontal showsHorizontalScrollIndicator={false}>
           {ladderNum.map((i, k) => {
             return (
@@ -106,7 +95,7 @@ export function TermsPage() {
                 resizeMode="contain"
                 width="100%"
                 height="100%"
-                style={{ width: hp(240), height: hp(280) }}
+                style={{width: hp(240), height: hp(280)}}
               />
             );
           })}
@@ -118,7 +107,7 @@ export function TermsPage() {
         onCancel={() => {
           setContactPermVisible(false);
           setTimeout(async () => {
-            const { isPermissionGranted, statuses } = await getAllPermissions();
+            const {isPermissionGranted, statuses} = await getAllPermissions();
           }, 200);
           navigation.navigate('LoginScreen');
         }}
@@ -126,7 +115,7 @@ export function TermsPage() {
           setTimeout(async () => {
             const ContactStatus = await getContactPermission();
 
-            const { statuses } = await getAllPermissions();
+            const {statuses} = await getAllPermissions();
 
             setContactPermVisible(false);
             navigation.navigate('LoginScreen');

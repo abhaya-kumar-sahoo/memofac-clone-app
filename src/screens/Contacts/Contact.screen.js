@@ -1,4 +1,5 @@
-import React, { useState, useRef } from 'react';
+/* eslint-disable react-native/no-inline-styles */
+import React, {useState, useRef} from 'react';
 import {
   FlatList,
   KeyboardAvoidingView,
@@ -9,26 +10,24 @@ import {
   View,
   SafeAreaView,
 } from 'react-native';
-import { FontSize, GStyles, VertSpace } from '../../shared/Global.styles';
-import { ContactItem } from './Contact.components';
-import { AppColors } from '../../assets/AppColors';
-import { AppFonts } from '../../assets/fonts/AppFonts';
-import { AppHeader } from '../../components/AppHeader';
-import { Skeletons } from '../../shared/Skeletons';
+import {FontSize, GStyles, VertSpace} from '../../shared/Global.styles';
+import {ContactItem} from './Contact.components';
+import {AppColors} from '../../assets/AppColors';
+import {AppFonts} from '../../assets/fonts/AppFonts';
+import {AppHeader} from '../../components/AppHeader';
+import {Skeletons} from '../../shared/Skeletons';
 import SkeletonContent from 'react-native-skeleton-content-nonexpo';
-import { useDispatch, useSelector } from 'react-redux';
-import { INVITING_MESSAGE } from 'shared/content/whatsapp.content';
-import { PermissionContent } from './ContactPermissionHandler/PermissionContent';
-import { hp } from 'shared/dimens';
-import { RESULTS } from 'react-native-permissions';
-import { checkContactPermission } from 'shared/Permission';
+import {useDispatch, useSelector} from 'react-redux';
+import {INVITING_MESSAGE} from 'shared/content/whatsapp.content';
+import {PermissionContent} from './ContactPermissionHandler/PermissionContent';
+import {hp} from 'shared/dimens';
+import {RESULTS} from 'react-native-permissions';
+import {checkContactPermission} from 'shared/Permission';
 import {
   askForSettings,
   ContactPmsContainer,
 } from 'components/ContactPermissionWrapper/ContactPermissionWrapper';
-import { AddGroupModalNew } from './components/AddNewGroup';
-import { ContactsSync } from 'redux/reducers/Contact/contacts.reducer';
-import { refactorContacts } from './components';
+import {ContactsSync} from 'redux/reducers/Contact/contacts.reducer';
 
 function formatNumber(mobNumber, default_country_code = '+91') {
   let newNumber = mobNumber;
@@ -47,25 +46,23 @@ var format = /[!@#$%^&*_\=\[\]{};':"\\|,.<>\/?]+/;
 //     .filter(item => !item.phoneNumbers[0].number.includes(countryCode));
 // };
 
-export function ContactsScreen({ navigation }) {
+export function ContactsScreen({navigation}) {
   const [permissionState, setPermissionState] = useState({
     isPermissionGranted: null,
     result: null,
   });
 
   const [listLoader, setListloader] = useState(true);
-  const [syncLoader, setSyncLoader] = useState(false);
   const [contactStatus, setContactStatus] = useState(false);
-  const [contactList, setContacts] = useState([]);
   const [groupId, setgroupId] = useState(0);
   const [GroupDataList, setGroupDataList] = useState([]);
   const [SearchResult, setSearchResult] = useState([]);
   const [modalVisibility, setModalVisibility] = useState(false);
-  const { countrycode } = useSelector(state => state.userAuth);
+  const {countrycode} = useSelector(state => state.userAuth);
   const isCancel = useRef(false);
   const [GroupMembers, setGroupMembers] = useState({});
 
-  const { contacts, dataLoading } = useSelector(state => state.contactReducer);
+  const {contacts, dataLoading} = useSelector(state => state.contactReducer);
   const dispatch = useDispatch();
   const hideModal = () => setModalVisibility(false);
 
@@ -106,7 +103,7 @@ export function ContactsScreen({ navigation }) {
   //   });
   // };
   const syncContact = async () => {
-    const { isPermissionGranted } = await checkContactPermission();
+    const {isPermissionGranted} = await checkContactPermission();
     if (isPermissionGranted) {
       dispatch(ContactsSync());
     }
@@ -154,7 +151,7 @@ export function ContactsScreen({ navigation }) {
 
       <ContactPmsContainer
         permissionState={permissionState}
-        onStateChange={({ isPermissionGranted, statuses }) => {
+        onStateChange={({isPermissionGranted, statuses}) => {
           setPermissionState({
             isPermissionGranted,
             result: statuses[Object.keys(statuses)[0]],
@@ -165,16 +162,8 @@ export function ContactsScreen({ navigation }) {
           // getAllContacts();
           // CallTheGroups();
           syncContact();
-        }}
-      >
-        {modalVisibility && (
-          <AddGroupModalNew
-            onDismiss={hideModal}
-            // onGroupCreated={() => CallTheGroups()}
-            existingGroups={GroupDataList}
-          />
-        )}
-        <KeyboardAvoidingView style={{ paddingHorizontal: 16 }}>
+        }}>
+        <KeyboardAvoidingView style={{paddingHorizontal: 16}}>
           {!dataLoading && (
             <>
               <TextInput
@@ -198,7 +187,7 @@ export function ContactsScreen({ navigation }) {
 
           {/* SKELETON */}
           <SkeletonContent
-            containerStyle={{ marginTop: 20 }}
+            containerStyle={{marginTop: 20}}
             boneColor={AppColors.RecomBoneDark}
             highlightColor={AppColors.SkeletonBone}
             isLoading={dataLoading}
@@ -206,22 +195,19 @@ export function ContactsScreen({ navigation }) {
           />
 
           {contactStatus && (
-            <View style={{ marginTop: hp(100) }}>
+            <View style={{marginTop: hp(100)}}>
               <PermissionContent />
             </View>
           )}
 
           {SearchResult.length === 0 && !dataLoading && (
-            <View
-              style={{ width: '100%', padding: 25, ...GStyles.containView }}
-            >
+            <View style={{width: '100%', padding: 25, ...GStyles.containView}}>
               <Text
                 style={{
                   fontSize: FontSize.medium,
                   fontFamily: AppFonts.CalibriBold,
                   color: AppColors.LightGrey,
-                }}
-              >
+                }}>
                 No contacts avialable
               </Text>
             </View>
@@ -239,7 +225,7 @@ export function ContactsScreen({ navigation }) {
             keyboardShouldPersistTaps={'always'}
             showsVerticalScrollIndicator={false}
             data={SearchResult}
-            renderItem={({ item, index }) => {
+            renderItem={({item, index}) => {
               if (!GroupMembers[item.id]) {
                 return (
                   <ContactItem

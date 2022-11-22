@@ -1,11 +1,10 @@
 import React from 'react';
 import SkeletonContent from 'react-native-skeleton-content-nonexpo';
-import { AppColors } from 'assets/AppColors';
-import { AppDimens, GStyles } from 'shared/Global.styles';
-import { hp, wp } from 'shared/dimens';
-import { useSelector } from 'react-redux';
+import {AppColors} from 'assets/AppColors';
+import {AppDimens, GStyles} from 'shared/Global.styles';
+import {hp} from 'shared/dimens';
 
-export const SkeletonRecommendedMemos = ({ loading }) => {
+export const SkeletonRecommendedMemos = ({loading}) => {
   return (
     <SkeletonContent
       duration={2000}
@@ -50,11 +49,11 @@ export const SkeletonRecommendedMemos = ({ loading }) => {
           ],
         },
       ]}
-    ></SkeletonContent>
+    />
   );
 };
 
-export const SeeAllSkeleton = ({ loading }) => {
+export const SeeAllSkeleton = ({loading}) => {
   return (
     <SkeletonContent
       duration={2000}
@@ -84,7 +83,6 @@ export const SeeAllSkeleton = ({ loading }) => {
             },
           ],
         },
-      ]}
-    ></SkeletonContent>
+      ]}></SkeletonContent>
   );
 };

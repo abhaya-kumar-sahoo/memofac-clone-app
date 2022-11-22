@@ -1,19 +1,13 @@
-import { useNavigation } from '@react-navigation/native';
-import React, { Component } from 'react';
-import { Image, Text, View } from 'react-native';
+/* eslint-disable react-native/no-inline-styles */
+import {useNavigation} from '@react-navigation/native';
+import React from 'react';
+import {Image, Text, View} from 'react-native';
 import Ripple from 'react-native-material-ripple';
-import { Chip } from 'react-native-paper';
-import { useSelector } from 'react-redux';
-import { hp, wp } from 'shared/dimens';
-import { AppColors } from '../../assets/AppColors';
-import { AppFonts } from '../../assets/fonts/AppFonts';
-import {
-  FontSize,
-  GStyles,
-  HoriSpace,
-  Spacing,
-} from '../../shared/Global.styles';
-import { BronzeIcon, GoldIcon, SilverIcon } from '../../shared/Icon.Comp';
+import {hp, wp} from 'shared/dimens';
+import {AppColors} from '../../assets/AppColors';
+import {AppFonts} from '../../assets/fonts/AppFonts';
+import {FontSize, GStyles, HoriSpace} from '../../shared/Global.styles';
+import {BronzeIcon, GoldIcon, SilverIcon} from '../../shared/Icon.Comp';
 
 export const MiniRating = ({
   rateNumber = 0,
@@ -41,8 +35,7 @@ export const MiniRating = ({
               fontFamily: fontFamily,
               color: color,
               marginTop: 2.5,
-            }}
-          >
+            }}>
             {rating % 1 == 0 ? parseInt(rating) : rating}
           </Text>
         </View>
@@ -51,7 +44,7 @@ export const MiniRating = ({
   );
 };
 
-export const StarComp = ({ rateNumber = 6, size = 16 }) => {
+export const StarComp = ({rateNumber = 6, size = 16}) => {
   return (
     <View>
       {rateNumber >= 8 ? (
@@ -67,7 +60,7 @@ export const StarComp = ({ rateNumber = 6, size = 16 }) => {
 
 export const MemoChip = ({
   size = 23,
-  item = { title: '', image: null },
+  item = {title: '', image: null},
   fieldName = 'rating',
   ratingVisible = true,
   memo_id = null,
@@ -79,12 +72,11 @@ export const MemoChip = ({
 
   return (
     <Ripple
-      onPress={() => navigation.navigate('ViewMemo', { memoId })}
+      onPress={() => navigation.navigate('ViewMemo', {memoId})}
       style={{
         // backgroundColor: AppColors.LightGrey,
         flexDirection: 'row',
-      }}
-    >
+      }}>
       <View
         style={{
           borderColor: AppColors.MediumGrey,
@@ -99,13 +91,12 @@ export const MemoChip = ({
           backgroundColor: '#1D1D1D',
 
           flexDirection: 'row',
-        }}
-      >
+        }}>
         <Image
           resizeMode={'contain'}
           resizeMethod={'resize'}
-          style={{ width: size, height: size }}
-          source={{ uri: item.image }}
+          style={{width: size, height: size}}
+          source={{uri: item.image}}
         />
         <HoriSpace size={10} />
         <Text
@@ -119,8 +110,7 @@ export const MemoChip = ({
             color: AppColors.disableColor,
             // backgroundColor: 'wheat',
             fontFamily: AppFonts.CalibriRegular,
-          }}
-        >
+          }}>
           {item.title}
         </Text>
         <HoriSpace size={20} />
@@ -144,7 +134,7 @@ export const MemoChip = ({
 
 export const MemoChipSection = ({
   size = 23,
-  item = { title: '', image: null },
+  item = {title: '', image: null},
   fieldName = 'rating',
   ratingVisible = true,
   memo_id = null,
@@ -156,12 +146,11 @@ export const MemoChipSection = ({
 
   return (
     <Ripple
-      onPress={() => navigation.navigate('ViewMemo', { memoId })}
+      onPress={() => navigation.navigate('ViewMemo', {memoId})}
       style={{
         // backgroundColor: AppColors.LightGrey,
         flexDirection: 'row',
-      }}
-    >
+      }}>
       <View
         style={{
           borderColor: AppColors.MediumGrey,
@@ -174,13 +163,12 @@ export const MemoChipSection = ({
           alignItems: 'center',
           backgroundColor: AppColors.white3,
           flexDirection: 'row',
-        }}
-      >
+        }}>
         <Image
           resizeMode={'contain'}
           resizeMethod={'resize'}
-          style={{ width: size, height: size }}
-          source={{ uri: item.image }}
+          style={{width: size, height: size}}
+          source={{uri: item.image}}
         />
         <HoriSpace size={10} />
         <Text
@@ -193,8 +181,7 @@ export const MemoChipSection = ({
             color: AppColors.LowWhite,
             // backgroundColor: 'wheat',
             fontFamily: AppFonts.CalibriRegular,
-          }}
-        >
+          }}>
           {item.title}
         </Text>
         <HoriSpace size={20} />

@@ -1,10 +1,11 @@
-import { StackActions, useNavigation } from '@react-navigation/core';
-import React, { useState } from 'react';
-import { Image, ScrollView, View, SafeAreaView, Text } from 'react-native';
-import { AppColors } from '../../assets/AppColors';
-import { AppHeader } from '../../components/AppHeader';
-import { FormFillInput } from '../../components/FormContainer/FormFillInput';
-import { AccentButton, Container } from '../../components/Mini';
+/* eslint-disable react-native/no-inline-styles */
+import {StackActions, useNavigation} from '@react-navigation/core';
+import React, {useState} from 'react';
+import {Image, ScrollView, View, SafeAreaView, Text} from 'react-native';
+import {AppColors} from '../../assets/AppColors';
+import {AppHeader} from '../../components/AppHeader';
+import {FormFillInput} from '../../components/FormContainer/FormFillInput';
+import {AccentButton, Container} from '../../components/Mini';
 import {
   AppDimens,
   FontSize,
@@ -12,12 +13,11 @@ import {
   Spacing,
   VertSpace,
 } from '../../shared/Global.styles';
-import { addMemoApiCall } from 'redux/sagas/Memos/request';
-import { useSelector } from 'react-redux';
-import Ripple from 'react-native-material-ripple';
-import { showToast } from 'shared/Functions/ToastFunctions';
-import { AppFonts } from 'assets/fonts/AppFonts';
-import { ScreenLoader } from 'components/Loaders/ScreenLoader';
+import {addMemoApiCall} from 'redux/sagas/Memos/request';
+import {useSelector} from 'react-redux';
+import {showToast} from 'shared/Functions/ToastFunctions';
+import {AppFonts} from 'assets/fonts/AppFonts';
+import {ScreenLoader} from 'components/Loaders/ScreenLoader';
 
 const secondaryFolder = {
   category_name: '',
@@ -26,12 +26,12 @@ const secondaryFolder = {
   type: '',
 };
 
-export const CreateNewMemo = ({ route }) => {
+export const CreateNewMemo = ({route}) => {
   const [secondaryList, setSecondaryList] = React.useState({});
   const [FolderSelected, setFolderSelected] = React.useState({
     ...secondaryFolder,
   });
-  const { navigate } = useNavigation();
+  const {navigate} = useNavigation();
   const [MemoName, setMemoName] = React.useState('');
   const [loading, setLoading] = React.useState(false);
 
@@ -110,16 +110,15 @@ export const CreateNewMemo = ({ route }) => {
         enableBack
         preventDefault
         onBackPress={() => {
-          navigate('SavetoCollection', { primaryInfo: info });
-        }}
-      >
+          navigate('SavetoCollection', {primaryInfo: info});
+        }}>
         <AccentButton title={'Add'} onPress={() => createNewMemo()} />
       </AppHeader>
       <ScreenLoader loading={loading} message="Creating memo ..." />
       <ScrollView>
-        <View style={{ height: AppDimens.height * 0.85 }}>
+        <View style={{height: AppDimens.height * 0.85}}>
           <Container>
-            <View style={{ alignItems: 'center' }}>
+            <View style={{alignItems: 'center'}}>
               {FolderSelected && FolderSelected.id !== -1 && (
                 <Image
                   resizeMethod={'resize'}
@@ -128,7 +127,7 @@ export const CreateNewMemo = ({ route }) => {
                     width: AppDimens.width * 0.4,
                     height: AppDimens.width * 0.4,
                   }}
-                  source={{ uri: FolderSelected.icon }}
+                  source={{uri: FolderSelected.icon}}
                 />
               )}
 
@@ -252,8 +251,7 @@ export const CreateNewMemo = ({ route }) => {
               bottom: 20,
               left: 20,
               right: 20,
-            }}
-          >
+            }}>
             Please add year or address if any, so that others clearly understand
           </Text>
         </View>

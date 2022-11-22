@@ -1,51 +1,42 @@
-import { StyleSheet, Text, View, SafeAreaView, Platform } from 'react-native';
-import React, { useState, useRef } from 'react';
-import { AppDimens, GStyles, VertSpace } from 'shared/Global.styles';
-import { PageDots } from '../NameScreen/UserName';
-import { AccentButton, Container } from 'components/Mini';
-import { AppHeader } from 'components/AppHeader';
-import { AppColors } from 'assets/AppColors';
-import { AppFonts } from 'assets/fonts/AppFonts';
-import { useNavigation } from '@react-navigation/native';
-import { SecondaryGroupList } from 'screens/Memos/SavetoCollection';
+/* eslint-disable react-native/no-inline-styles */
+import {Text, View, SafeAreaView, Platform} from 'react-native';
+import React, {useRef} from 'react';
+import {AppDimens, GStyles, VertSpace} from 'shared/Global.styles';
+import {PageDots} from '../NameScreen/UserName';
+import {AccentButton, Container} from 'components/Mini';
+import {AppHeader} from 'components/AppHeader';
+import {AppColors} from 'assets/AppColors';
+import {AppFonts} from 'assets/fonts/AppFonts';
+import {SecondaryGroupList} from 'screens/Memos/SavetoCollection';
 import SkeletonContent from 'react-native-skeleton-content-nonexpo';
-import { Skeletons } from 'shared/Skeletons';
-import { useDispatch, useSelector } from 'react-redux';
-import { addFavorites } from 'redux/sagas/UserProfile/userProfile.request';
+import {Skeletons} from 'shared/Skeletons';
+import {useDispatch, useSelector} from 'react-redux';
+import {addFavorites} from 'redux/sagas/UserProfile/userProfile.request';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import { saveProgress } from 'redux/reducers/UserAuth.reducer';
-import { GetCategoryListOfMemos } from 'redux/sagas/Memos/request';
-import { firebase } from '@react-native-firebase/messaging';
-import { AuthContext } from 'Navigator/router';
+import {saveProgress} from 'redux/reducers/UserAuth.reducer';
+import {GetCategoryListOfMemos} from 'redux/sagas/Memos/request';
+import {firebase} from '@react-native-firebase/messaging';
+import {AuthContext} from 'Navigator/router';
 import DeviceInfo from 'react-native-device-info';
-import { showToast } from 'shared/Functions/ToastFunctions';
-import { STR_KEYS } from 'shared/Storage';
-import { APP_APIS } from 'ApiLogic/API_URL';
-import { ScreenLoader } from 'components/Loaders/ScreenLoader';
-import { hp } from 'shared/dimens';
-import { Progressbar } from 'components/ProgressBar';
+import {showToast} from 'shared/Functions/ToastFunctions';
+import {STR_KEYS} from 'shared/Storage';
+import {APP_APIS} from 'ApiLogic/API_URL';
+import {ScreenLoader} from 'components/Loaders/ScreenLoader';
 
-export const SelectMemos = ({ route }) => {
-  const { DOB, gender, name } = route.params;
+export const SelectMemos = ({route}) => {
+  const {DOB, gender, name} = route.params;
   const isCancel = useRef(false);
-  const navigation = useNavigation();
-  const [Item, setItem] = useState(false);
   const [imageUri, setImageUri] = React.useState(null);
 
-  const MemoLists = item => {
-    setItem(item.id);
-  };
-
-  const { userToken } = useSelector(state => state.userAuth);
   const [listoffolders, setlistoffolders] = React.useState([]);
   const [secondaryList, setsecondaryList] = React.useState({});
   const [dataLoading, setDataLoading] = React.useState(true);
   // const userAuth = useSelector(state => state.userAuth);
   const dispatch = useDispatch();
-  const { signIn } = React.useContext(AuthContext);
+  const {signIn} = React.useContext(AuthContext);
   const [loading, setLoading] = React.useState(false);
   const [active, setActive] = React.useState(false);
-  const { verifiedNumber } = useSelector(state => state.userAuth);
+  const {verifiedNumber} = useSelector(state => state.userAuth);
 
   React.useEffect(() => {
     GetCategoryListOfMemos(0)
@@ -145,7 +136,7 @@ export const SelectMemos = ({ route }) => {
         }
       })
 
-      .catch(error => {
+      .catch(() => {
         showToast('Error while registration, please try again');
         setLoading(false);
       })
@@ -176,8 +167,7 @@ export const SelectMemos = ({ route }) => {
               fontSize: 38,
               color: AppColors.white1,
               fontFamily: AppFonts.GillSans,
-            }}
-          >
+            }}>
             Choose your
           </Text>
           <Text
@@ -185,8 +175,7 @@ export const SelectMemos = ({ route }) => {
               fontSize: 38,
               color: AppColors.white1,
               fontFamily: AppFonts.GillSans,
-            }}
-          >
+            }}>
             interest
           </Text>
           <VertSpace />
@@ -196,19 +185,17 @@ export const SelectMemos = ({ route }) => {
               color: AppColors.MediumGrey,
               fontSize: 18,
               fontFamily: AppFonts.CalibriRegular,
-            }}
-          >
+            }}>
             Select minimum of 4 categories
           </Text>
           <VertSpace size={Platform.OS === 'android' ? 10 : 8} />
 
           <SkeletonContent
-            containerStyle={{ flexDirection: 'column', marginTop: 20 }}
+            containerStyle={{flexDirection: 'column', marginTop: 20}}
             boneColor={AppColors.RecomBoneDark}
             highlightColor={AppColors.SkeletonBone}
             isLoading={dataLoading}
-            layout={Skeletons.searchMemos}
-          >
+            layout={Skeletons.searchMemos}>
             <SecondaryGroupList
               dataSet={listoffolders}
               height={AppDimens.height * 0.6}
@@ -225,5 +212,3 @@ export const SelectMemos = ({ route }) => {
     </SafeAreaView>
   );
 };
-
-const styles = StyleSheet.create({});

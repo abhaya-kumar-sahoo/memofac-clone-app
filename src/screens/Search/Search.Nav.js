@@ -1,41 +1,32 @@
-import { useNavigation } from '@react-navigation/core';
-import React, { Fragment, useState, createRef } from 'react';
-import {
-  FlatList,
-  RefreshControl,
-  Text,
-  TextInput,
-  View,
-  SafeAreaView,
-} from 'react-native';
+/* eslint-disable react-native/no-inline-styles */
+import {useNavigation} from '@react-navigation/core';
+import React, {Fragment, useState} from 'react';
+import {FlatList, Text, View, SafeAreaView} from 'react-native';
 
 import Ripple from 'react-native-material-ripple';
-import { useSelector } from 'react-redux';
-import { AppColors } from '../../assets/AppColors';
-import { AppFonts } from '../../assets/fonts/AppFonts';
-import { AppHeader, SearchHeader } from 'components/AppHeader';
+import {useSelector} from 'react-redux';
+import {AppColors} from '../../assets/AppColors';
+import {AppFonts} from '../../assets/fonts/AppFonts';
+import {AppHeader, SearchHeader} from 'components/AppHeader';
 
 import {
-  AppDimens,
   FontSize,
   GStyles,
   HoriSpace,
   Spacing,
   VertSpace,
 } from '../../shared/Global.styles';
-import { AddCirecleIcon, AddDarkIcon, AddIcon } from 'shared/Icon.Comp';
-import { MemoView } from './MemoItem';
-import { SearchmemoApiCall } from 'redux/sagas/Memos/request';
+import {AddDarkIcon} from 'shared/Icon.Comp';
+import {MemoView} from './MemoItem';
+import {SearchmemoApiCall} from 'redux/sagas/Memos/request';
 import SkeletonContent from 'react-native-skeleton-content-nonexpo';
-import { Skeletons } from 'shared/Skeletons';
-import { ActivityIndicator } from 'react-native-paper';
-import { hp } from 'shared/dimens';
-import { SearchInput } from 'components/SearchComponent';
+import {Skeletons} from 'shared/Skeletons';
+import {ActivityIndicator} from 'react-native-paper';
+import {SearchInput} from 'components/SearchComponent';
 // import Toast from 'react-native-simple-toast';
 // import { SearchmemoApiCall } from '../../redux/sagas/Memos/request';
-import DelayInput from 'react-native-debounce-input';
-export function SearchScreen({ route }) {
-  const { select } = route.params;
+export function SearchScreen({route}) {
+  const {select} = route.params;
 
   const [SearchValue, setSearchValue] = useState('');
   const [refreshing, setRefreshing] = useState(false);
@@ -45,8 +36,6 @@ export function SearchScreen({ route }) {
   const lastPageRef = React.useRef(false);
   const navigate = useNavigation();
   const userAuth = useSelector(state => state.userAuth);
-  const [value, setValue] = useState('Have');
-  const inputRef = createRef();
   const [searchList, setsearchList] = useState([]);
 
   React.useEffect(() => {
@@ -65,10 +54,9 @@ export function SearchScreen({ route }) {
           <Ripple
             rippleContainerBorderRadius={40}
             onPress={() => {
-              navigate.navigate('SavetoCollection', { SearchValue });
+              navigate.navigate('SavetoCollection', {SearchValue});
             }}
-            style={{ flexDirection: 'row', marginVertical: Spacing.large }}
-          >
+            style={{flexDirection: 'row', marginVertical: Spacing.large}}>
             <AddDarkIcon />
 
             <HoriSpace size={Spacing.xxlarge} />
@@ -77,8 +65,7 @@ export function SearchScreen({ route }) {
                 fontSize: FontSize.inputText,
                 fontFamily: AppFonts.CalibriBold,
                 color: AppColors.LightGrey,
-              }}
-            >{`Add "${SearchValue}"`}</Text>
+              }}>{`Add "${SearchValue}"`}</Text>
           </Ripple>
         ) : null}
       </Fragment>
@@ -134,7 +121,7 @@ export function SearchScreen({ route }) {
       {select === 'RecaptureActivity' ? (
         <View style={{}}>
           <AppHeader enableBack />
-          <View style={{ paddingHorizontal: Spacing.large }}>
+          <View style={{paddingHorizontal: Spacing.large}}>
             <SearchInput
               onChangeText={value => {
                 setSearchValue(value);
@@ -143,7 +130,7 @@ export function SearchScreen({ route }) {
                 setSearchValue('');
               }}
               value={SearchValue}
-              style={{ height: 45, backgroundColor: 'pink' }}
+              style={{height: 45, backgroundColor: 'pink'}}
             />
           </View>
         </View>
@@ -160,11 +147,11 @@ export function SearchScreen({ route }) {
         />
       )}
 
-      <View style={{ paddingHorizontal: Spacing.large }}>
+      <View style={{paddingHorizontal: Spacing.large}}>
         <SuggestionButton />
 
         <SkeletonContent
-          containerStyle={{ flexDirection: 'column', marginTop: 20 }}
+          containerStyle={{flexDirection: 'column', marginTop: 20}}
           boneColor={AppColors.RecomBoneDark}
           highlightColor={AppColors.SkeletonBone}
           isLoading={listLoader}
@@ -189,8 +176,7 @@ export function SearchScreen({ route }) {
                   style={{
                     width: '100%',
                     padding: 20,
-                  }}
-                >
+                  }}>
                   <ActivityIndicator color={AppColors.DarkGrey} />
                   <VertSpace size={150} />
                 </View>
@@ -203,7 +189,7 @@ export function SearchScreen({ route }) {
             getSearchResults('paginate');
           }}
           ItemSeparatorComponent={() => <VertSpace size={Spacing.xlarge} />}
-          renderItem={({ item, index }) => (
+          renderItem={({item, index}) => (
             <MemoView
               item={item}
               key={index.toString()}
@@ -212,7 +198,7 @@ export function SearchScreen({ route }) {
                   ? navigate.navigate('RecaptureActivity', {
                       memoSelected: item,
                     })
-                  : navigate.navigate('ViewMemo', { memoId: item.id });
+                  : navigate.navigate('ViewMemo', {memoId: item.id});
               }}
             />
           )}

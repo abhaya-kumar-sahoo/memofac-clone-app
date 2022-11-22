@@ -1,15 +1,14 @@
+/* eslint-disable react-native/no-inline-styles */
 import {
   StyleSheet,
   Text,
   View,
-  Button,
   Modal,
-  Touchable,
   Image,
   Alert,
   Platform,
 } from 'react-native';
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import {
   check,
   request,
@@ -17,28 +16,23 @@ import {
   PERMISSIONS,
   RESULTS,
 } from 'react-native-permissions';
-import { AppColors } from 'assets/AppColors';
+import {AppColors} from 'assets/AppColors';
 import * as ImagePickers from 'react-native-image-picker';
 import Modals from 'react-native-modal';
-import { AppDimens, GStyles, VertSpace } from 'shared/Global.styles';
-import { hp } from 'shared/dimens';
-import Ripple from 'react-native-material-ripple';
-import { AppFonts } from 'assets/fonts/AppFonts';
-import { HorizontalLine } from 'screens/Timeline/components/PostView/Postview.comp';
-import { Container } from 'components/Mini';
-import { TouchableRipple } from 'react-native-paper';
-import axios from 'axios';
-import { APP_APIS } from 'ApiLogic/API_URL';
-import { useDispatch, useSelector } from 'react-redux';
-import { GetUserDetailsAction } from 'redux/reducers/UserProfile/userprofile.reducer';
-import { updateUserData } from 'redux/reducers/UserAuth.reducer';
+import {AppDimens, GStyles, VertSpace} from 'shared/Global.styles';
+import {hp} from 'shared/dimens';
+import {AppFonts} from 'assets/fonts/AppFonts';
+import {HorizontalLine} from 'screens/Timeline/components/PostView/Postview.comp';
+import {Container} from 'components/Mini';
+import {TouchableRipple} from 'react-native-paper';
+import {APP_APIS} from 'ApiLogic/API_URL';
+import {useDispatch, useSelector} from 'react-redux';
+import {GetUserDetailsAction} from 'redux/reducers/UserProfile/userprofile.reducer';
+import {updateUserData} from 'redux/reducers/UserAuth.reducer';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import { showToast } from 'shared/Functions/ToastFunctions';
-import { useNavigation } from '@react-navigation/native';
-import DefaultImage from 'assets/images/DefaultIcon.png';
-import { STR_KEYS } from 'shared/Storage';
-import { UserProfileImageCall } from './request';
-import { ScreenLoader } from 'components/Loaders/ScreenLoader';
+import {showToast} from 'shared/Functions/ToastFunctions';
+import {STR_KEYS} from 'shared/Storage';
+import {ScreenLoader} from 'components/Loaders/ScreenLoader';
 import ImagePicker from 'react-native-image-crop-picker';
 
 export const DefaultGallery = ({
@@ -46,7 +40,7 @@ export const DefaultGallery = ({
   onRequestClose = () => {},
   onPressViewImage = () => {},
 }) => {
-  const { userToken, userData } = useSelector(state => state.userAuth);
+  const {userToken, userData} = useSelector(state => state.userAuth);
 
   const dispatch = useDispatch();
   const [ImageChange, setImageChange] = React.useState('');
@@ -71,7 +65,7 @@ export const DefaultGallery = ({
                       onPress: () => console.log('Cancel Pressed'),
                       style: 'cancel',
                     },
-                    { text: 'OK', onPress: () => console.log('ok boss') },
+                    {text: 'OK', onPress: () => console.log('ok boss')},
                   ],
                 );
                 break;
@@ -99,7 +93,7 @@ export const DefaultGallery = ({
                       onPress: () => console.log('Cancel Pressed'),
                       style: 'cancel',
                     },
-                    { text: 'OK', onPress: () => console.log('ok boss') },
+                    {text: 'OK', onPress: () => console.log('ok boss')},
                   ],
                 );
                 break;
@@ -160,7 +154,7 @@ export const DefaultGallery = ({
                       onPress: () => console.log('Cancel Pressed'),
                       style: 'cancel',
                     },
-                    { text: 'OK', onPress: () => openSettings() },
+                    {text: 'OK', onPress: () => openSettings()},
                   ],
                 );
                 break;
@@ -187,7 +181,7 @@ export const DefaultGallery = ({
                       onPress: () => console.log('Cancel Pressed'),
                       style: 'cancel',
                     },
-                    { text: 'OK', onPress: () => console.log('ok boss') },
+                    {text: 'OK', onPress: () => console.log('ok boss')},
                   ],
                 );
                 break;
@@ -213,7 +207,7 @@ export const DefaultGallery = ({
                       onPress: () => console.log('Cancel Pressed'),
                       style: 'cancel',
                     },
-                    { text: 'OK', onPress: () => openSettings() },
+                    {text: 'OK', onPress: () => openSettings()},
                   ],
                 );
                 break;
@@ -260,7 +254,7 @@ export const DefaultGallery = ({
                       onPress: () => console.log('Cancel Pressed'),
                       style: 'cancel',
                     },
-                    { text: 'OK', onPress: () => openSettings() },
+                    {text: 'OK', onPress: () => openSettings()},
                   ],
                 );
                 break;
@@ -303,7 +297,7 @@ export const DefaultGallery = ({
         // console.log('responser from server', result);
 
         dispatch(GetUserDetailsAction(userToken));
-        dispatch(updateUserData({ payload: { ...result.content } }));
+        dispatch(updateUserData({payload: {...result.content}}));
         const USER_DATA = [STR_KEYS.USERDATA, JSON.stringify(result.content)];
 
         try {
@@ -369,7 +363,7 @@ export const DefaultGallery = ({
       .then(async result => {
         console.log(result);
         dispatch(GetUserDetailsAction(userToken));
-        dispatch(updateUserData({ payload: { ...result.content } }));
+        dispatch(updateUserData({payload: {...result.content}}));
         const USER_DATA = [STR_KEYS.USERDATA, JSON.stringify(result.content)];
 
         try {
@@ -392,8 +386,7 @@ export const DefaultGallery = ({
           style={{
             flex: 1,
             ...GStyles.flexRowCenter,
-          }}
-        >
+          }}>
           <View
             style={{
               width: 330,
@@ -401,24 +394,21 @@ export const DefaultGallery = ({
               ...GStyles.ModalContainer,
               paddingHorizontal: 20,
               backgroundColor: AppColors.Skeleton,
-            }}
-          >
+            }}>
             <VertSpace size={30} />
             <Text style={styles.modalTitleDark}>
               Are you sure that you want to delete your profile picture ?
             </Text>
             <VertSpace size={70} />
             <View
-              style={{ ...GStyles.flexRowSpaceBetween, paddingHorizontal: 40 }}
-            >
+              style={{...GStyles.flexRowSpaceBetween, paddingHorizontal: 40}}>
               <Text
                 style={{
                   fontFamily: AppFonts.CalibriBold,
                   fontSize: 20,
                   color: AppColors.white1,
                 }}
-                onPress={RemovePhoto}
-              >
+                onPress={RemovePhoto}>
                 Yes
               </Text>
               <Text
@@ -427,8 +417,7 @@ export const DefaultGallery = ({
                   fontSize: 20,
                   color: AppColors.white1,
                 }}
-                onPress={() => setModalOpen(!ModalOpen)}
-              >
+                onPress={() => setModalOpen(!ModalOpen)}>
                 No
               </Text>
             </View>
@@ -446,8 +435,7 @@ export const DefaultGallery = ({
           style={{
             flex: 1,
             ...GStyles.flexRowCenter,
-          }}
-        >
+          }}>
           <View
             style={{
               width: 350,
@@ -455,35 +443,32 @@ export const DefaultGallery = ({
               ...GStyles.ModalContainer,
               paddingHorizontal: 20,
               backgroundColor: AppColors.Skeleton,
-            }}
-          >
+            }}>
             <VertSpace size={30} />
             <Text style={styles.modalTitleDark}>
               Are you sure that you want to change your profile picture ?
             </Text>
             <VertSpace size={20} />
 
-            <View style={{ ...GStyles.flexRowCenter }}>
+            <View style={{...GStyles.flexRowCenter}}>
               <Image
-                source={{ uri: ImageChange ? ImageChange : null }}
+                source={{uri: ImageChange ? ImageChange : null}}
                 resizeMode="cover"
                 width="100%"
                 height="100%"
-                style={{ width: 150, height: 150, borderRadius: 100 }}
+                style={{width: 150, height: 150, borderRadius: 100}}
               />
             </View>
             <VertSpace size={20} />
             <View
-              style={{ ...GStyles.flexRowSpaceBetween, paddingHorizontal: 40 }}
-            >
+              style={{...GStyles.flexRowSpaceBetween, paddingHorizontal: 40}}>
               <Text
                 style={{
                   fontFamily: AppFonts.CalibriBold,
                   fontSize: 20,
                   color: AppColors.white1,
                 }}
-                onPress={UpdateData}
-              >
+                onPress={UpdateData}>
                 Yes
               </Text>
               <Text
@@ -492,8 +477,7 @@ export const DefaultGallery = ({
                   fontSize: 20,
                   color: AppColors.white1,
                 }}
-                onPress={() => setPhotoModalOpen(!PhotoModalOpen)}
-              >
+                onPress={() => setPhotoModalOpen(!PhotoModalOpen)}>
                 No
               </Text>
             </View>
@@ -507,8 +491,7 @@ export const DefaultGallery = ({
         animationType={'slide'}
         style={{}}
         onRequestClose={onRequestClose}
-        collapsable
-      >
+        collapsable>
         <TouchableRipple
           onPress={onRequestClose}
           style={{
@@ -516,8 +499,7 @@ export const DefaultGallery = ({
             ...GStyles.flexRowCenter,
             height: AppDimens.height,
             backgroundColor: '#00000999',
-          }}
-        >
+          }}>
           <View
             style={{
               position: 'absolute',
@@ -527,8 +509,7 @@ export const DefaultGallery = ({
               backgroundColor: AppColors.SkeletonBone,
               borderTopEndRadius: 20,
               borderTopLeftRadius: 20,
-            }}
-          >
+            }}>
             <VertSpace size={50} />
             <Container padding={20}>
               <Text onPress={onPressViewImage} style={styles.modalTextDark}>
@@ -558,8 +539,7 @@ export const DefaultGallery = ({
                     setModalOpen(!ModalOpen);
                   }, 1000);
                 }}
-                style={[styles.modalText, { color: AppColors.Red }]}
-              >
+                style={[styles.modalText, {color: AppColors.Red}]}>
                 Remove Profile Photo
               </Text>
             </Container>

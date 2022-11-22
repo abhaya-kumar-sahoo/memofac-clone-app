@@ -1,20 +1,21 @@
-import React, { useState } from 'react';
-import { View, TextInput, StyleSheet, Text } from 'react-native';
+/* eslint-disable react-native/no-inline-styles */
+import React, {useState} from 'react';
+import {View, TextInput, StyleSheet, Text} from 'react-native';
 
-import { showToast } from 'shared/Functions/ToastFunctions';
-import { useSelector } from 'react-redux';
-import { ReportMemoProblems } from 'redux/sagas/Contacts/api.request';
-import { AccentButton, Container } from 'components/Mini';
-import { AppHeader } from 'components/AppHeader';
-import { FontSize, GStyles } from 'shared/Global.styles';
-import { AppFonts } from 'assets/fonts/AppFonts';
-import { AppColors } from 'assets/AppColors';
-import { ScreenLoader } from 'components/Loaders/ScreenLoader';
+import {showToast} from 'shared/Functions/ToastFunctions';
+import {useSelector} from 'react-redux';
+import {ReportMemoProblems} from 'redux/sagas/Contacts/api.request';
+import {AccentButton, Container} from 'components/Mini';
+import {AppHeader} from 'components/AppHeader';
+import {FontSize, GStyles} from 'shared/Global.styles';
+import {AppFonts} from 'assets/fonts/AppFonts';
+import {AppColors} from 'assets/AppColors';
+import {ScreenLoader} from 'components/Loaders/ScreenLoader';
 
-export const ReportMemoScreen = ({ navigation, route }) => {
+export const ReportMemoScreen = ({navigation, route}) => {
   const userToken = useSelector(state => state.userAuth.userToken);
   const [data, setData] = useState('');
-  const { memoId } = route.params;
+  const {memoId} = route.params;
   const [loading, setLoading] = useState(false);
 
   const onSubmit = () => {
@@ -46,7 +47,7 @@ export const ReportMemoScreen = ({ navigation, route }) => {
           title="Submit"
           onPress={onSubmit}
           disabled={data.length === 0}
-          style={{ marginTop: 10 }}
+          style={{marginTop: 10}}
         />
       </AppHeader>
       <ScreenLoader message="loading wait..." loading={loading} />

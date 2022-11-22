@@ -1,22 +1,21 @@
-import React, { Component, Fragment } from 'react';
+/* eslint-disable react-native/no-inline-styles */
+import React, {Fragment} from 'react';
 import {
   FlatList,
   Text,
-  TextInput,
   View,
   SafeAreaView,
-  StyleSheet,
   KeyboardAvoidingView,
   Platform,
 } from 'react-native';
-import { ActivityIndicator, Divider, Modal, Portal } from 'react-native-paper';
-import { useDispatch, useSelector } from 'react-redux';
-import { AppColors } from '../../assets/AppColors';
-import { AppFonts } from '../../assets/fonts/AppFonts';
+import {ActivityIndicator, Divider, Modal, Portal} from 'react-native-paper';
+import {useDispatch, useSelector} from 'react-redux';
+import {AppColors} from '../../assets/AppColors';
+import {AppFonts} from '../../assets/fonts/AppFonts';
 import Toast from 'react-native-simple-toast';
-import { AppHeader } from '../../components/AppHeader';
-import { BioImageView } from '../../components/BioImageView';
-import { AccentButton, Container } from '../../components/Mini';
+import {AppHeader} from '../../components/AppHeader';
+import {BioImageView} from '../../components/BioImageView';
+import {Container} from '../../components/Mini';
 import {
   AddCommentApiCall,
   ListcommentsApiCall,
@@ -29,25 +28,21 @@ import {
   HoriSpace,
   Spacing,
   VertSpace,
-  WhiteFadeView,
 } from '../../shared/Global.styles';
-import { HeartFillIcon, ReactionsIcon } from '../../shared/Icon.Comp';
 import moment from 'moment';
-import { TouchableOpacity } from 'react-native-gesture-handler';
-import { ChatFilledIcon } from 'shared/Icon.Comp';
+import {TouchableOpacity} from 'react-native-gesture-handler';
+import {ChatFilledIcon} from 'shared/Icon.Comp';
 import {
   getPostReactionsComments,
   updateReactionComments,
 } from 'redux/reducers/Post/PostComments.reducer';
-import { MemofacKeyboard } from 'components/MemofacKeyboard';
-import { useNavigation } from '@react-navigation/native';
-import { hp } from 'shared/dimens';
-import { updateUserCommentCount } from 'redux/reducers/UserProfile/UserPost_reducer';
-import { updateCommentCount } from 'redux/reducers/Timeline/Timeline.reducer';
-import { updateMemoCommentCount } from 'redux/reducers/Post/MemoRelatedPost.reducer';
-import { PostMenuOption } from 'screens/Settings/Settings.screen';
-import { ModalButtons } from 'screens/Timeline/components/MenuOption';
-import { showToast } from 'shared/Functions/ToastFunctions';
+import {MemofacKeyboard} from 'components/MemofacKeyboard';
+import {useNavigation} from '@react-navigation/native';
+import {updateUserCommentCount} from 'redux/reducers/UserProfile/UserPost_reducer';
+import {updateCommentCount} from 'redux/reducers/Timeline/Timeline.reducer';
+import {updateMemoCommentCount} from 'redux/reducers/Post/MemoRelatedPost.reducer';
+import {ModalButtons} from 'screens/Timeline/components/MenuOption';
+import {showToast} from 'shared/Functions/ToastFunctions';
 
 const MessageRow = {
   id: 2,
@@ -83,7 +78,7 @@ m.updateLocale('en', {
 });
 
 export const CommentMessageView = ({
-  item = { ...MessageRow },
+  item = {...MessageRow},
   onPress,
   onLongPress,
 }) => {
@@ -95,19 +90,17 @@ export const CommentMessageView = ({
         flexDirection: 'row',
         alignItems: 'flex-start',
         justifyContent: 'space-between',
-      }}
-    >
+      }}>
       <View
         style={{
           flexDirection: 'row',
           alignItems: 'flex-start',
 
           maxWidth: AppDimens.width * 0.65,
-        }}
-      >
+        }}>
         <BioImageView imageSize={40} imageSrc={item.image} />
         <HoriSpace size={10} />
-        <View style={{ marginTop: -5 }}>
+        <View style={{marginTop: -5}}>
           <Text
             numberOfLines={1}
             style={{
@@ -115,8 +108,7 @@ export const CommentMessageView = ({
               fontSize: 18,
               color: AppColors.white2,
               fontFamily: AppFonts.CalibriBold,
-            }}
-          >
+            }}>
             {item.name}
           </Text>
           <VertSpace size={5} />
@@ -127,8 +119,7 @@ export const CommentMessageView = ({
               fontFamily: AppFonts.CalibriRegular,
               color: AppColors.disableColor,
               lineHeight: 17,
-            }}
-          >
+            }}>
             {item.comment}
           </Text>
         </View>
@@ -139,8 +130,7 @@ export const CommentMessageView = ({
           fontSize: FontSize.medium,
           fontFamily: AppFonts.CalibriBold,
           color: AppColors.disableColor,
-        }}
-      >
+        }}>
         {m(item.created_at).fromNow(true)}
         {/* 3w */}
       </Text>
@@ -148,21 +138,21 @@ export const CommentMessageView = ({
   );
 };
 
-export const CommentScreen = ({ route }) => {
+export const CommentScreen = ({route}) => {
   const refContainer = React.useRef(null);
-  const { userAuth } = useSelector(state => state);
+  const {userAuth} = useSelector(state => state);
   const [comment, setcomment] = React.useState('');
   const [loading, setLoading] = React.useState(true);
   const [deleteMenu, setDeleteMenu] = React.useState(false);
-  const [commId, setCommId] = React.useState({ id: null, index: 0 });
+  const [commId, setCommId] = React.useState({id: null, index: 0});
 
   const [commentsList, setCommentsList] = React.useState([]);
   const dispatch = useDispatch();
-  const { data } = useSelector(state => state.PostReactionCommentsReducer);
+  const {data} = useSelector(state => state.PostReactionCommentsReducer);
   const navigation = useNavigation();
-  const { navigate } = { ...navigation };
+  const {navigate} = {...navigation};
 
-  const ReactionView = ({ reactionsNumber = 0, onPress = () => {} }) => {
+  const ReactionView = ({reactionsNumber = 0, onPress = () => {}}) => {
     // console.log({ reactionsNumber });
 
     return (
@@ -170,8 +160,7 @@ export const CommentScreen = ({ route }) => {
         {reactionsNumber !== 0 && (
           <TouchableOpacity
             onPress={onPress}
-            style={{ flexDirection: 'row', ...GStyles.containView }}
-          >
+            style={{flexDirection: 'row', ...GStyles.containView}}>
             {/* <HeartFillIcon size={18} /> */}
             <HoriSpace size={5} />
             <Text
@@ -180,8 +169,7 @@ export const CommentScreen = ({ route }) => {
                 fontFamily: AppFonts.CalibriLight,
                 fontSize: FontSize.large,
                 paddingBottom: 3,
-              }}
-            >
+              }}>
               {reactionsNumber} {reactionsNumber > 1 ? 'likes' : 'like'}
             </Text>
           </TouchableOpacity>
@@ -191,9 +179,9 @@ export const CommentScreen = ({ route }) => {
   };
 
   const onComment = () => {
-    const { post_id, postindex, location } = route.params;
+    const {post_id, postindex, location} = route.params;
     if (comment !== '') {
-      let newCommnet = { ...MessageRow };
+      let newCommnet = {...MessageRow};
       newCommnet = {
         comment,
         name: userAuth.userData.name,
@@ -205,14 +193,14 @@ export const CommentScreen = ({ route }) => {
       // dispatch(updateCommentCount({ postIndex: postindex }));
       AddCommentApiCall(userAuth.userToken, post_id, comment).then(() => {
         Toast.showWithGravity('Comment added', Toast.SHORT, Toast.CENTER);
-        dispatch(updateReactionComments({ comments: commentsList }));
+        dispatch(updateReactionComments({comments: commentsList}));
 
         if (location === 'T') {
-          dispatch(updateCommentCount({ postIndex: postindex }));
+          dispatch(updateCommentCount({postIndex: postindex}));
         } else if (location === 'M') {
-          dispatch(updateUserCommentCount({ postIndex: postindex }));
+          dispatch(updateUserCommentCount({postIndex: postindex}));
         } else if (location === 'P') {
-          dispatch(updateMemoCommentCount({ postIndex: postindex }));
+          dispatch(updateMemoCommentCount({postIndex: postindex}));
         }
       });
     } else {
@@ -226,7 +214,7 @@ export const CommentScreen = ({ route }) => {
 
   React.useEffect(() => {
     if (!loading && refContainer.current) {
-      refContainer.current.scrollToEnd({ animated: true });
+      refContainer.current.scrollToEnd({animated: true});
     }
   }, [commentsList]);
   const [visible, setVisible] = React.useState(false);
@@ -234,7 +222,7 @@ export const CommentScreen = ({ route }) => {
   const hideModal = () => setVisible(false);
 
   React.useEffect(() => {
-    const { post_id } = route.params;
+    const {post_id} = route.params;
 
     ListcommentsApiCall(userAuth.userToken, post_id)
       .then(response => {
@@ -252,7 +240,7 @@ export const CommentScreen = ({ route }) => {
   }, []);
   const onLongPress = (id, index) => {
     showModal();
-    setCommId({ id, index });
+    setCommId({id, index});
   };
 
   const DeleteComment = () => {
@@ -289,10 +277,9 @@ export const CommentScreen = ({ route }) => {
           <Modal
             visible={visible}
             onDismiss={hideModal}
-            style={{ justifyContent: 'center', alignItems: 'center' }}
-            contentContainerStyle={{}}
-          >
-            <View style={{ alignItems: 'flex-start' }}>
+            style={{justifyContent: 'center', alignItems: 'center'}}
+            contentContainerStyle={{}}>
+            <View style={{alignItems: 'flex-start'}}>
               <ModalButtons
                 height={70}
                 textStyle={{
@@ -318,13 +305,11 @@ export const CommentScreen = ({ route }) => {
 
       <KeyboardAvoidingView
         behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
-        style={{ flex: 1 }}
-      >
+        style={{flex: 1}}>
         <View
           behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
-          style={{ flex: 1 }}
-        >
-          <Container style={{ flex: 1, paddingHorizontal: Spacing.large }}>
+          style={{flex: 1}}>
+          <Container style={{flex: 1, paddingHorizontal: Spacing.large}}>
             <View>
               {/* <WhiteFadeView
             reverse
@@ -348,9 +333,9 @@ export const CommentScreen = ({ route }) => {
               ref={refContainer}
               showsVerticalScrollIndicator={false}
               ListFooterComponent={
-                <View style={{ alignItems: 'center', marginTop: 20 }}>
+                <View style={{alignItems: 'center', marginTop: 20}}>
                   {commentsList.length == 0 && loading == false && (
-                    <View style={{ ...GStyles.containView, marginTop: 100 }}>
+                    <View style={{...GStyles.containView, marginTop: 100}}>
                       <ChatFilledIcon
                         size={100}
                         color={AppColors.VeryLightGrey}
@@ -361,8 +346,7 @@ export const CommentScreen = ({ route }) => {
                           fontFamily: AppFonts.InkFree,
                           color: AppColors.white2,
                           padding: 20,
-                        }}
-                      >
+                        }}>
                         No Comments yet,{'\n'} please add one
                       </Text>
                     </View>
@@ -384,7 +368,7 @@ export const CommentScreen = ({ route }) => {
                 );
               }}
               ListHeaderComponent={() => <VertSpace size={40} />}
-              renderItem={({ item, index }) => (
+              renderItem={({item, index}) => (
                 <CommentMessageView
                   item={item}
                   index={index}
@@ -394,7 +378,7 @@ export const CommentScreen = ({ route }) => {
                       : null;
                   }}
                   onPress={() => {
-                    navigate('FriendsProfile', { user_id: item.user_id });
+                    navigate('FriendsProfile', {user_id: item.user_id});
                   }}
                 />
               )}
@@ -415,11 +399,11 @@ export const CommentScreen = ({ route }) => {
   );
 };
 
-export const CommentDeleteModal = ({ id }) => {
+export const CommentDeleteModal = ({id}) => {
   const [visible, setVisible] = React.useState(false);
   const showModal = () => setVisible(true);
   const hideModal = () => setVisible(false);
-  const { userAuth } = useSelector(state => state);
+  const {userAuth} = useSelector(state => state);
 
   const DeleteComment = () => {
     hideModal();
@@ -451,10 +435,9 @@ export const CommentDeleteModal = ({ id }) => {
         <Modal
           visible={visible}
           onDismiss={hideModal}
-          style={{ justifyContent: 'center', alignItems: 'center' }}
-          contentContainerStyle={{}}
-        >
-          <View style={{ alignItems: 'flex-start' }}>
+          style={{justifyContent: 'center', alignItems: 'center'}}
+          contentContainerStyle={{}}>
+          <View style={{alignItems: 'flex-start'}}>
             <ModalButtons
               height={70}
               textStyle={{

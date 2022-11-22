@@ -1,6 +1,5 @@
-import React, { Component } from 'react';
-import { StyleSheet } from 'react-native';
-import { hp } from 'shared/dimens';
+import {StyleSheet} from 'react-native';
+import {hp} from 'shared/dimens';
 
 export const Term_Styles = StyleSheet.create({
   bottomView: {

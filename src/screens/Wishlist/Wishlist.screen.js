@@ -1,17 +1,17 @@
-import React, { useEffect, useState, useRef } from 'react';
-import { FlatList, SafeAreaView, RefreshControl } from 'react-native';
-import { useSelector } from 'react-redux';
-import { AppDimens, GStyles, VertSpace } from '../../shared/Global.styles';
+import React, {useEffect, useState, useRef} from 'react';
+import {FlatList, SafeAreaView, RefreshControl} from 'react-native';
+import {useSelector} from 'react-redux';
+import {AppDimens, GStyles, VertSpace} from '../../shared/Global.styles';
 
-import { AppColors } from '../../assets/AppColors';
-import { myWishlistApiCall } from 'redux/sagas/wishlist/request';
-import { showToast } from 'shared/Functions/ToastFunctions';
+import {AppColors} from '../../assets/AppColors';
+import {myWishlistApiCall} from 'redux/sagas/wishlist/request';
+import {showToast} from 'shared/Functions/ToastFunctions';
 import {
   PostSeparator,
   PostView,
 } from 'screens/Timeline/components/PostView/Postview.comp';
 import SkeletonContent from 'react-native-skeleton-content-nonexpo';
-import { Skeletons } from 'shared/Skeletons';
+import {Skeletons} from 'shared/Skeletons';
 
 export function WishlistScreen() {
   const [RecaptureList, setRecaptureList] = useState([]);
@@ -70,22 +70,21 @@ export function WishlistScreen() {
         )}
         showsVerticalScrollIndicator={false}
         onEndReachedThreshold={0.5}
-        style={{ paddingTop: 30 }}
+        style={{paddingTop: 30}}
         onEndReached={() => {
           getPosts();
         }}
         keyExtractor={(_, index) => index.toString()}
         data={RecaptureList}
         extraData={RecaptureList}
-        renderItem={({ item, index }) => (
+        renderItem={({item, index}) => (
           <SkeletonContent
             key={index}
-            containerStyle={{ flexDirection: 'column' }}
+            containerStyle={{flexDirection: 'column'}}
             boneColor={AppColors.RecomBoneDark}
             highlightColor={AppColors.SkeletonBone}
             isLoading={LoadingMore}
-            layout={Skeletons.timeline}
-          >
+            layout={Skeletons.timeline}>
             <PostView item={item} index={index} location={'M'} />
           </SkeletonContent>
         )}

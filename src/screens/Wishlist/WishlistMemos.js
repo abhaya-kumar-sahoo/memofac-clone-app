@@ -1,21 +1,20 @@
-import { useNavigation } from '@react-navigation/core';
-import { TextNoDataView } from 'components/NodataView/TextNodata';
-import React, { Fragment, useState, useRef } from 'react';
-import { RefreshControl, ScrollView, View, SafeAreaView } from 'react-native';
-import { useSelector } from 'react-redux';
-import { getWishlistMemos } from 'redux/sagas/wishlist/request';
+import {TextNoDataView} from 'components/NodataView/TextNodata';
+import React, {Fragment, useState, useRef} from 'react';
+import {RefreshControl, ScrollView, View, SafeAreaView} from 'react-native';
+import {useSelector} from 'react-redux';
+import {getWishlistMemos} from 'redux/sagas/wishlist/request';
 
-import { GStyles, Spacing, VertSpace } from '../../shared/Global.styles';
+import {GStyles, Spacing, VertSpace} from '../../shared/Global.styles';
 import SkeletonContent from 'react-native-skeleton-content-nonexpo';
-import { AppColors } from 'assets/AppColors';
-import { Skeletons } from 'shared/Skeletons';
-import { showToast } from 'shared/Functions/ToastFunctions';
-import { MemoLists } from 'screens/Memos/UserMemos';
-import { Container } from 'components/Mini';
+import {AppColors} from 'assets/AppColors';
+import {Skeletons} from 'shared/Skeletons';
+import {showToast} from 'shared/Functions/ToastFunctions';
+import {MemoLists} from 'screens/Memos/UserMemos';
+import {Container} from 'components/Mini';
 
 // USER MEMO SCREEN
 export function WishlistMemos() {
-  const { userAuth } = useSelector(state => state);
+  const {userAuth} = useSelector(state => state);
   const [loading, setLoading] = useState(true);
   const [Memosuser, setMemosuser] = useState([]);
   const isCancel = useRef(false);
@@ -49,8 +48,7 @@ export function WishlistMemos() {
               refreshing={loading}
               onRefresh={() => setLoading(!loading)}
             />
-          }
-        >
+          }>
           <VertSpace />
           {Memosuser.length ? (
             <View style={{}}>

@@ -1,17 +1,18 @@
-import React, { Component } from 'react';
-import { View, Text, TextInput } from 'react-native';
+/* eslint-disable react-native/no-inline-styles */
+import React from 'react';
+import {View, TextInput} from 'react-native';
 import Ripple from 'react-native-material-ripple';
-import { showToast } from 'shared/Functions/ToastFunctions';
-import { AppColors } from '../../../assets/AppColors';
-import { HeadingBar } from '../../../components/AppHeader';
+import {showToast} from 'shared/Functions/ToastFunctions';
+import {AppColors} from '../../../assets/AppColors';
+import {HeadingBar} from '../../../components/AppHeader';
 import {
   AppDimens,
   FontSize,
   Spacing,
   VertSpace,
 } from '../../../shared/Global.styles';
-import { ModalButtons } from 'screens/Timeline/components/MenuOption';
-const { Portal, Modal } = require('react-native-paper');
+import {ModalButtons} from 'screens/Timeline/components/MenuOption';
+const {Portal, Modal} = require('react-native-paper');
 
 export const AddNewMemoModal = ({
   onSubmitPress = () => {},
@@ -30,16 +31,15 @@ export const AddNewMemoModal = ({
         <Modal
           visible={visible}
           onDismiss={hideModal}
-          style={{ justifyContent: 'center', alignItems: 'center' }}
+          style={{justifyContent: 'center', alignItems: 'center'}}
           contentContainerStyle={{
             backgroundColor: 'white',
             padding: 20,
             width: AppDimens.width * 0.7,
             borderRadius: 30,
-          }}
-        >
-          <View style={{ alignItems: 'center' }}>
-            <View style={{ paddingVertical: 10 }}>
+          }}>
+          <View style={{alignItems: 'center'}}>
+            <View style={{paddingVertical: 10}}>
               <HeadingBar title={'New memo'} titleFontSize={FontSize.xxlarge} />
             </View>
 
@@ -64,8 +64,7 @@ export const AddNewMemoModal = ({
                 flexDirection: 'row',
                 justifyContent: 'space-around',
                 width: '100%',
-              }}
-            >
+              }}>
               <ModalButtons
                 onPress={hideModal}
                 IconVisible={false}
@@ -98,8 +97,7 @@ export const AddNewMemoModal = ({
           // marginTop: -10,
           // justifyContent: 'center',
           // alignItems: 'center',
-        }}
-      >
+        }}>
         <ButtonComponent />
       </Ripple>
     </View>

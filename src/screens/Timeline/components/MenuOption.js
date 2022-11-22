@@ -1,17 +1,18 @@
-import { AppColors } from 'assets/AppColors';
-import React, { Fragment } from 'react';
+/* eslint-disable react-native/no-inline-styles */
+import {AppColors} from 'assets/AppColors';
+import React, {Fragment} from 'react';
 import {
   DeleteIcon,
   EditIcon,
   MenuIconsDark,
   WishlistIcon,
 } from 'shared/Icon.Comp';
-import { AppDimens, FontSize, HoriSpace } from 'shared/Global.styles';
+import {AppDimens, FontSize, HoriSpace} from 'shared/Global.styles';
 import Ripple from 'react-native-material-ripple';
-import { useSelector } from 'react-redux';
-import { AppFonts } from 'assets/fonts/AppFonts';
-const { View, StyleSheet, Text } = require('react-native');
-const { Portal, Modal } = require('react-native-paper');
+import {useSelector} from 'react-redux';
+import {AppFonts} from 'assets/fonts/AppFonts';
+const {View, StyleSheet, Text} = require('react-native');
+const {Portal, Modal} = require('react-native-paper');
 
 // "id": "24",
 // "user_id": "1",
@@ -42,8 +43,7 @@ export const ModalButtons = ({
           justifyContent: 'center',
           alignItems: 'center',
           ...modalStyle,
-        }}
-      >
+        }}>
         {IconVisible && (
           <Fragment>
             <ButtonIcon />
@@ -56,8 +56,7 @@ export const ModalButtons = ({
             color: color,
             fontFamily: AppFonts.CalibriBold,
             ...textStyle,
-          }}
-        >
+          }}>
           {title}
         </Text>
       </Ripple>
@@ -66,12 +65,12 @@ export const ModalButtons = ({
 };
 
 export const PostMenuOption = ({
-  postData = { id: null, user_id: null },
+  postData = {id: null, user_id: null},
   onDelete = () => {},
   onWishlistAdd = () => {},
 }) => {
   const [visible, setVisible] = React.useState(false);
-  const { userData } = useSelector(state => state.userAuth);
+  const {userData} = useSelector(state => state.userAuth);
   const showModal = () => setVisible(true);
   const hideModal = () => setVisible(false);
   // console.log(userData);
@@ -83,10 +82,9 @@ export const PostMenuOption = ({
         <Modal
           visible={visible}
           onDismiss={hideModal}
-          style={{ justifyContent: 'center', alignItems: 'center' }}
-          contentContainerStyle={Style.ModalStyleLight}
-        >
-          <View style={{ alignItems: 'flex-start' }}>
+          style={{justifyContent: 'center', alignItems: 'center'}}
+          contentContainerStyle={Style.ModalStyleLight}>
+          <View style={{alignItems: 'flex-start'}}>
             {postData.user_id == userData.id ? (
               <ModalButtons
                 width={'100%'}
@@ -133,8 +131,7 @@ export const PostMenuOption = ({
       <Ripple
         onPress={showModal}
         rippleContainerBorderRadius={20}
-        style={Style.ModalBacDark}
-      >
+        style={Style.ModalBacDark}>
         <MenuIconsDark size={20} />
       </Ripple>
     </View>

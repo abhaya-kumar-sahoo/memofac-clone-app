@@ -1,41 +1,39 @@
-import { useNavigation } from '@react-navigation/native';
-import React, { useRef } from 'react';
-import { View, Text, StyleSheet, SafeAreaView } from 'react-native';
-import { AppColors } from '../../../assets/AppColors';
-import { FontSize, GStyles, HoriSpace, VertSpace } from 'shared/Global.styles';
-import { useDispatch } from 'react-redux';
+import React, {useRef} from 'react';
+import {View, Text, StyleSheet, SafeAreaView, Platform} from 'react-native';
+import {AppColors} from '../../../assets/AppColors';
+import {FontSize, GStyles, HoriSpace, VertSpace} from 'shared/Global.styles';
+import {useDispatch} from 'react-redux';
 import OTPInputView from '@twotalltotems/react-native-otp-input';
-import { AppFonts } from 'assets/fonts/AppFonts';
-import { AppHeader } from 'components/AppHeader';
-import { useEffect } from 'react';
-import { LoginApiCall, SendOtpAPiCall } from '../../../ApiLogic/Auth.Api';
-import { AccentButton, Container } from '../../../components/Mini';
+import {AppFonts} from 'assets/fonts/AppFonts';
+import {AppHeader} from 'components/AppHeader';
+import {useEffect} from 'react';
+import {LoginApiCall, SendOtpAPiCall} from '../../../ApiLogic/Auth.Api';
+import {AccentButton, Container} from '../../../components/Mini';
 import Toast from 'react-native-simple-toast';
 import DeviceInfo from 'react-native-device-info';
-import { saveVerifiedNumber } from 'redux/reducers/UserAuth.reducer';
+import {saveVerifiedNumber} from 'redux/reducers/UserAuth.reducer';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import { STR_KEYS } from 'shared/Storage';
-import { showToast } from 'shared/Functions/ToastFunctions';
-import { firebase } from '@react-native-firebase/messaging';
-import { ScreenLoader } from 'components/Loaders/ScreenLoader';
+import {STR_KEYS} from 'shared/Storage';
+import {showToast} from 'shared/Functions/ToastFunctions';
+import {firebase} from '@react-native-firebase/messaging';
+import {ScreenLoader} from 'components/Loaders/ScreenLoader';
 import Ripple from 'react-native-material-ripple';
-import { AuthContext } from 'Navigator/router';
+import {AuthContext} from 'Navigator/router';
 
 const OTP_INPUT_SIZE = 6;
 
-export function OtpVerification({ route }) {
-  const navigation = useNavigation();
+export function OtpVerification({route}) {
   const [code, setCode] = React.useState('');
   const [apiLoad, setApiLoad] = React.useState(false);
-  const { signIn } = React.useContext(AuthContext);
+  const {signIn} = React.useContext(AuthContext);
   const [disabled, setDisabled] = React.useState(true);
   const dispatch = useDispatch();
   const isCancel = useRef(false);
 
-  const { MobileNumber, countryCode, formattedMobileNumber } = route.params;
+  const {MobileNumber, countryCode} = route.params;
 
   const loginMethod = async OtpCode => {
-    const { MobileNumber, countryCode } = route.params;
+    const {MobileNumber, countryCode} = route.params;
 
     // var raw = JSON.stringify({
     //   phone: MobileNumber,
@@ -94,11 +92,11 @@ export function OtpVerification({ route }) {
             };
             setVerifiedNumber();
             setCountryCodeLocal();
-            dispatch(saveVerifiedNumber({ verifiedNumber: MobileNumber }));
+            dispatch(saveVerifiedNumber({verifiedNumber: MobileNumber}));
           }
         }
       })
-      .catch(error => {
+      .catch(() => {
         setApiLoad(false);
       });
   };
@@ -127,7 +125,7 @@ export function OtpVerification({ route }) {
           showToast('Wrong OTP, try again');
         }
       },
-      onError => {
+      () => {
         // setLoading(false);
       },
     );
@@ -160,8 +158,7 @@ export function OtpVerification({ route }) {
               // textAlign: 'center',
               fontFamily: AppFonts.GillSans,
               color: AppColors.white1,
-            }}
-          >
+            }}>
             OTP
           </Text>
           <VertSpace size={10} />
@@ -171,8 +168,7 @@ export function OtpVerification({ route }) {
               fontSize: 32,
               fontFamily: AppFonts.GillSans,
               color: AppColors.white1,
-            }}
-          >
+            }}>
             Verification
           </Text>
           {/* <VertSpace size={10} />
@@ -190,7 +186,7 @@ export function OtpVerification({ route }) {
 
         <VertSpace size={10} />
 
-        <View style={{ alignItems: 'center' }} />
+        <View style={{alignItems: 'center'}} />
 
         {/* {loading ? (
           <View style={{ padding: 40 }}>
@@ -199,7 +195,7 @@ export function OtpVerification({ route }) {
         ) : null} */}
         {/* <Text style={{ fontSize: 15 }}>{code}</Text> */}
 
-        <View style={{ width: '100%', alignItems: 'center' }}>
+        <View style={{width: '100%', alignItems: 'center'}}>
           <OTPInputView
             style={styles.otpcontainer}
             pinCount={OTP_INPUT_SIZE}
@@ -222,8 +218,7 @@ export function OtpVerification({ route }) {
             alignItems: 'center',
 
             paddingHorizontal: 20,
-          }}
-        >
+          }}>
           {/* <Text style={styles.message_1}>Didn't receive the OTP ? </Text> */}
           {/* <HoriSpace size={Spacing.medium} /> */}
           <Ripple
@@ -233,14 +228,12 @@ export function OtpVerification({ route }) {
             }}
             rippleFades={true}
             rippleContainerBorderRadius={10}
-            style={{}}
-          >
+            style={{}}>
             <Text
               style={{
                 ...styles.message_1,
                 color: disabled ? '#C1C6F3' : '#5563E0',
-              }}
-            >
+              }}>
               Resend OTP
             </Text>
           </Ripple>
@@ -252,7 +245,7 @@ export function OtpVerification({ route }) {
   );
 }
 
-const Timer = ({ initialMinute = 2, initialSeconds = 10 }) => {
+const Timer = ({initialMinute = 2, initialSeconds = 10}) => {
   const [minutes, setMinutes] = React.useState(initialMinute);
   const [seconds, setSeconds] = React.useState(initialSeconds);
   useEffect(() => {
@@ -278,7 +271,7 @@ const Timer = ({ initialMinute = 2, initialSeconds = 10 }) => {
   return (
     <View>
       {minutes === 0 && seconds === 0 ? null : (
-        <Text style={{ color: '#C1C6F3', fontWeight: 'bold' }}>
+        <Text style={{color: '#C1C6F3', fontWeight: 'bold'}}>
           in {minutes}:{seconds < 10 ? `0${seconds}` : seconds}
         </Text>
       )}

@@ -1,7 +1,6 @@
-import React, { Component } from 'react';
-import { StyleSheet } from 'react-native';
-import { AppColors } from '../../assets/AppColors';
-import { AppDimens, Spacing } from '../../shared/Global.styles';
+import {StyleSheet} from 'react-native';
+import {AppColors} from '../../assets/AppColors';
+import {AppDimens, Spacing} from '../../shared/Global.styles';
 
 export const styles = StyleSheet.create({
   settingsView: {

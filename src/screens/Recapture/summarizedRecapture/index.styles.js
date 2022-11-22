@@ -1,7 +1,6 @@
-import { AppColors } from 'assets/AppColors';
-import { StyleSheet } from 'react-native';
-import { wp } from 'shared/dimens';
-import { AppDimens } from 'shared/Global.styles';
+import {AppColors} from 'assets/AppColors';
+import {StyleSheet} from 'react-native';
+import {AppDimens} from 'shared/Global.styles';
 
 export const styles = StyleSheet.create({
   contentContainerStyle: {

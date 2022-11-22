@@ -1,28 +1,21 @@
-import { AppColors } from 'assets/AppColors';
-import { AppFonts } from 'assets/fonts/AppFonts';
-import { AppHeader } from 'components/AppHeader';
-import React, { useEffect, useState } from 'react';
-import { View, SafeAreaView, Text } from 'react-native';
+/* eslint-disable react-native/no-inline-styles */
+import {AppColors} from 'assets/AppColors';
+import {AppFonts} from 'assets/fonts/AppFonts';
+import {AppHeader} from 'components/AppHeader';
+import React, {useEffect} from 'react';
+import {View, SafeAreaView, Text} from 'react-native';
 import SkeletonContent from 'react-native-skeleton-content-nonexpo';
-import { useDispatch, useSelector } from 'react-redux';
-import { ListFetchTypes } from 'redux/constants.redux';
-import { GetSinglePostAction } from 'redux/reducers/Post/SinglePost.reducer';
-import { getTimelinePosts } from 'redux/reducers/Timeline/Timeline.reducer';
-import { GetSinglePostData } from 'redux/sagas/post/request';
-import { AppDimens, GStyles, Spacing, VertSpace } from 'shared/Global.styles';
-import { Skeletons } from 'shared/Skeletons';
-import { PostView } from '../components/PostView/Postview.comp';
+import {useDispatch, useSelector} from 'react-redux';
+import {GetSinglePostAction} from 'redux/reducers/Post/SinglePost.reducer';
+import {AppDimens, GStyles, Spacing, VertSpace} from 'shared/Global.styles';
+import {PostView} from '../components/PostView/Postview.comp';
 
-export const SinglePostScreen = ({ route }) => {
-  const { post } = route.params;
-  const { userToken } = useSelector(state => state.userAuth);
-  const [postData, setPostData] = useState({});
-  const [loading, setLoading] = useState(true);
+export const SinglePostScreen = ({route}) => {
+  const {userToken} = useSelector(state => state.userAuth);
+
   const dispatch = useDispatch();
   // calling the single post api
-  const { data, dataLoading, deleted } = useSelector(
-    state => state.SinglePostReducer,
-  );
+  const {data, dataLoading} = useSelector(state => state.SinglePostReducer);
 
   useEffect(() => {
     dispatch(GetSinglePostAction(userToken, route.params?.post));
@@ -47,29 +40,26 @@ export const SinglePostScreen = ({ route }) => {
       <VertSpace size={10} />
 
       <SkeletonContent
-        containerStyle={{ flexDirection: 'column' }}
+        containerStyle={{flexDirection: 'column'}}
         boneColor={AppColors.RecomBoneDark}
         highlightColor={AppColors.SkeletonBone}
         isLoading={dataLoading}
-        layout={timeline}
-      >
+        layout={timeline}>
         {!dataLoading && (
           <View style={{}}>
             {Object.keys(data).length === 0 ? (
               <View
                 style={[
                   GStyles.Dark,
-                  { justifyContent: 'center', alignItems: 'center' },
-                ]}
-              >
+                  {justifyContent: 'center', alignItems: 'center'},
+                ]}>
                 <Text
                   style={{
                     color: AppColors.white1,
                     fontFamily: AppFonts.CalibriBold,
                     fontSize: 24,
                     marginTop: -AppDimens.height * 0.3,
-                  }}
-                >
+                  }}>
                   {/* Post Deleted */}
                 </Text>
               </View>

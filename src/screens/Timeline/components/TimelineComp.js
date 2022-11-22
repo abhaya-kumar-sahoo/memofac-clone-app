@@ -1,26 +1,20 @@
-import {
-  StyleSheet,
-  Text,
-  View,
-  Image,
-  TouchableOpacity,
-  ScrollView,
-} from 'react-native';
+/* eslint-disable react-native/no-inline-styles */
+import {Text, View, Image, TouchableOpacity, ScrollView} from 'react-native';
 import React from 'react';
-import { AppDimens, GStyles, VertSpace } from 'shared/Global.styles';
+import {AppDimens, GStyles, VertSpace} from 'shared/Global.styles';
 import ImgSrc from 'assets/images/ImageIndex';
 import Ripple from 'react-native-material-ripple';
-import { AddDarkIcon, DoneFillIcon } from 'shared/Icon.Comp';
-import { SearchView } from 'components/SearchComponent';
-import { AppColors } from 'assets/AppColors';
-import { useNavigation } from '@react-navigation/native';
-import { hp } from 'shared/dimens';
+import {AddDarkIcon, DoneFillIcon} from 'shared/Icon.Comp';
+import {SearchView} from 'components/SearchComponent';
+import {AppColors} from 'assets/AppColors';
+import {useNavigation} from '@react-navigation/native';
+import {hp} from 'shared/dimens';
 import SkeletonContent from 'react-native-skeleton-content-nonexpo';
-import { Styles } from '../Timeline.styles';
-import { Skeletons } from 'shared/Skeletons';
-import { AppFonts } from 'assets/fonts/AppFonts';
+import {Styles} from '../Timeline.styles';
+import {Skeletons} from 'shared/Skeletons';
+import {AppFonts} from 'assets/fonts/AppFonts';
 import DefaultImage from 'assets/images/DefaultIcon.png';
-import { useSelector } from 'react-redux';
+import {useSelector} from 'react-redux';
 
 export const TimelineHeader = () => {
   const nav = useNavigation();
@@ -29,25 +23,22 @@ export const TimelineHeader = () => {
       style={{
         width: AppDimens.width,
         ...GStyles.containView,
-      }}
-    >
-      <View style={{ height: hp(20) }} />
+      }}>
+      <View style={{height: hp(20)}} />
 
       <View
         style={{
           paddingHorizontal: 15,
           width: AppDimens.width * 1,
           ...GStyles.flexRowSpaceBetween,
-        }}
-      >
+        }}>
         <View
           style={{
             marginLeft: -6,
-          }}
-        >
+          }}>
           <Image
             source={ImgSrc.MemofacDarkLogo}
-            style={{ height: 65, width: 200 }}
+            style={{height: 65, width: 200}}
             resizeMode="contain"
           />
         </View>
@@ -55,23 +46,22 @@ export const TimelineHeader = () => {
         <Ripple
           onPress={() => {
             nav.navigate('RecaptureActivity');
-          }}
-        >
+          }}>
           <AddDarkIcon color={AppColors.Red} size={35} />
         </Ripple>
       </View>
-      <View style={{ height: hp(15) }} />
+      <View style={{height: hp(15)}} />
 
       <SearchView
         onPress={() => {
-          nav.navigate('SearchScreen', { select: 'other' });
+          nav.navigate('SearchScreen', {select: 'other'});
         }}
       />
     </View>
   );
 };
 
-export const SeeAllLineComp = ({ timeLineLoading }) => {
+export const SeeAllLineComp = ({timeLineLoading}) => {
   const nav = useNavigation();
 
   return (
@@ -102,14 +92,12 @@ export const SeeAllLineComp = ({ timeLineLoading }) => {
             },
           ],
         },
-      ]}
-    >
+      ]}>
       <View
         style={{
           width: '100%',
           ...GStyles.containView,
-        }}
-      >
+        }}>
         <View style={Styles.horizontalDark} />
         <Ripple
           style={{
@@ -118,8 +106,7 @@ export const SeeAllLineComp = ({ timeLineLoading }) => {
             top: -10,
             right: 40,
           }}
-          onPress={() => nav.navigate('SamplePage')}
-        >
+          onPress={() => nav.navigate('SamplePage')}>
           <View style={Styles.SeeAllLDark}>
             <Text style={Styles.SeeAllLDarkText}>See All</Text>
           </View>
@@ -129,9 +116,9 @@ export const SeeAllLineComp = ({ timeLineLoading }) => {
   );
 };
 
-export const CloseContactList = ({ refreshing, ContactsList = [] }) => {
+export const CloseContactList = ({refreshing, ContactsList = []}) => {
   const nav = useNavigation();
-  const { userData } = useSelector(state => state.userAuth);
+  const {userData} = useSelector(state => state.userAuth);
   return (
     <SkeletonContent
       containerStyle={{
@@ -140,11 +127,10 @@ export const CloseContactList = ({ refreshing, ContactsList = [] }) => {
       boneColor={AppColors.RecomBoneDark}
       highlightColor={AppColors.SkeletonBone}
       isLoading={refreshing}
-      layout={Skeletons.contacts}
-    >
+      layout={Skeletons.contacts}>
       {ContactsList.length > 0 && (
         <>
-          <View style={{ marginBottom: hp(50) }}>
+          <View style={{marginBottom: hp(50)}}>
             {ContactsList.length > 0 && (
               <Text
                 style={{
@@ -152,8 +138,7 @@ export const CloseContactList = ({ refreshing, ContactsList = [] }) => {
                   paddingLeft: 30,
                   fontSize: 20,
                   fontFamily: AppFonts.ComicSans,
-                }}
-              >
+                }}>
                 Friend's review
               </Text>
             )}
@@ -167,15 +152,14 @@ export const CloseContactList = ({ refreshing, ContactsList = [] }) => {
               showsHorizontalScrollIndicator={false}
               style={{
                 backgroundColor: AppColors.DarkBG,
-              }}
-            >
+              }}>
               {ContactsList.map((i, k) => {
                 return (
                   <View key={k}>
                     {i.uid == userData.id ? null : (
                       <TouchableOpacity
                         onPress={() =>
-                          nav.navigate('FriendsProfile', { user_id: i.uid })
+                          nav.navigate('FriendsProfile', {user_id: i.uid})
                         }
                         key={k}
                         style={{
@@ -184,8 +168,7 @@ export const CloseContactList = ({ refreshing, ContactsList = [] }) => {
                           justifyContent: 'space-evenly',
                           paddingHorizontal: 5,
                           backgroundColor: AppColors.DarkBG,
-                        }}
-                      >
+                        }}>
                         <Image
                           source={
                             i.image === null
@@ -210,16 +193,14 @@ export const CloseContactList = ({ refreshing, ContactsList = [] }) => {
                             width: 70,
                             justifyContent: 'center',
                             alignItems: 'center',
-                          }}
-                        >
+                          }}>
                           <Text
                             style={{
                               color: AppColors.white1,
                               fontFamily: AppFonts.CalibriBold,
                             }}
                             ellipsizeMode="clip"
-                            numberOfLines={1}
-                          >
+                            numberOfLines={1}>
                             {i.name}
                           </Text>
                         </View>
@@ -230,17 +211,15 @@ export const CloseContactList = ({ refreshing, ContactsList = [] }) => {
                             alignItems: 'center',
                             justifyContent: 'center',
                             paddingRight: 10,
-                          }}
-                        >
-                          <Text style={{ paddingTop: 3, paddingRight: 2 }}>
+                          }}>
+                          <Text style={{paddingTop: 3, paddingRight: 2}}>
                             <DoneFillIcon size={6} />
                           </Text>
                           <Text
                             style={{
                               color: AppColors.white1,
                               fontSize: 10,
-                            }}
-                          >
+                            }}>
                             {i.total_rated_memo}
                           </Text>
                         </View>

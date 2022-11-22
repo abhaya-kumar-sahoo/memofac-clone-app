@@ -1,6 +1,7 @@
+/* eslint-disable react-native/no-inline-styles */
 import React from 'react';
-import { View } from 'react-native';
-import { MemoRateView } from '../MemoRateView';
+import {View} from 'react-native';
+import {MemoRateView} from '../MemoRateView';
 
 export const MemoSelection = ({
   memosList = {},
@@ -12,7 +13,7 @@ export const MemoSelection = ({
     <>
       {Object.values(memosList).map((item, index) => {
         return (
-          <View key={index} style={{ paddingBottom: 30 }}>
+          <View key={index} style={{paddingBottom: 30}}>
             <MemoRateView
               key={index}
               onRemove={() => onRemove(item)}

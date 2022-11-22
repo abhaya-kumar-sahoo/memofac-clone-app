@@ -1,16 +1,16 @@
-import React, { useState } from 'react';
-import { View, TextInput, StyleSheet, SafeAreaView } from 'react-native';
-import { AppHeader } from '../../components/AppHeader';
-import { AccentButton, Container } from '../../components/Mini';
-import { showToast } from 'shared/Functions/ToastFunctions';
-import { useSelector } from 'react-redux';
-import { ReportProblems } from 'redux/sagas/Contacts/api.request';
-import { FontSize, GStyles, VertSpace } from 'shared/Global.styles';
-import { AppFonts } from 'assets/fonts/AppFonts';
-import { AppColors } from 'assets/AppColors';
-import { ScreenLoader } from 'components/Loaders/ScreenLoader';
+import React, {useState} from 'react';
+import {View, TextInput, StyleSheet, SafeAreaView} from 'react-native';
+import {AppHeader} from '../../components/AppHeader';
+import {AccentButton, Container} from '../../components/Mini';
+import {showToast} from 'shared/Functions/ToastFunctions';
+import {useSelector} from 'react-redux';
+import {ReportProblems} from 'redux/sagas/Contacts/api.request';
+import {FontSize, GStyles, VertSpace} from 'shared/Global.styles';
+import {AppFonts} from 'assets/fonts/AppFonts';
+import {AppColors} from 'assets/AppColors';
+import {ScreenLoader} from 'components/Loaders/ScreenLoader';
 
-export const ReportProblem = ({ navigation }) => {
+export const ReportProblem = ({navigation}) => {
   const userToken = useSelector(state => state.userAuth.userToken);
   const [data, setData] = useState('');
   const [loading, setLoading] = useState(false);
@@ -41,7 +41,7 @@ export const ReportProblem = ({ navigation }) => {
           title={'Submit'}
           onPress={onSubmit}
           disabled={data.length === 0}
-          style={{ marginTop: 10 }}
+          style={{marginTop: 10}}
         />
       </AppHeader>
       <VertSpace />

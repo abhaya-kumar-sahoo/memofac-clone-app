@@ -1,11 +1,5 @@
-import {
-  StyleSheet,
-  Text,
-  View,
-  SafeAreaView,
-  Platform,
-  Alert,
-} from 'react-native';
+/* eslint-disable react-native/no-inline-styles */
+import {Text, View, SafeAreaView, Platform, Alert} from 'react-native';
 import {
   check,
   request,
@@ -14,40 +8,37 @@ import {
   RESULTS,
 } from 'react-native-permissions';
 import React from 'react';
-import { AppColors } from 'assets/AppColors';
-import { AppHeader } from 'components/AppHeader';
-import { AccentButton, Container } from 'components/Mini';
-import { ProfilePicker } from '../Profile.screen';
+import {AppColors} from 'assets/AppColors';
+import {AppHeader} from 'components/AppHeader';
+import {AccentButton, Container} from 'components/Mini';
+import {ProfilePicker} from '../Profile.screen';
 import ImagePicker from 'react-native-image-crop-picker';
-import { AppFonts } from 'assets/fonts/AppFonts';
-import { PageDots } from '../NameScreen/UserName';
-import { useNavigation } from '@react-navigation/native';
-import { GStyles, VertSpace } from 'shared/Global.styles';
+import {AppFonts} from 'assets/fonts/AppFonts';
+import {PageDots} from '../NameScreen/UserName';
+import {useNavigation} from '@react-navigation/native';
+import {GStyles, VertSpace} from 'shared/Global.styles';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import { APP_APIS } from 'ApiLogic/API_URL';
-import { STR_KEYS } from 'shared/Storage';
-import { useDispatch, useSelector } from 'react-redux';
+import {APP_APIS} from 'ApiLogic/API_URL';
+import {STR_KEYS} from 'shared/Storage';
+import {useDispatch, useSelector} from 'react-redux';
 import DeviceInfo from 'react-native-device-info';
-import { showToast } from 'shared/Functions/ToastFunctions';
-import { saveProgress } from 'redux/reducers/UserAuth.reducer';
-import { addFavorites } from 'redux/sagas/UserProfile/userProfile.request';
+import {showToast} from 'shared/Functions/ToastFunctions';
+import {saveProgress} from 'redux/reducers/UserAuth.reducer';
+import {addFavorites} from 'redux/sagas/UserProfile/userProfile.request';
 import * as ImagePickers from 'react-native-image-picker';
-import { ScreenLoader } from 'components/Loaders/ScreenLoader';
-import { AuthContext } from 'Navigator/router';
+import {ScreenLoader} from 'components/Loaders/ScreenLoader';
+import {AuthContext} from 'Navigator/router';
 
-export const ProfilePictureScreen = ({ route }) => {
-  const { DOB, gender, name, selectedIds } = route.params;
+export const ProfilePictureScreen = ({route}) => {
+  const {DOB, gender, name, selectedIds} = route.params;
 
-  const { signIn } = React.useContext(AuthContext);
+  const {signIn} = React.useContext(AuthContext);
   const [loading, setLoading] = React.useState(false);
   const [active, setActive] = React.useState(false);
 
   const [imageUri, setImageUri] = React.useState(null);
-  const navigation = useNavigation();
   const dispatch = useDispatch();
-  const { verifiedNumber, proceedStatus, userToken } = useSelector(
-    state => state.userAuth,
-  );
+  const {verifiedNumber} = useSelector(state => state.userAuth);
 
   React.useEffect(() => {
     if (route.params?.croppedImageUri) {
@@ -144,7 +135,7 @@ export const ProfilePictureScreen = ({ route }) => {
         }
       })
 
-      .catch(error => {
+      .catch(() => {
         showToast('Error while registration, please try again');
         setLoading(false);
       })
@@ -172,7 +163,7 @@ export const ProfilePictureScreen = ({ route }) => {
                       onPress: () => console.log('Cancel Pressed'),
                       style: 'cancel',
                     },
-                    { text: 'OK', onPress: () => console.log('ok boss') },
+                    {text: 'OK', onPress: () => console.log('ok boss')},
                   ],
                 );
                 break;
@@ -200,7 +191,7 @@ export const ProfilePictureScreen = ({ route }) => {
                       onPress: () => console.log('Cancel Pressed'),
                       style: 'cancel',
                     },
-                    { text: 'OK', onPress: () => console.log('ok boss') },
+                    {text: 'OK', onPress: () => console.log('ok boss')},
                   ],
                 );
                 break;
@@ -256,13 +247,13 @@ export const ProfilePictureScreen = ({ route }) => {
                       onPress: () => console.log('Cancel Pressed'),
                       style: 'cancel',
                     },
-                    { text: 'OK', onPress: () => openSettings() },
+                    {text: 'OK', onPress: () => openSettings()},
                   ],
                 );
                 break;
             }
           })
-          .catch(error => {
+          .catch(() => {
             // …
             // console.log('some error while fetching permission :', error);
           });
@@ -283,7 +274,7 @@ export const ProfilePictureScreen = ({ route }) => {
                       onPress: () => console.log('Cancel Pressed'),
                       style: 'cancel',
                     },
-                    { text: 'OK', onPress: () => console.log('ok boss') },
+                    {text: 'OK', onPress: () => console.log('ok boss')},
                   ],
                 );
                 break;
@@ -291,7 +282,7 @@ export const ProfilePictureScreen = ({ route }) => {
                 // console.log(
                 //   'The permission has not been requested / is denied but requestable',
                 // );
-                request(PERMISSIONS.IOS.PHOTO_LIBRARY).then(result => {
+                request(PERMISSIONS.IOS.PHOTO_LIBRARY).then(() => {
                   // …
                   // console.log('PHOTO LIBRARY PERMISSION GRANTED.', result);
                 });
@@ -309,19 +300,13 @@ export const ProfilePictureScreen = ({ route }) => {
                       onPress: () => console.log('Cancel Pressed'),
                       style: 'cancel',
                     },
-                    { text: 'OK', onPress: () => openSettings() },
+                    {text: 'OK', onPress: () => openSettings()},
                   ],
                 );
                 break;
               case RESULTS.GRANTED:
                 // console.log('The permission is granted');
                 // Process Image Picker if permission is granted.
-                let options = {
-                  storageOptions: {
-                    skipBackup: true,
-                    path: 'images',
-                  },
-                };
 
                 ImagePicker.openPicker({
                   width: 400,
@@ -353,13 +338,13 @@ export const ProfilePictureScreen = ({ route }) => {
                       onPress: () => console.log('Cancel Pressed'),
                       style: 'cancel',
                     },
-                    { text: 'OK', onPress: () => openSettings() },
+                    {text: 'OK', onPress: () => openSettings()},
                   ],
                 );
                 break;
             }
           })
-          .catch(error => {
+          .catch(() => {
             // …
             // console.log('some error while fetching permission :', error);
           });
@@ -389,8 +374,7 @@ export const ProfilePictureScreen = ({ route }) => {
               fontSize: 42,
               color: AppColors.white1,
               fontFamily: AppFonts.CalibriBold,
-            }}
-          >
+            }}>
             Add Profile
           </Text>
           <Text
@@ -398,8 +382,7 @@ export const ProfilePictureScreen = ({ route }) => {
               fontSize: 42,
               color: AppColors.white1,
               fontFamily: AppFonts.CalibriBold,
-            }}
-          >
+            }}>
             pic
           </Text>
           <VertSpace size={20} />
@@ -408,8 +391,7 @@ export const ProfilePictureScreen = ({ route }) => {
               alignItems: 'center',
 
               justifyContent: 'center',
-            }}
-          >
+            }}>
             <ProfilePicker
               onPress={launchImageLibrary}
               imageUrlParmas={imageUri}

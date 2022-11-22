@@ -1,28 +1,22 @@
-import { StatusBar, StyleSheet, View } from 'react-native';
-import React, { useEffect } from 'react';
-import { AppColors } from 'assets/AppColors';
-import { AppFonts } from 'assets/fonts/AppFonts';
-import { useNavigation } from '@react-navigation/native';
+import {StatusBar, StyleSheet, View} from 'react-native';
+import React, {useEffect} from 'react';
+import {AppColors} from 'assets/AppColors';
+import {useNavigation} from '@react-navigation/native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import { STR_KEYS } from 'shared/Storage';
-import { saveProgress } from 'redux/reducers/UserAuth.reducer';
-import { useDispatch } from 'react-redux';
-import { checkContactPermission } from 'shared/Permission';
-import { syncContacts } from 'redux/reducers/Contact/contacts.reducer';
+import {useDispatch} from 'react-redux';
+import {checkContactPermission} from 'shared/Permission';
+import {syncContacts} from 'redux/reducers/Contact/contacts.reducer';
 import Video from 'react-native-video';
-import { VidSrc } from 'assets/videos/VideoIndex';
-import { Progressbar } from 'components/ProgressBar';
+import {VidSrc} from 'assets/videos/VideoIndex';
 import * as Progress from 'react-native-progress';
-import { hp } from 'shared/dimens';
 
 export const IntroVideo = () => {
   const dispatch = useDispatch();
-  const [loading, setLoading] = React.useState(false);
   const [VideoLength, setVideoLength] = React.useState(0);
 
   const navigation = useNavigation();
   const syncContactsFirst = async () => {
-    const { isPermissionGranted } = await checkContactPermission();
+    const {isPermissionGranted} = await checkContactPermission();
     if (isPermissionGranted) {
       dispatch(syncContacts());
     }
@@ -33,7 +27,7 @@ export const IntroVideo = () => {
   }, []);
 
   return (
-    <View style={{ flex: 1, paddingTop: 20 }}>
+    <View style={{flex: 1, paddingTop: 20}}>
       {/* <Progressbar done={VideoLength} /> */}
       <StatusBar backgroundColor="black" barStyle="light-content" />
 

@@ -1,5 +1,6 @@
-import { AppColors } from 'assets/AppColors';
-import { AppFonts } from 'assets/fonts/AppFonts';
+/* eslint-disable react-native/no-inline-styles */
+import {AppColors} from 'assets/AppColors';
+import {AppFonts} from 'assets/fonts/AppFonts';
 import React from 'react';
 import {
   Pressable,
@@ -10,8 +11,8 @@ import {
   View,
   SafeAreaView,
 } from 'react-native';
-import { useDispatch, useSelector } from 'react-redux';
-import { AppHeader, HeadingBar } from '../../components/AppHeader';
+import {useDispatch, useSelector} from 'react-redux';
+import {AppHeader, HeadingBar} from '../../components/AppHeader';
 import {
   AppDimens,
   FontSize,
@@ -20,14 +21,14 @@ import {
   Spacing,
   VertSpace,
 } from '../../shared/Global.styles';
-import { BioDarkIcon, HelpDarkIcon } from '../../shared/Icon.Comp';
-import { showToast } from 'shared/Functions/ToastFunctions';
-import { APP_APIS } from 'ApiLogic/API_URL';
-import { Modal, Portal } from 'react-native-paper';
-import { ModalButtons } from 'screens/Timeline/components/MenuOption';
-import { HorizontalLine } from 'screens/Timeline/components/PostView/Postview.comp';
-import { navigate } from 'Notification';
-import { AuthContext } from 'Navigator/router';
+import {BioDarkIcon, HelpDarkIcon} from '../../shared/Icon.Comp';
+import {showToast} from 'shared/Functions/ToastFunctions';
+import {APP_APIS} from 'ApiLogic/API_URL';
+import {Modal, Portal} from 'react-native-paper';
+import {ModalButtons} from 'screens/Timeline/components/MenuOption';
+import {HorizontalLine} from 'screens/Timeline/components/PostView/Postview.comp';
+import {navigate} from 'Notification';
+import {AuthContext} from 'Navigator/router';
 
 const AppMenuOption = ({
   onPress = () => {},
@@ -39,8 +40,7 @@ const AppMenuOption = ({
   return (
     <Pressable
       onPress={() => onPress()}
-      style={{ flexDirection: 'row', alignItems: 'center' }}
-    >
+      style={{flexDirection: 'row', alignItems: 'center'}}>
       <IconComponent />
       <HoriSpace size={Spacing.large} />
       <Text
@@ -48,19 +48,17 @@ const AppMenuOption = ({
           fontSize: FontSize.inputText,
           fontFamily: AppFonts.CalibriRegular,
           color: AppColors.white2,
-        }}
-      >
+        }}>
         {optionName}
       </Text>
     </Pressable>
   );
 };
 
-export function SettingsScreen({ navigation }) {
-  const { signOut } = React.useContext(AuthContext);
+export function SettingsScreen({navigation}) {
+  const {signOut} = React.useContext(AuthContext);
   const userToken = useSelector(state => state.userAuth.userToken);
-  const { debugState } = useSelector(state => state.DebugModeReducer);
-  const dispatch = useDispatch();
+
   const [logoutConfirmVisible, setLogoutConfirmVisible] = React.useState(false);
 
   const onLogout = () => {
@@ -96,22 +94,20 @@ export function SettingsScreen({ navigation }) {
         <Modal
           visible={logoutConfirmVisible}
           onDismiss={() => {}}
-          style={{ justifyContent: 'center', alignItems: 'center' }}
+          style={{justifyContent: 'center', alignItems: 'center'}}
           contentContainerStyle={{
             backgroundColor: 'white',
             padding: 20,
             width: AppDimens.width * 0.7,
             borderRadius: 30,
-          }}
-        >
-          <View style={{ alignItems: 'flex-start' }}>
+          }}>
+          <View style={{alignItems: 'flex-start'}}>
             <Text
               style={{
                 fontSize: FontSize.xlarge,
                 color: AppColors.DarkGrey,
                 fontFamily: AppFonts.CalibriBold,
-              }}
-            >
+              }}>
               Are you sure, you want to logout?
             </Text>
             <VertSpace />
@@ -122,11 +118,10 @@ export function SettingsScreen({ navigation }) {
                 flexDirection: 'row',
                 justifyContent: 'space-between',
                 width: '100%',
-              }}
-            >
+              }}>
               <ModalButtons
                 IconVisible={false}
-                modalStyle={{ justifyContent: 'flex-start' }}
+                modalStyle={{justifyContent: 'flex-start'}}
                 title={'Yes'}
                 onPress={() => {
                   setLogoutConfirmVisible(false);
@@ -135,7 +130,7 @@ export function SettingsScreen({ navigation }) {
               />
               <ModalButtons
                 IconVisible={false}
-                modalStyle={{ justifyContent: 'flex-end' }}
+                modalStyle={{justifyContent: 'flex-end'}}
                 title={'No'}
                 onPress={() => {
                   setLogoutConfirmVisible(false);
@@ -170,7 +165,7 @@ export function SettingsScreen({ navigation }) {
       <LogoutConfirmModal />
       {/* OPTIONS */}
       {/* BIO */}
-      <View style={{ padding: Spacing.xxlarge }}>
+      <View style={{padding: Spacing.xxlarge}}>
         <AppMenuOption
           optionName={'Edit profile details'}
           IconComponent={() => <BioDarkIcon size={FontSize.inputText} />}
@@ -251,7 +246,7 @@ export function SettingsScreen({ navigation }) {
   );
 }
 
-const CopyDeviceData = ({ onPress = () => {} }) => {
+const CopyDeviceData = ({onPress = () => {}}) => {
   return (
     <TouchableOpacity onPress={onPress}>
       <Text
@@ -261,8 +256,7 @@ const CopyDeviceData = ({ onPress = () => {} }) => {
           backgroundColor: AppColors.VeryLightGrey,
           padding: 15,
           borderRadius: 10,
-        }}
-      >
+        }}>
         Copy device data
       </Text>
     </TouchableOpacity>

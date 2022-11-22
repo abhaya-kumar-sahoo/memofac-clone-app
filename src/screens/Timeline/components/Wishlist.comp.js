@@ -1,9 +1,8 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, {useEffect, useRef, useState} from 'react';
 import Ripple from 'react-native-material-ripple';
-import { StyleSheet } from 'react-native';
-import { AppColors } from 'assets/AppColors';
-import { WishlistDarkIcon, WishlistFillIcon } from 'shared/Icon.Comp';
-const { Portal, Modal } = require('react-native-paper');
+import {StyleSheet} from 'react-native';
+import {AppColors} from 'assets/AppColors';
+import {WishlistDarkIcon, WishlistFillIcon} from 'shared/Icon.Comp';
 
 const styles = StyleSheet.create({
   containerDark: {
@@ -54,8 +53,7 @@ export const WishListButton = ({
       rippleContainerBorderRadius={20}
       rippleFades={true}
       onPress={onPress}
-      style={styles.containerDark}
-    >
+      style={styles.containerDark}>
       {WishListAdded ? (
         <WishlistFillIcon size={30} />
       ) : (

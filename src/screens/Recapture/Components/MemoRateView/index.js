@@ -1,16 +1,16 @@
-import React, { useEffect, useRef } from 'react';
+/* eslint-disable react-native/no-inline-styles */
+import React, {useEffect, useRef} from 'react';
 import {
   View,
   Text,
   StyleSheet,
-  Image,
   Animated,
   ScrollView,
   Pressable,
   Easing,
 } from 'react-native';
-import { AppColors } from '../../../../assets/AppColors';
-import { AppFonts } from '../../../../assets/fonts/AppFonts';
+import {AppColors} from '../../../../assets/AppColors';
+import {AppFonts} from '../../../../assets/fonts/AppFonts';
 import {
   FontSize,
   GStyles,
@@ -24,12 +24,9 @@ import {
   GoldIcon,
   SilverIcon,
   StarUnFilledDarkIcon,
-  StarUnFilledIcon,
 } from '../../../../shared/Icon.Comp';
-import { wp } from 'shared/dimens';
-import FastImage from 'react-native-fast-image';
-import { Container } from 'components/Mini';
-import { useSelector } from 'react-redux';
+import {wp} from 'shared/dimens';
+import {Container} from 'components/Mini';
 
 const MemorateStyles = StyleSheet.create({
   mainContainer: {
@@ -75,10 +72,9 @@ export const MemoRateView = ({
           // alignItems: 'flex-start',
           marginBottom: -15,
           paddingHorizontal: titleSpacing,
-        }}
-      >
+        }}>
         {!justRating && (
-          <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+          <View style={{flexDirection: 'row', alignItems: 'center'}}>
             {/* MEMO IMAGE */}
             {/* {showImage && (
               <>
@@ -94,8 +90,7 @@ export const MemoRateView = ({
 
             <Text
               numberOfLines={4}
-              style={[MemorateStyles.memoNameDark, { width: memoNameWidth }]}
-            >
+              style={[MemorateStyles.memoNameDark, {width: memoNameWidth}]}>
               {memoName}
             </Text>
           </View>
@@ -106,9 +101,8 @@ export const MemoRateView = ({
         {removable && (
           <Ripple
             rippleContainerBorderRadius={10}
-            style={{ width: 50, height: 50, ...GStyles.containView }}
-            onPress={onRemove}
-          >
+            style={{width: 50, height: 50, ...GStyles.containView}}
+            onPress={onRemove}>
             <CancelIcon color={AppColors.white} size={FontSize.large} />
           </Ripple>
         )}
@@ -119,23 +113,21 @@ export const MemoRateView = ({
           <Text
             style={{
               color: AppColors.LowDark,
-            }}
-          >
+            }}>
             - - - -
           </Text>
         ) : (
           <Text
             style={{
               color: AppColors.LowDark,
-            }}
-          >
+            }}>
             {memoDesc}
           </Text>
         )}
       </Container>
 
       <VertSpace size={10} />
-      <View style={{ paddingHorizontal: paddingHorizontal }}>
+      <View style={{paddingHorizontal: paddingHorizontal}}>
         <RatingComponent
           titleSpacing={titleSpacing}
           ratingGiven={ratingGiven}
@@ -200,7 +192,7 @@ export const RatingComponent = ({
   });
 
   const animationStyle = {
-    transform: [{ scale: animateScale }],
+    transform: [{scale: animateScale}],
   };
 
   return (
@@ -211,31 +203,28 @@ export const RatingComponent = ({
       <StarUnFilledIcon /> */}
 
       <ScrollView
-        contentOffset={{ x: wp(500), y: 0 }}
+        contentOffset={{x: wp(500), y: 0}}
         snapToEnd={true}
         ref={ratingRef}
         showsHorizontalScrollIndicator={false}
-        horizontal
-      >
+        horizontal>
         <HoriSpace size={titleSpacing == 0 ? 0 : 10} />
         {stars.map((item, index) => {
           return (
             <Pressable
-              style={{ flexDirection: 'row' }}
+              style={{flexDirection: 'row'}}
               onPress={() => {
                 AnimateIt(index);
                 onRate(index == rating ? -1 : index);
               }}
-              key={index}
-            >
+              key={index}>
               <Animated.View
                 style={{
                   ...animationStyle,
                   backgroundColor: AppColors.Transparent,
                   alignItems: 'center',
                   padding: 15,
-                }}
-              >
+                }}>
                 {index == rating ? (
                   index > 6 ? (
                     <GoldIcon size={RateStarSize} />
@@ -253,8 +242,7 @@ export const RatingComponent = ({
                     fontSize: FontSize.medium,
                     color: AppColors.LowWhite,
                     fontFamily: AppFonts.CalibriBold,
-                  }}
-                >
+                  }}>
                   {index + 1}
                 </Text>
               </Animated.View>

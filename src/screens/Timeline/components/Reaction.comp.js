@@ -1,18 +1,12 @@
-import { AppColors } from '../../../assets/AppColors';
-import React, { Fragment } from 'react';
-import {
-  HeartFillIcon,
-  HeartIcon,
-  HeartIconDark,
-} from '../../../shared/Icon.Comp';
-import { AppDimens, FontSize, GStyles } from '../../../shared/Global.styles';
+import {AppColors} from '../../../assets/AppColors';
+import React from 'react';
+import {HeartFillIcon, HeartIconDark} from '../../../shared/Icon.Comp';
+import {GStyles} from '../../../shared/Global.styles';
 import Ripple from 'react-native-material-ripple';
-import { AddReactionApiCall } from '../../../redux/sagas/post/request';
-import { useSelector } from 'react-redux';
-const { View, Text, Pressable, Animated, StyleSheet } = require('react-native');
-const { Portal, Modal } = require('react-native-paper');
-import { showToast } from 'shared/Functions/ToastFunctions';
-import { TouchableOpacity } from 'react-native-gesture-handler';
+import {AddReactionApiCall} from '../../../redux/sagas/post/request';
+import {useSelector} from 'react-redux';
+const {StyleSheet} = require('react-native');
+import {showToast} from 'shared/Functions/ToastFunctions';
 export const ReactionButton = ({
   Icon = () => {
     return null;
@@ -24,9 +18,8 @@ export const ReactionButton = ({
       // rippleColor={AppColors.yellowDarkI}
       rippleContainerBorderRadius={20}
       rippleFades
-      style={{ height: 50, width: 50, ...GStyles.containView }}
-      onPress={() => onPress()}
-    >
+      style={{height: 50, width: 50, ...GStyles.containView}}
+      onPress={() => onPress()}>
       <Icon />
     </Ripple>
   );
@@ -41,13 +34,13 @@ export const ReactionConsts = {
   AWE: 5,
   LAUGH: 6,
 };
-export const ReactionView = ({ post, onReaction = () => {} }) => {
+export const ReactionView = ({post, onReaction = () => {}}) => {
   // const [visible, setVisible] = React.useState(false);
-  const { myRecation } = { ...post };
+  const {myRecation} = {...post};
   const [reaction, setreaction] = React.useState(Number(myRecation));
   // const showModal = () => setVisible(true);
   // const hideModal = () => setVisible(false);
-  const { userAuth } = useSelector(state => state);
+  const {userAuth} = useSelector(state => state);
 
   // console.log('reaction,', reaction);
   // console.log('myRecation,', myRecation);
@@ -57,16 +50,19 @@ export const ReactionView = ({ post, onReaction = () => {} }) => {
   const onReactionClick = reaction => {
     // hideModal();
     setreaction(reaction);
-    if (reaction !== -1) showToast('You have reacted to this post');
+    if (reaction !== -1) {
+      showToast('You have reacted to this post');
+    }
 
     onReaction(reaction);
     AddReactionApiCall(userAuth.userToken, post.id, reaction)
-      .then(response => {
+      .then(() => {
         // console.log(response);
       })
-      .catch(error => {
-        if (reaction !== -1)
+      .catch(() => {
+        if (reaction !== -1) {
           showToast('Something went wrong while reacting to this post.');
+        }
       });
 
     // setTimeout(() => {
@@ -82,12 +78,6 @@ export const ReactionView = ({ post, onReaction = () => {} }) => {
     // }, 100);
   };
 
-  const onReactionPress = () => {
-    onReactionClick(
-      reaction == '-1' ? ReactionConsts.HEART : ReactionConsts.NONE,
-    );
-  };
-
   return (
     <Ripple
       rippleContainerBorderRadius={20}
@@ -97,8 +87,7 @@ export const ReactionView = ({ post, onReaction = () => {} }) => {
           reaction <= -1 ? ReactionConsts.HEART : ReactionConsts.NONE,
         );
       }}
-      style={reactStyles.containerDark}
-    >
+      style={reactStyles.containerDark}>
       <>
         {/* {reaction === ReactionConsts.NONE && <HeartIcon size={30} />} */}
 

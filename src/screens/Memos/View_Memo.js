@@ -1,4 +1,5 @@
-import React, { useRef, useState } from 'react';
+/* eslint-disable react-native/no-inline-styles */
+import React, {useRef, useState} from 'react';
 import {
   FlatList,
   RefreshControl,
@@ -7,10 +8,10 @@ import {
   View,
   SafeAreaView,
 } from 'react-native';
-import { useDispatch, useSelector } from 'react-redux';
-import { AppColors } from '../../assets/AppColors';
-import { AppHeader } from '../../components/AppHeader';
-import { AccentButton, Container } from '../../components/Mini';
+import {useDispatch, useSelector} from 'react-redux';
+import {AppColors} from '../../assets/AppColors';
+import {AppHeader} from '../../components/AppHeader';
+import {AccentButton, Container} from '../../components/Mini';
 import {
   MemoDetailsApi,
   MemoRelatedPostsApi,
@@ -24,34 +25,34 @@ import {
   Spacing,
   VertSpace,
 } from '../../shared/Global.styles';
-import { WishlistIcon, WishlistWhiteIcon } from '../../shared/Icon.Comp';
-import { MemoStatView } from './Memos.Nav';
+import {WishlistIcon, WishlistWhiteIcon} from '../../shared/Icon.Comp';
+import {MemoStatView} from './Memos.Nav';
 import SkeletonContent from 'react-native-skeleton-content-nonexpo';
-import { showToast } from 'shared/Functions/ToastFunctions';
+import {showToast} from 'shared/Functions/ToastFunctions';
 import {
   PostSeparator,
   PostView,
 } from 'screens/Timeline/components/PostView/Postview.comp';
 
-import { hp } from 'shared/dimens';
-import { GetMemoDetailsAction } from 'redux/reducers/Memos/MemoDetails.reducer';
-import { useNavigation } from '@react-navigation/core';
+import {hp} from 'shared/dimens';
+import {GetMemoDetailsAction} from 'redux/reducers/Memos/MemoDetails.reducer';
+import {useNavigation} from '@react-navigation/core';
 import FastImage from 'react-native-fast-image';
-import { PopupActionsModal } from './ReportMemo/PopUpActionsModal';
-import { AppFonts } from 'assets/fonts/AppFonts';
-import { SummarizedRecapture } from 'screens/Recapture/summarizedRecapture';
-import { ExpGrantModal } from 'screens/Recapture/ExpGrantModal';
-import { addMemoWishlistApiCall } from 'redux/sagas/wishlist/request';
-import { MiniGalleryList } from 'screens/MyProfile/components/MiniGalleryList';
-import { ImageGridView } from 'screens/GalleryPicker/ImageGridView';
-import { Skeletons } from 'shared/Skeletons';
-import { SkeletonMemoDetails, UsersRatedList } from './MemoDetailsView';
-import { GetMemoPostAction } from 'redux/reducers/Post/MemoRelatedPost.reducer';
+import {PopupActionsModal} from './ReportMemo/PopUpActionsModal';
+import {AppFonts} from 'assets/fonts/AppFonts';
+import {SummarizedRecapture} from 'screens/Recapture/summarizedRecapture';
+import {ExpGrantModal} from 'screens/Recapture/ExpGrantModal';
+import {addMemoWishlistApiCall} from 'redux/sagas/wishlist/request';
+import {MiniGalleryList} from 'screens/MyProfile/components/MiniGalleryList';
+import {ImageGridView} from 'screens/GalleryPicker/ImageGridView';
+import {Skeletons} from 'shared/Skeletons';
+import {SkeletonMemoDetails, UsersRatedList} from './MemoDetailsView';
+import {GetMemoPostAction} from 'redux/reducers/Post/MemoRelatedPost.reducer';
 import InAppReview from 'react-native-in-app-review';
 
 export const MEMO_IMAGE_RES = 180;
 
-export const ViewMemo = ({ route }) => {
+export const ViewMemo = ({route}) => {
   const dispatch = useDispatch();
   const [summarizedModal, setSummarizedModal] = useState(false);
   const [memoForRating, setMemoForRating] = useState({});
@@ -62,27 +63,26 @@ export const ViewMemo = ({ route }) => {
   const openModal = () => setVisibility(true);
   const [PostData, setPostData] = useState([]);
   const navigation = useNavigation();
-  const { userAuth } = useSelector(state => state);
-  const { userToken } = { ...userAuth };
+  const {userAuth} = useSelector(state => state);
+  const {userToken} = {...userAuth};
   const rateGiven = useRef(-1);
   const [memoDetailss, setMemoDetails] = useState({});
-  const [dataLoadingg, setDataLoading] = useState(true);
   const [Wish, setWish] = React.useState(false);
   const [MemoPostLoading, setMemoPostLoading] = React.useState(false);
 
-  const { userProfileData } = useSelector(state => state.UserDetailsReducer);
-  const { user, content } = { ...userProfileData };
-  const { id, total_rated_memo } = { ...user };
+  const {userProfileData} = useSelector(state => state.UserDetailsReducer);
+  const {user} = {...userProfileData};
+  const {id, total_rated_memo} = {...user};
   const selectedGroupDataRef = useRef({
     name: 'Public',
     id: 3,
     count: 0,
   });
-  const { memoDetails, dataLoading } = useSelector(
+  const {memoDetails, dataLoading} = useSelector(
     state => state.MemoDetailsReducer,
   );
-  const { exp, wish, rating, image, title, me } = { ...memoDetails };
-  const { memoId } = route.params;
+  const {exp, wish, rating, image, title, me} = {...memoDetails};
+  const {memoId} = route.params;
   const [userList, setUserList] = React.useState([]);
   const [userListVisible, setUserListVisible] = React.useState(true);
   const [GalleryList, setGalleryList] = React.useState([]);
@@ -163,7 +163,7 @@ export const ViewMemo = ({ route }) => {
           }
         }
       })
-      .catch(error => {
+      .catch(() => {
         showToast('Something went wrong while adding to Wishlist');
       });
   };
@@ -253,16 +253,15 @@ export const ViewMemo = ({ route }) => {
         ListHeaderComponent={
           <>
             <Container padding={18}>
-              <View style={{ ...GStyles.containView }}>
+              <View style={{...GStyles.containView}}>
                 <VertSpace size={35} />
 
                 <SkeletonContent
-                  containerStyle={{ paddingHorizontal: -20 }}
+                  containerStyle={{paddingHorizontal: -20}}
                   boneColor={AppColors.RecomBoneDark}
                   highlightColor={AppColors.SkeletonBone}
                   isLoading={dataLoading}
-                  layout={SkeletonMemoDetails.FastImageSkeleton}
-                >
+                  layout={SkeletonMemoDetails.FastImageSkeleton}>
                   <FastImage
                     style={{
                       width: hp(MEMO_IMAGE_RES),
@@ -278,26 +277,24 @@ export const ViewMemo = ({ route }) => {
               </View>
               <VertSpace size={40} />
               <SkeletonContent
-                containerStyle={{ paddingHorizontal: -20 }}
+                containerStyle={{paddingHorizontal: -20}}
                 boneColor={AppColors.RecomBoneDark}
                 highlightColor={AppColors.SkeletonBone}
                 isLoading={dataLoading}
-                layout={SkeletonMemoDetails.MemoStatView}
-              >
+                layout={SkeletonMemoDetails.MemoStatView}>
                 <MemoStatView
-                  item={{ ...memoDetails }}
+                  item={{...memoDetails}}
                   dataLoading={dataLoading}
                 />
               </SkeletonContent>
 
               <VertSpace size={30} />
               <SkeletonContent
-                containerStyle={{ paddingHorizontal: -20 }}
+                containerStyle={{paddingHorizontal: -20}}
                 boneColor={AppColors.RecomBoneDark}
                 highlightColor={AppColors.SkeletonBone}
                 isLoading={userListVisible}
-                layout={SkeletonMemoDetails.UsersRatedList}
-              >
+                layout={SkeletonMemoDetails.UsersRatedList}>
                 <UsersRatedList
                   users={userList}
                   onPress={() => {
@@ -311,12 +308,11 @@ export const ViewMemo = ({ route }) => {
               <VertSpace size={60} />
 
               <SkeletonContent
-                containerStyle={{ paddingHorizontal: -20 }}
+                containerStyle={{paddingHorizontal: -20}}
                 boneColor={AppColors.RecomBoneDark}
                 highlightColor={AppColors.SkeletonBone}
                 isLoading={dataLoading}
-                layout={SkeletonMemoDetails.WishButton}
-              >
+                layout={SkeletonMemoDetails.WishButton}>
                 <TouchableOpacity
                   onPress={addToWishlist}
                   style={{
@@ -330,8 +326,7 @@ export const ViewMemo = ({ route }) => {
                     backgroundColor: Wish
                       ? AppColors.blue1
                       : AppColors.DarkGrey2,
-                  }}
-                >
+                  }}>
                   <Text>
                     {Wish ? (
                       <WishlistWhiteIcon color={AppColors.white} size={20} />
@@ -347,8 +342,7 @@ export const ViewMemo = ({ route }) => {
                         : AppFonts.CalibriRegular,
                       paddingLeft: 20,
                       fontSize: 20,
-                    }}
-                  >
+                    }}>
                     {Wish ? 'Added to wishlist' : 'Add to wishlist'}
                   </Text>
                 </TouchableOpacity>
@@ -386,15 +380,14 @@ export const ViewMemo = ({ route }) => {
         showsVerticalScrollIndicator={false}
         keyExtractor={(_, index) => index.toString()}
         data={MemoRelatedPost.data}
-        renderItem={({ item, index }) => (
+        renderItem={({item, index}) => (
           <SkeletonContent
             key={index}
-            containerStyle={{ flexDirection: 'column' }}
+            containerStyle={{flexDirection: 'column'}}
             boneColor={AppColors.RecomBoneDark}
             highlightColor={AppColors.SkeletonBone}
             isLoading={MemoPostLoading}
-            layout={Skeletons.timeline}
-          >
+            layout={Skeletons.timeline}>
             <PostView item={item} index={index} location={'P'} />
           </SkeletonContent>
         )}
@@ -494,7 +487,7 @@ export const ViewMemo = ({ route }) => {
 //   ],
 // };
 
-export const ImageGridViewMemoDetails = ({ galleryImages }) => {
+export const ImageGridViewMemoDetails = ({galleryImages}) => {
   const Navigation = useNavigation();
   let newJson = galleryImages.map(rec => {
     return {
@@ -519,15 +512,14 @@ export const ImageGridViewMemoDetails = ({ galleryImages }) => {
               color: AppColors.DarkGrey,
               fontSize: FontSize.inputText,
               fontFamily: AppFonts.CalibriBold,
-            }}
-          >
+            }}>
             Gallery
           </Text>
           <VertSpace size={Spacing.xlarge} />
         </>
       }
       ItemSeparatorComponent={() => <VertSpace size={8} />}
-      renderItem={({ item, index, separators }) => {
+      renderItem={({item, index}) => {
         return (
           <ImageGridView
             onPress={() =>

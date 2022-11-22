@@ -1,17 +1,18 @@
-import { StyleSheet, Text, View, SafeAreaView } from 'react-native';
-import React, { useState } from 'react';
-import { AppHeader } from 'components/AppHeader';
-import { AccentButton, Container } from 'components/Mini';
-import { AppColors } from 'assets/AppColors';
-import { useNavigation } from '@react-navigation/native';
-import { AppDimens, GStyles, VertSpace } from 'shared/Global.styles';
-import { PageDots } from '../NameScreen/UserName';
-import { SelectableRadioButton } from 'components/SelectableRadioButton';
-import { GenderOptions } from '../Profile.screen';
-import { AppFonts } from 'assets/fonts/AppFonts';
+/* eslint-disable react-native/no-inline-styles */
+import {StyleSheet, Text, View, SafeAreaView} from 'react-native';
+import React, {useState} from 'react';
+import {AppHeader} from 'components/AppHeader';
+import {AccentButton, Container} from 'components/Mini';
+import {AppColors} from 'assets/AppColors';
+import {useNavigation} from '@react-navigation/native';
+import {GStyles, VertSpace} from 'shared/Global.styles';
+import {PageDots} from '../NameScreen/UserName';
+import {SelectableRadioButton} from 'components/SelectableRadioButton';
+import {GenderOptions} from '../Profile.screen';
+import {AppFonts} from 'assets/fonts/AppFonts';
 
-export const UserGender = ({ route }) => {
-  const { name } = route.params;
+export const UserGender = ({route}) => {
+  const {name} = route.params;
   const navigation = useNavigation();
   const [Gender, setGender] = useState('Male');
   return (
@@ -22,7 +23,7 @@ export const UserGender = ({ route }) => {
             title={'Next'}
             // disabled={code.length < OTP_INPUT_SIZE}
             onPress={() =>
-              navigation.navigate('UserYearOfBirth', { gender: Gender, name })
+              navigation.navigate('UserYearOfBirth', {gender: Gender, name})
             }
           />
         </AppHeader>
@@ -34,8 +35,7 @@ export const UserGender = ({ route }) => {
               fontSize: 38,
               color: AppColors.white1,
               fontFamily: AppFonts.GillSans,
-            }}
-          >
+            }}>
             Choose your
           </Text>
           <Text
@@ -44,13 +44,12 @@ export const UserGender = ({ route }) => {
               color: AppColors.white1,
               fontFamily: AppFonts.GillSans,
               marginTop: -5,
-            }}
-          >
+            }}>
             gender
           </Text>
           <VertSpace />
 
-          <Text style={{ color: AppColors.MediumGrey, fontSize: 18 }}>
+          <Text style={{color: AppColors.MediumGrey, fontSize: 18}}>
             To personalize the contents for you
           </Text>
           <VertSpace size={45} />
@@ -70,5 +69,3 @@ export const UserGender = ({ route }) => {
     </SafeAreaView>
   );
 };
-
-const styles = StyleSheet.create({});

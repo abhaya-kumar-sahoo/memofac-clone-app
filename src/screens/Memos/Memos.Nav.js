@@ -1,8 +1,9 @@
+/* eslint-disable react-native/no-inline-styles */
 import React from 'react';
-import { useEffect } from 'react';
-import { useState } from 'react';
-import { ActivityIndicator, Modal, Portal } from 'react-native-paper';
-import { AppColors } from '../../assets/AppColors';
+import {useEffect} from 'react';
+import {useState} from 'react';
+import {ActivityIndicator, Modal, Portal} from 'react-native-paper';
+import {AppColors} from '../../assets/AppColors';
 import {
   FlatList,
   Pressable,
@@ -14,8 +15,8 @@ import {
   View,
   SafeAreaView,
 } from 'react-native';
-import { AppHeader } from '../../components/AppHeader';
-import { AddIcon, DoneFillIcon, SearchNavIcon } from '../../shared/Icon.Comp';
+import {AppHeader} from '../../components/AppHeader';
+import {AddIcon, DoneFillIcon, SearchNavIcon} from '../../shared/Icon.Comp';
 import Ripple from 'react-native-material-ripple';
 import {
   AppDimens,
@@ -25,23 +26,23 @@ import {
   Spacing,
   VertSpace,
 } from '../../shared/Global.styles';
-import { AppFonts } from '../../assets/fonts/AppFonts';
-import { Container } from '../../components/Mini';
-import { useNavigation } from '@react-navigation/core';
-import { AddNewMemoModal } from './AddNewMemo/AddNewMoemoModal';
+import {AppFonts} from '../../assets/fonts/AppFonts';
+import {Container} from '../../components/Mini';
+import {useNavigation} from '@react-navigation/core';
+import {AddNewMemoModal} from './AddNewMemo/AddNewMoemoModal';
 import SkeletonContent from 'react-native-skeleton-content-nonexpo';
-import { useDispatch, useSelector } from 'react-redux';
-import { MemosListApiCall } from '../../redux/sagas/Memos/request';
+import {useDispatch, useSelector} from 'react-redux';
+import {MemosListApiCall} from '../../redux/sagas/Memos/request';
 
-import { TextNoDataView } from '../../components/NodataView/TextNodata';
-import { DebugText } from 'components/debugComps';
-import { PostSeparator } from 'screens/Timeline/components/PostView/Postview.comp';
-import { ListLoader } from 'components/Loaders/ListLoader';
-import { Skeletons } from 'shared/Skeletons';
-import { showToast } from 'shared/Functions/ToastFunctions';
-import { hp, wp } from 'shared/dimens';
+import {TextNoDataView} from '../../components/NodataView/TextNodata';
+import {DebugText} from 'components/debugComps';
+import {PostSeparator} from 'screens/Timeline/components/PostView/Postview.comp';
+import {ListLoader} from 'components/Loaders/ListLoader';
+import {Skeletons} from 'shared/Skeletons';
+import {showToast} from 'shared/Functions/ToastFunctions';
+import {hp, wp} from 'shared/dimens';
 import FastImage from 'react-native-fast-image';
-import { HorizontalGalleryList } from 'screens/MyProfile/components/MiniGalleryList';
+import {HorizontalGalleryList} from 'screens/MyProfile/components/MiniGalleryList';
 export const EmailVerifyModal = props => {
   const [visible, setVisible] = useState(true);
 
@@ -63,45 +64,43 @@ export const EmailVerifyModal = props => {
           margin: 16,
           alignItems: 'center',
           borderRadius: 10,
-        }}
-      >
+        }}>
         <View
           style={{
             justifyContent: 'space-between',
             flexDirection: 'row',
             width: '100%',
             alignItems: 'center',
-          }}
-        >
-          <View style={{ width: 10 }} />
-          <Pressable style={{ padding: 10 }} onPress={hideModal}>
+          }}>
+          <View style={{width: 10}} />
+          <Pressable style={{padding: 10}} onPress={hideModal}>
             <Text>Hello</Text>
           </Pressable>
         </View>
 
         {/* <VerifyEmail width={200} /> */}
-        <View style={{ height: 20 }} />
-        <Text style={{ fontSize: 20 }}>Verify email</Text>
-        <Text style={{ fontSize: 14, textAlign: 'center' }}>
+        <View style={{height: 20}} />
+        <Text style={{fontSize: 20}}>Verify email</Text>
+        <Text style={{fontSize: 14, textAlign: 'center'}}>
           Your email verification is pending.
         </Text>
-        <View style={{ height: 20 }} />
+        <View style={{height: 20}} />
       </Modal>
     </Portal>
   );
 };
 
-const MemoHeader = ({ onCreate = () => {}, onSearch = () => {} }) => {
-  const { navigate } = useNavigation();
+const MemoHeader = ({onCreate = () => {}, onSearch = () => {}}) => {
+  const {navigate} = useNavigation();
   return (
-    <View style={{ flexDirection: 'row', marginRight: -Spacing.large }}>
+    <View style={{flexDirection: 'row', marginRight: -Spacing.large}}>
       {/*  */}
       <AddNewMemoModal
         onSubmitPress={SearchValue => {
-          navigate('SavetoCollection', { SearchValue });
+          navigate('SavetoCollection', {SearchValue});
         }}
         ButtonComponent={() => (
-          <View style={{ padding: Spacing.large }}>
+          <View style={{padding: Spacing.large}}>
             <AddIcon size={20} />
           </View>
         )}
@@ -109,7 +108,7 @@ const MemoHeader = ({ onCreate = () => {}, onSearch = () => {} }) => {
 
       {/* <HoriSpace size={20} /> */}
 
-      <Ripple style={{ padding: Spacing.large }} onPress={() => onSearch()}>
+      <Ripple style={{padding: Spacing.large}} onPress={() => onSearch()}>
         <SearchNavIcon size={20} />
       </Ripple>
     </View>
@@ -117,11 +116,11 @@ const MemoHeader = ({ onCreate = () => {}, onSearch = () => {} }) => {
 };
 
 const ListData = [
-  { key: 1, name: 'Movies' },
-  { key: 2, name: 'TV Series' },
-  { key: 3, name: 'Songs' },
-  { key: 4, name: 'Travel' },
-  { key: 5, name: 'Books' },
+  {key: 1, name: 'Movies'},
+  {key: 2, name: 'TV Series'},
+  {key: 3, name: 'Songs'},
+  {key: 4, name: 'Travel'},
+  {key: 5, name: 'Books'},
 ];
 
 export const MemosPage = () => {
@@ -131,10 +130,10 @@ export const MemosPage = () => {
   const navigation = useNavigation();
   const [Selected, setSelected] = useState(1);
   const [Loader, setLoader] = useState(true);
-  const { userAuth, subCategoryRedux, MainCategoryRedux } = useSelector(
+  const {userAuth, subCategoryRedux, MainCategoryRedux} = useSelector(
     state => state,
   );
-  const [Secondary, setSecondary] = useState({ id: 1, category_name: '' });
+  const [Secondary, setSecondary] = useState({id: 1, category_name: ''});
   const [MemosList, setMemosList] = useState([]);
 
   const SkeletonArray = new Array(3).fill(Skeletons.MemoStatView1);
@@ -175,22 +174,21 @@ export const MemosPage = () => {
       <AppHeader padding={Spacing.xxlarge} enableBack />
 
       <Container>
-        <View style={{ marginVertical: 20 }}>
+        <View style={{marginVertical: 20}}>
           {subCategoryRedux?.dataLoading && (
             <ActivityIndicator color={AppColors.MediumGrey} />
           )}
 
           <ScrollView
             showsHorizontalScrollIndicator={false}
-            style={{ marginHorizontal: -Spacing.xxlarge }}
-            horizontal={true}
-          >
+            style={{marginHorizontal: -Spacing.xxlarge}}
+            horizontal={true}>
             <HoriSpace size={Spacing.xxlarge} />
             {subCategoryRedux &&
               subCategoryRedux?.dataLoading == false &&
               subCategoryRedux.subcategoryList.map((dataObj, index) => {
                 return (
-                  <View style={{ flexDirection: 'row' }} key={dataObj.id}>
+                  <View style={{flexDirection: 'row'}} key={dataObj.id}>
                     <Ripple
                       onPress={() => {
                         pageRef.current = 1;
@@ -210,14 +208,13 @@ export const MemosPage = () => {
                         paddingHorizontal: 16,
                         flexDirection: 'row',
                         alignItems: 'center',
-                      }}
-                    >
+                      }}>
                       <FastImage
                         style={{
                           width: hp(26),
                           height: hp(26),
                         }}
-                        source={{ uri: dataObj.icon }}
+                        source={{uri: dataObj.icon}}
                         resizeMethod="scale"
                         resizeMode="contain"
                       />
@@ -230,8 +227,7 @@ export const MemosPage = () => {
                               ? AppColors.DarkGrey2
                               : AppColors.MediumGrey,
                           fontSize: 20,
-                        }}
-                      >
+                        }}>
                         {dataObj.category_name}
                       </Text>
                     </Ripple>
@@ -255,8 +251,7 @@ export const MemosPage = () => {
         boneColor={AppColors.RecomBoneDark}
         highlightColor={AppColors.SkeletonBone}
         isLoading={Loader && MemosList.length == 0}
-        layout={SkeletonArray}
-      >
+        layout={SkeletonArray}>
         <FlatList
           ListFooterComponent={
             <>
@@ -278,14 +273,14 @@ export const MemosPage = () => {
           data={MemosList}
           keyExtractor={(_, index) => index.toString()}
           ItemSeparatorComponent={() => (
-            <View style={{ marginTop: -10 }}>
+            <View style={{marginTop: -10}}>
               <PostSeparator
                 backgroundColor={AppColors.Skeleton}
                 width={AppDimens.width * 0.8}
               />
             </View>
           )}
-          renderItem={({ item }) => {
+          renderItem={({item}) => {
             return (
               <View>
                 <VertSpace size={20} />
@@ -317,10 +312,10 @@ export const SamplePage = () => {
   const navigation = useNavigation();
   const [Selected, setSelected] = useState(1);
   const [Loader, setLoader] = useState(true);
-  const { userAuth, subCategoryRedux, MainCategoryRedux } = useSelector(
+  const {userAuth, subCategoryRedux, MainCategoryRedux} = useSelector(
     state => state,
   );
-  const [Secondary, setSecondary] = useState({ id: 1, category_name: '' });
+  const [Secondary, setSecondary] = useState({id: 1, category_name: ''});
   const [MemosList, setMemosList] = useState([]);
 
   const SkeletonArray = new Array(3).fill(Skeletons.MemoStatView1);
@@ -368,7 +363,7 @@ export const SamplePage = () => {
       </AppHeader>
 
       <Container>
-        <View style={{ marginVertical: 20 }}>
+        <View style={{marginVertical: 20}}>
           {subCategoryRedux?.dataLoading && (
             <ActivityIndicator color={AppColors.MediumGrey} />
           )}
@@ -378,14 +373,13 @@ export const SamplePage = () => {
             style={{
               marginHorizontal: -Spacing.xxlarge,
             }}
-            horizontal={true}
-          >
+            horizontal={true}>
             <HoriSpace size={Spacing.xxlarge} />
             {subCategoryRedux &&
               subCategoryRedux?.dataLoading == false &&
               subCategoryRedux.subcategoryList.map((dataObj, index) => {
                 return (
-                  <View style={{ flexDirection: 'row' }} key={dataObj.id}>
+                  <View style={{flexDirection: 'row'}} key={dataObj.id}>
                     <Ripple
                       onPress={() => {
                         pageRef.current = 1;
@@ -405,14 +399,13 @@ export const SamplePage = () => {
                         paddingHorizontal: 16,
                         flexDirection: 'row',
                         alignItems: 'center',
-                      }}
-                    >
+                      }}>
                       <FastImage
                         style={{
                           width: hp(26),
                           height: hp(26),
                         }}
-                        source={{ uri: dataObj.icon }}
+                        source={{uri: dataObj.icon}}
                         resizeMethod="scale"
                         resizeMode="contain"
                       />
@@ -426,8 +419,7 @@ export const SamplePage = () => {
                               : AppColors.MediumGrey,
 
                           fontSize: 20,
-                        }}
-                      >
+                        }}>
                         {dataObj.category_name}
                       </Text>
                     </Ripple>
@@ -452,8 +444,7 @@ export const SamplePage = () => {
         boneColor={AppColors.RecomBoneDark}
         highlightColor={AppColors.SkeletonBone}
         isLoading={Loader && MemosList.length == 0}
-        layout={SkeletonArray}
-      >
+        layout={SkeletonArray}>
         <FlatList
           ListFooterComponent={
             <>
@@ -475,14 +466,14 @@ export const SamplePage = () => {
           data={MemosList}
           keyExtractor={(_, index) => index.toString()}
           ItemSeparatorComponent={() => (
-            <View style={{ marginTop: -10 }}>
+            <View style={{marginTop: -10}}>
               <PostSeparator
                 backgroundColor={AppColors.Skeleton}
                 width={AppDimens.width * 0.8}
               />
             </View>
           )}
-          renderItem={({ item }) => {
+          renderItem={({item}) => {
             return (
               <View>
                 <VertSpace size={20} />
@@ -527,7 +518,7 @@ const memoDataProps = {
 };
 
 export const MemoStatView = ({
-  item = { ...memoDataProps },
+  item = {...memoDataProps},
   dataLoading,
   CategoryImage = null,
   gapSize_Des = 8,
@@ -563,18 +554,16 @@ export const MemoStatView = ({
           flexDirection: 'row',
           justifyContent: 'space-between',
           alignItems: 'flex-start',
-        }}
-      >
+        }}>
         <TouchableOpacity onPress={onPress}>
-          <View style={{ width: wp(270) }}>
+          <View style={{width: wp(270)}}>
             <Text
               style={{
                 fontFamily: AppFonts.Chaparral,
                 color: AppColors.white3,
                 fontSize: 30,
                 lineHeight: 35,
-              }}
-            >
+              }}>
               {item.title}
             </Text>
           </View>
@@ -586,8 +575,7 @@ export const MemoStatView = ({
                   fontFamily: AppFonts.CalibriRegular,
                   color: AppColors.LowWhite,
                   fontSize: FontSize.medium,
-                }}
-              >
+                }}>
                 {item.description}
               </Text>
               <VertSpace size={8} />
@@ -599,14 +587,13 @@ export const MemoStatView = ({
               style={{
                 ...GStyles.flexRow,
                 alignItems: 'center',
-              }}
-            >
+              }}>
               <FastImage
                 style={{
                   width: hp(26),
                   height: hp(26),
                 }}
-                source={{ uri: item.image }}
+                source={{uri: item.image}}
                 resizeMethod="scale"
                 resizeMode="contain"
               />
@@ -616,8 +603,7 @@ export const MemoStatView = ({
                   fontFamily: AppFonts.CalibriRegular,
                   color: AppColors.white1,
                   fontSize: 20,
-                }}
-              >
+                }}>
                 {item.category_name}
               </Text>
             </View>
@@ -631,8 +617,7 @@ export const MemoStatView = ({
                 flexDirection: 'row',
                 alignItems: 'center',
                 justifyContent: 'center',
-              }}
-            >
+              }}>
               <DoneFillIcon size={10} />
               <HoriSpace size={5} />
               <Text
@@ -641,8 +626,7 @@ export const MemoStatView = ({
                   color: AppColors.white1,
                   fontSize: 16,
                   lineHeight: FontSize.inputText,
-                }}
-              >
+                }}>
                 {item.totalExp}
               </Text>
             </View>
@@ -671,8 +655,7 @@ export const MemoStatView = ({
           style={{
             flexDirection: 'row',
             justifyContent: 'space-between',
-          }}
-        >
+          }}>
           <StatView title={'Public'} value={item.all} />
           <StatView title={'Contacts'} value={item.known} />
           <StatView title={'Mine'} value={item.me} />
@@ -686,7 +669,7 @@ export const MemoStatView = ({
 };
 
 export const MemoDesView = ({
-  item = { ...memoDataProps },
+  item = {...memoDataProps},
   dataLoading,
   CategoryImage = null,
   gapSize_Des = 8,
@@ -722,24 +705,21 @@ export const MemoDesView = ({
           flexDirection: 'row',
           justifyContent: 'space-between',
           alignItems: 'flex-start',
-        }}
-      >
+        }}>
         <TouchableOpacity onPress={onPress}>
           <View
             style={{
               width: wp(270),
               flexDirection: 'row',
               alignItems: 'center',
-            }}
-          >
+            }}>
             <Text
               style={{
                 fontFamily: AppFonts.Chaparral,
                 color: AppColors.white3,
                 fontSize: 30,
                 // lineHeight: 35,
-              }}
-            >
+              }}>
               {item.title}
             </Text>
           </View>
@@ -751,8 +731,7 @@ export const MemoDesView = ({
                   fontFamily: AppFonts.CalibriRegular,
                   color: AppColors.LowWhite,
                   fontSize: FontSize.medium,
-                }}
-              >
+                }}>
                 {item.description}
               </Text>
               <VertSpace size={8} />
@@ -767,8 +746,7 @@ export const MemoDesView = ({
                 flexDirection: 'row',
                 alignItems: 'center',
                 justifyContent: 'center',
-              }}
-            >
+              }}>
               <DoneFillIcon size={10} />
               <HoriSpace size={5} />
               <Text
@@ -777,8 +755,7 @@ export const MemoDesView = ({
                   color: AppColors.white1,
                   fontSize: 16,
                   lineHeight: FontSize.inputText,
-                }}
-              >
+                }}>
                 {item.totalExp}
               </Text>
             </View>
@@ -807,8 +784,7 @@ export const MemoDesView = ({
           style={{
             flexDirection: 'row',
             justifyContent: 'space-between',
-          }}
-        >
+          }}>
           <StatView title={'Public'} value={item.all} />
           <StatView title={'Contacts'} value={item.known} />
           <StatView title={'Mine'} value={item.me} />
@@ -821,11 +797,11 @@ export const MemoDesView = ({
   );
 };
 
-export const StatView = ({ title, value }) => {
+export const StatView = ({title, value}) => {
   const valueState = parseInt(value || '0') > 0 && value != null;
 
   return (
-    <View style={{ ...GStyles.containView }}>
+    <View style={{...GStyles.containView}}>
       <View
         style={{
           ...GStyles.containView,
@@ -834,15 +810,13 @@ export const StatView = ({ title, value }) => {
           width: hp(80),
           height: hp(40),
           borderColor: AppColors.LowDark,
-        }}
-      >
+        }}>
         <Text
           style={{
             fontSize: FontSize.xlarge,
             fontFamily: AppFonts.CalibriBold,
             color: AppColors.white2,
-          }}
-        >
+          }}>
           {valueState ? value : '--'}
         </Text>
       </View>
@@ -853,8 +827,7 @@ export const StatView = ({ title, value }) => {
           fontSize: FontSize.medium,
           fontFamily: AppFonts.CalibriRegular,
           color: AppColors.white2,
-        }}
-      >
+        }}>
         {title}
       </Text>
     </View>

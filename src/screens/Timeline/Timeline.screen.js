@@ -1,10 +1,5 @@
-import React, {
-  Fragment,
-  useCallback,
-  useRef,
-  useState,
-  useEffect,
-} from 'react';
+/* eslint-disable react-native/no-inline-styles */
+import React, {Fragment, useCallback, useRef, useState, useEffect} from 'react';
 import {
   FlatList,
   RefreshControl,
@@ -15,20 +10,14 @@ import {
   Linking,
   ActivityIndicator,
 } from 'react-native';
-import { useDispatch, useSelector } from 'react-redux';
+import {useDispatch, useSelector} from 'react-redux';
 
-import {
-  AppDimens,
-  FontSize,
-  GStyles,
-  HoriSpace,
-  VertSpace,
-} from 'shared/Global.styles';
-import { AppColors } from 'assets/AppColors';
-import { useNavigation, useScrollToTop } from '@react-navigation/native';
+import {AppDimens, GStyles, VertSpace} from 'shared/Global.styles';
+import {AppColors} from 'assets/AppColors';
+import {useNavigation, useScrollToTop} from '@react-navigation/native';
 import SkeletonContent from 'react-native-skeleton-content-nonexpo';
-import { RefreshRecomMemosAction } from 'redux/reducers/Memos/RecomMemos.reducer';
-import { Skeletons } from 'shared/Skeletons';
+import {RefreshRecomMemosAction} from 'redux/reducers/Memos/RecomMemos.reducer';
+import {Skeletons} from 'shared/Skeletons';
 
 import {
   addPostTimeline,
@@ -40,20 +29,19 @@ import {
   MemoizedPostView,
   PostSeparator,
 } from './components/PostView/Postview.comp';
-import { hp, wp } from 'shared/dimens';
-import { PostLoader } from 'components/Loaders/PostLoader';
-import { ListFetchTypes } from 'redux/constants.redux';
-import { checkContactPermission } from 'shared/Permission';
-import { AppButton } from 'components/AppButton';
-import { AccentButton, Container } from 'components/Mini';
-import { RecommendedMemos } from './RecommendedMemos/RMemos.container';
+import {hp, wp} from 'shared/dimens';
+import {PostLoader} from 'components/Loaders/PostLoader';
+import {ListFetchTypes} from 'redux/constants.redux';
+import {checkContactPermission} from 'shared/Permission';
+import {AccentButton} from 'components/Mini';
+import {RecommendedMemos} from './RecommendedMemos/RMemos.container';
 import Ripple from 'react-native-material-ripple';
-import { AppFonts } from 'assets/fonts/AppFonts';
-import { syncContacts } from 'redux/reducers/Contact/contacts.reducer';
-import { GetMemofacUserApiCall } from 'redux/sagas/Contacts/api.request';
-import { Styles } from './Timeline.styles';
+import {AppFonts} from 'assets/fonts/AppFonts';
+import {syncContacts} from 'redux/reducers/Contact/contacts.reducer';
+import {GetMemofacUserApiCall} from 'redux/sagas/Contacts/api.request';
+import {Styles} from './Timeline.styles';
 // import { startUpdateFlow } from '@gurukumparan/react-native-android-inapp-updates';
-import { showToast } from 'shared/Functions/ToastFunctions';
+import {showToast} from 'shared/Functions/ToastFunctions';
 import {
   CloseContactList,
   SeeAllLineComp,
@@ -68,18 +56,17 @@ import {
 } from 'redux/reducers/progress/ProgressRedux';
 
 import Icon from 'react-native-vector-icons/dist/MaterialCommunityIcons';
-import { APP_APIS } from 'ApiLogic/API_URL';
+import {APP_APIS} from 'ApiLogic/API_URL';
 import axios from 'axios';
 import moment from 'moment';
 import Modals from 'react-native-modal';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import { ProfilePicker } from 'screens/Auth/ProfileUpdate/Profile.screen';
-import { isIOS } from 'components/AppHeader';
-import { launchImageLibrary } from 'react-native-image-picker';
-import { STR_KEYS } from 'shared/Storage';
-import { updateUserData } from 'redux/reducers/UserAuth.reducer';
-import { GetUserDetailsAction } from 'redux/reducers/UserProfile/userprofile.reducer';
-import * as ImagePickers from 'react-native-image-picker';
+import {ProfilePicker} from 'screens/Auth/ProfileUpdate/Profile.screen';
+import {isIOS} from 'components/AppHeader';
+import {launchImageLibrary} from 'react-native-image-picker';
+import {STR_KEYS} from 'shared/Storage';
+import {updateUserData} from 'redux/reducers/UserAuth.reducer';
+import {GetUserDetailsAction} from 'redux/reducers/UserProfile/userprofile.reducer';
 import ImagePicker from 'react-native-image-crop-picker';
 
 const ProfilePicSuggetion = ({
@@ -95,14 +82,12 @@ const ProfilePicSuggetion = ({
     <Modals
       isVisible={PhotoModalOpen}
       // onBackdropPress={onPressSkip}
-      animationIn={'zoomIn'}
-    >
+      animationIn={'zoomIn'}>
       <View
         style={{
           flex: 1,
           ...GStyles.flexRowCenter,
-        }}
-      >
+        }}>
         <View
           style={{
             width: 280,
@@ -110,16 +95,14 @@ const ProfilePicSuggetion = ({
             paddingHorizontal: 30,
             backgroundColor: AppColors.white,
             borderRadius: 40,
-          }}
-        >
+          }}>
           <Text
             style={{
               color: AppColors.DarkGrey,
               textAlign: 'right',
               paddingTop: 15,
             }}
-            onPress={onPressSkip}
-          >
+            onPress={onPressSkip}>
             Later
           </Text>
           <VertSpace size={20} />
@@ -130,13 +113,12 @@ const ProfilePicSuggetion = ({
               fontFamily: AppFonts.GillSans,
               fontSize: 30,
               // lineHeight: 30,
-            }}
-          >
+            }}>
             Add profile pic
           </Text>
           <VertSpace size={10} />
 
-          <View style={{ ...GStyles.containView }}>
+          <View style={{...GStyles.containView}}>
             <ProfilePicker
               size={170}
               show={false}
@@ -147,7 +129,7 @@ const ProfilePicSuggetion = ({
               <ActivityIndicator
                 color={AppColors.green}
                 size={30}
-                style={{ position: 'absolute', top: 50 }}
+                style={{position: 'absolute', top: 50}}
               />
             )}
 
@@ -183,10 +165,10 @@ const ProfilePicSuggetion = ({
   );
 };
 
-export function TimelineScreen({ route, bottomTabRoute }) {
-  const { userAuth, TimelinePostsReducer } = useSelector(state => state);
+export function TimelineScreen({route, bottomTabRoute}) {
+  const {userAuth, TimelinePostsReducer} = useSelector(state => state);
   const [isUserFirstTime, setIsUserFirstTime] = useState(false);
-  const { post, dataLoading, isListEnd, page } = useSelector(
+  const {post, dataLoading, isListEnd, page} = useSelector(
     state => state.TimelinePostsReducer,
   );
   const isCancelled = React.useRef(false);
@@ -194,8 +176,8 @@ export function TimelineScreen({ route, bottomTabRoute }) {
 
   const PostLoading = useSelector(state => state.ProgressReducer);
 
-  const { userData } = { ...userAuth };
-  const { image } = { ...userData };
+  const {userData} = {...userAuth};
+  const {image} = {...userData};
 
   const nav = useNavigation();
   const dispatch = useDispatch();
@@ -203,23 +185,22 @@ export function TimelineScreen({ route, bottomTabRoute }) {
 
   const timelineRef = useRef(null);
   const [Contacts, setContacts] = useState([]);
-  const { userToken } = useSelector(state => state.userAuth);
-  const { userProfileData } = useSelector(state => state.UserDetailsReducer);
+  const {userToken} = useSelector(state => state.userAuth);
+  const {userProfileData} = useSelector(state => state.UserDetailsReducer);
 
-  const [disabled, setdisabled] = useState(true);
   const [loading, setLoading] = useState(false);
   const [Username, setUsername] = useState('');
   const [BirthDate, setBirthDate] = useState('');
   const [imageUri, setImageUri] = useState(null);
   const [DummyimageUri, setDummyImageUri] = useState(null);
-  const { user } = { ...userProfileData };
-  const { dob, gender, username, phone } = {
+  const {user} = {...userProfileData};
+  const {dob, gender, username, phone} = {
     ...user,
   };
   const isCancel = useRef(false);
 
   const syncContactsFirst = async () => {
-    const { isPermissionGranted } = await checkContactPermission();
+    const {isPermissionGranted} = await checkContactPermission();
     if (isPermissionGranted) {
       dispatch(syncContacts());
     }
@@ -282,7 +263,7 @@ export function TimelineScreen({ route, bottomTabRoute }) {
       .then(async response => {
         await AsyncStorage.removeItem('isFirstTime');
         dispatch(GetUserDetailsAction(userToken));
-        dispatch(updateUserData({ payload: { ...response.data.content } }));
+        dispatch(updateUserData({payload: {...response.data.content}}));
         const USER_DATA = [
           STR_KEYS.USERDATA,
           JSON.stringify(response.data.content),
@@ -308,7 +289,7 @@ export function TimelineScreen({ route, bottomTabRoute }) {
       .then(e => {
         if (e !== null) {
           let l = e.split('/');
-          nav.navigate('ViewMemo', { memoId: l[l.length - 1] });
+          nav.navigate('ViewMemo', {memoId: l[l.length - 1]});
         }
       })
       .catch(e => {
@@ -367,7 +348,7 @@ export function TimelineScreen({ route, bottomTabRoute }) {
   useScrollToTop(timelineRef);
 
   const renderItem = useCallback(
-    ({ item, index }) => (
+    ({item, index}) => (
       <MemoizedPostView index={index} item={item} location={'T'} />
     ),
     [post],
@@ -442,7 +423,7 @@ export function TimelineScreen({ route, bottomTabRoute }) {
                   ListFetchTypes.FETCH,
                 ),
               );
-              const { isPermissionGranted } = await checkContactPermission();
+              const {isPermissionGranted} = await checkContactPermission();
               isContactPermission.current = isPermissionGranted;
             }}
           />
@@ -451,7 +432,7 @@ export function TimelineScreen({ route, bottomTabRoute }) {
         ListHeaderComponent={
           <Fragment>
             <TimelineHeader />
-            <View style={{ height: hp(56) }} />
+            <View style={{height: hp(56)}} />
             <ProfilePicSuggetion
               imageUrlParmas={imageUri}
               upload={imageUri === null ? true : false}
@@ -477,7 +458,7 @@ export function TimelineScreen({ route, bottomTabRoute }) {
             />
 
             <View
-              style={{ height: Platform.OS === 'android' ? hp(40) : hp(20) }}
+              style={{height: Platform.OS === 'android' ? hp(40) : hp(20)}}
             />
             <SeeAllLineComp timeLineLoading={timeLineLoading} />
 
@@ -502,9 +483,8 @@ export function TimelineScreen({ route, bottomTabRoute }) {
                   alignItems: 'center',
                   justifyContent: 'center',
                   marginVertical: 20,
-                }}
-              >
-                <View style={{ paddingTop: 10, paddingLeft: 10 }}>
+                }}>
+                <View style={{paddingTop: 10, paddingLeft: 10}}>
                   {PostLoading.completetInit ? (
                     <Progress.Bar
                       color={AppColors.green}
@@ -540,8 +520,7 @@ export function TimelineScreen({ route, bottomTabRoute }) {
                           ? AppColors.hotPink
                           : AppColors.green,
                         fontFamily: AppFonts.ComicSansBold,
-                      }}
-                    >
+                      }}>
                       {PostLoading.completetInit
                         ? 'Post Successfully created'
                         : PostLoading.error
@@ -552,8 +531,7 @@ export function TimelineScreen({ route, bottomTabRoute }) {
                       <Ripple
                         onPress={() => {
                           CreatePostAgain(PostLoading.PostData);
-                        }}
-                      >
+                        }}>
                         <Icon
                           name="refresh"
                           size={20}
@@ -578,7 +556,7 @@ export function TimelineScreen({ route, bottomTabRoute }) {
             )}
 
             <SkeletonContent
-              containerStyle={{ flexDirection: 'column' }}
+              containerStyle={{flexDirection: 'column'}}
               boneColor={AppColors.RecomBoneDark}
               highlightColor={AppColors.SkeletonBone}
               isLoading={timeLineLoading}

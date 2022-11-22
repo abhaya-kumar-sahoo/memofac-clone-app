@@ -1,13 +1,11 @@
-import { AppColors } from 'assets/AppColors';
-import { AppFonts } from 'assets/fonts/AppFonts';
-import React, { Component } from 'react';
-import { Text, View } from 'react-native';
-import { Modal, Portal } from 'react-native-paper';
-import { useSelector } from 'react-redux';
-import { ModalButtons } from 'screens/Timeline/components/MenuOption';
-import { hp, wp } from 'shared/dimens';
-import { AppDimens, FontSize, GStyles } from 'shared/Global.styles';
-import { PermissionContent } from './PermissionContent';
+/* eslint-disable react-native/no-inline-styles */
+import {AppColors} from 'assets/AppColors';
+import React from 'react';
+import {View} from 'react-native';
+import {Modal, Portal} from 'react-native-paper';
+import {ModalButtons} from 'screens/Timeline/components/MenuOption';
+import {hp} from 'shared/dimens';
+import {PermissionContent} from './PermissionContent';
 
 export const ContactPermission = ({
   modalVisibility = true,
@@ -32,16 +30,14 @@ export const ContactPermission = ({
             padding: 20,
             width: '70%',
             borderRadius: 30,
-          }}
-        >
+          }}>
           <PermissionContent />
           <View
             style={{
               // flexDirection: 'row',
               marginTop: hp(30),
               // justifyContent: 'space-between',
-            }}
-          >
+            }}>
             {/* <ModalButtons
               ButtonIcon={() => null}
               onPress={onCancel}

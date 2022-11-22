@@ -1,12 +1,12 @@
-import { useNavigation } from '@react-navigation/native';
+/* eslint-disable react-native/no-inline-styles */
+import {useNavigation} from '@react-navigation/native';
 import React from 'react';
-import { ScrollView, Text, View } from 'react-native';
+import {ScrollView, Text, View} from 'react-native';
 import SkeletonContent from 'react-native-skeleton-content-nonexpo';
-import { useSelector } from 'react-redux';
-import { ImageGridView } from 'screens/GalleryPicker/ImageGridView';
-import { AppColors } from '../../../assets/AppColors';
-import { AppFonts } from '../../../assets/fonts/AppFonts';
-import { SeelAllButton } from '../../../components/SeeAllButton';
+import {ImageGridView} from 'screens/GalleryPicker/ImageGridView';
+import {AppColors} from '../../../assets/AppColors';
+import {AppFonts} from '../../../assets/fonts/AppFonts';
+import {SeelAllButton} from '../../../components/SeeAllButton';
 import {
   AppDimens,
   FontSize,
@@ -19,43 +19,37 @@ import {
 export const MiniGalleryList = ({
   onPress = () => {},
   dataList = [],
-  style = { marginLeft: -20, marginRight: -Spacing.large },
+  style = {marginLeft: -20, marginRight: -Spacing.large},
   SeeAllSwo = true,
   skeletonLoading = false,
 }) => {
-  const { navigate } = useNavigation();
+  const {navigate} = useNavigation();
   let newJson = dataList.map(rec => {
     return {
       url: rec,
     };
   });
 
-  // console.log('hhhhhhhhhhhhhhhhhhhhhhhhhhhh', dataList);
   return (
-    <View style={{ marginLeft: 5 }}>
+    <View style={{marginLeft: 5}}>
       {dataList.length !== 0 && (
-        <View style={[GStyles.flexRow, { justifyContent: 'space-between' }]}>
+        <View style={[GStyles.flexRow, {justifyContent: 'space-between'}]}>
           <Text
             style={{
               color: AppColors.white1,
               fontSize: FontSize.inputText,
               fontFamily: AppFonts.CalibriBold,
-            }}
-          >
+            }}>
             Gallery
           </Text>
-          {SeeAllSwo ? (
-            <SeelAllButton onPress={() => onPress()} />
-          ) : (
-            <Text></Text>
-          )}
+          {SeeAllSwo ? <SeelAllButton onPress={() => onPress()} /> : <Text />}
           {/* <SeelAllButton onPress={() => onPress()} /> */}
         </View>
       )}
 
       <VertSpace size={10} />
       <SkeletonContent
-        containerStyle={{ flexDirection: 'column' }}
+        containerStyle={{flexDirection: 'column'}}
         boneColor={AppColors.RecomBoneDark}
         highlightColor={AppColors.SkeletonBone}
         isLoading={skeletonLoading}
@@ -69,20 +63,17 @@ export const MiniGalleryList = ({
               borderRadius: 20,
             }),
           },
-        ]}
-      >
+        ]}>
         <ScrollView
           style={style}
           horizontal
-          showsHorizontalScrollIndicator={false}
-        >
+          showsHorizontalScrollIndicator={false}>
           <HoriSpace size={Spacing.large} />
           {dataList.map((item, index) => {
             return (
               <View
-                style={{ alignItems: 'center', marginRight: 8 }}
-                key={index.toString()}
-              >
+                style={{alignItems: 'center', marginRight: 8}}
+                key={index.toString()}>
                 <ImageGridView
                   onPress={() =>
                     navigate('ImageViewScreen', {
@@ -109,9 +100,9 @@ export const MiniGalleryList = ({
 export const HorizontalGalleryList = ({
   onPress = () => {},
   dataList = [],
-  style = { marginLeft: -20, marginRight: -Spacing.large },
+  style = {marginLeft: -20, marginRight: -Spacing.large},
 }) => {
-  const { navigate } = useNavigation();
+  const {navigate} = useNavigation();
   let newJson = dataList.map(rec => {
     return {
       url: rec,
@@ -119,19 +110,17 @@ export const HorizontalGalleryList = ({
   });
 
   return (
-    <View style={{ marginLeft: 5 }}>
+    <View style={{marginLeft: 5}}>
       <ScrollView
         style={style}
         horizontal
-        showsHorizontalScrollIndicator={false}
-      >
+        showsHorizontalScrollIndicator={false}>
         <HoriSpace size={Spacing.large} />
         {dataList.map((item, index) => {
           return (
             <View
-              style={{ alignItems: 'center', marginRight: 8 }}
-              key={index.toString()}
-            >
+              style={{alignItems: 'center', marginRight: 8}}
+              key={index.toString()}>
               <ImageGridView
                 onPress={() =>
                   navigate('ImageViewScreen', {

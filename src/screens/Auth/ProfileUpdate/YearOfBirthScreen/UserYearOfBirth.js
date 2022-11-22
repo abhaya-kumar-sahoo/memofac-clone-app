@@ -1,27 +1,23 @@
-import { StyleSheet, Text, View, SafeAreaView, Platform } from 'react-native';
-import React, { useState } from 'react';
-import { AppColors } from 'assets/AppColors';
-import { AppHeader } from 'components/AppHeader';
-import { AccentButton, Container } from 'components/Mini';
-import { useNavigation } from '@react-navigation/native';
-import { GStyles, VertSpace } from 'shared/Global.styles';
-import { PageDots } from '../NameScreen/UserName';
-import { WheelPicker } from 'react-native-wheel-picker-android';
-import { Picker } from '@react-native-picker/picker';
-import { AppFonts } from 'assets/fonts/AppFonts';
+/* eslint-disable react-native/no-inline-styles */
+import {StyleSheet, Text, View, SafeAreaView, Platform} from 'react-native';
+import React, {useState} from 'react';
+import {AppColors} from 'assets/AppColors';
+import {AppHeader} from 'components/AppHeader';
+import {AccentButton, Container} from 'components/Mini';
+import {useNavigation} from '@react-navigation/native';
+import {GStyles, VertSpace} from 'shared/Global.styles';
+import {PageDots} from '../NameScreen/UserName';
+import {WheelPicker} from 'react-native-wheel-picker-android';
+import {Picker} from '@react-native-picker/picker';
+import {AppFonts} from 'assets/fonts/AppFonts';
 
 const currentYear = new Date().getFullYear();
 const range = (start, stop, step) =>
-  Array.from({ length: (stop - start) / step + 1 }, (_, i) => start + i * step);
+  Array.from({length: (stop - start) / step + 1}, (_, i) => start + i * step);
 const yearsRange = range(currentYear, currentYear - 80, -1);
-// console.log(yearsRange);
 
-let List = ['2019', '2018', '2017', '2016', '9191'];
-
-// [2019, 2018, 2017, 2016, ..., 1969]
-
-export const UserYearOfBirth = ({ route }) => {
-  const { gender, name } = route.params;
+export const UserYearOfBirth = ({route}) => {
+  const {gender, name} = route.params;
   const navigation = useNavigation();
   const [Year, setYear] = useState('');
 
@@ -38,7 +34,7 @@ export const UserYearOfBirth = ({ route }) => {
             title={'Next'}
             // disabled={code.length < OTP_INPUT_SIZE}
             onPress={() =>
-              navigation.navigate('SelectMemos', { DOB: Year, gender, name })
+              navigation.navigate('SelectMemos', {DOB: Year, gender, name})
             }
           />
         </AppHeader>
@@ -51,8 +47,7 @@ export const UserYearOfBirth = ({ route }) => {
               fontSize: 38,
               color: AppColors.white1,
               fontFamily: AppFonts.GillSans,
-            }}
-          >
+            }}>
             Choose year
           </Text>
           <Text
@@ -61,8 +56,7 @@ export const UserYearOfBirth = ({ route }) => {
               color: AppColors.white1,
               fontFamily: AppFonts.GillSans,
               // marginTop: -10,
-            }}
-          >
+            }}>
             of birth
           </Text>
           <VertSpace />
@@ -72,12 +66,11 @@ export const UserYearOfBirth = ({ route }) => {
               color: AppColors.MediumGrey,
               fontSize: 18,
               fontFamily: AppFonts.CalibriRegular,
-            }}
-          >
+            }}>
             To personalize the content for you{' '}
           </Text>
           <VertSpace size={50} />
-          <View style={{ ...GStyles.containView }}>
+          <View style={{...GStyles.containView}}>
             {Platform.OS === 'android' ? (
               <WheelPicker
                 selectedItem={32}
@@ -101,14 +94,13 @@ export const UserYearOfBirth = ({ route }) => {
               <Picker
                 selectedValue={Year}
                 onValueChange={(itemValue, itemIndex) => setYear(itemValue)}
-                style={{ height: 200, width: 340 }}
-                itemStyle={{ color: '#FFFFFF', fontSize: 45 }}
-              >
+                style={{height: 200, width: 340}}
+                itemStyle={{color: '#FFFFFF', fontSize: 45}}>
                 {Years.map(item => (
                   <Picker.Item
                     label={item}
                     value={item}
-                    style={{ fontSize: 20 }}
+                    style={{fontSize: 20}}
                   />
                 ))}
               </Picker>

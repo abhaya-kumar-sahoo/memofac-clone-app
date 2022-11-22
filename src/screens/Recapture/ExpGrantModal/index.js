@@ -1,11 +1,11 @@
-import { AppColors } from 'assets/AppColors';
+/* eslint-disable react-native/no-inline-styles */
 import LottieView from 'lottie-react-native';
-import React, { Component, useEffect, useState } from 'react';
-import { View } from 'react-native';
-import { Portal, Modal } from 'react-native-paper';
-import { GStyles } from 'shared/Global.styles';
+import React, {useEffect} from 'react';
+import {View} from 'react-native';
+import {Portal, Modal} from 'react-native-paper';
+import {GStyles} from 'shared/Global.styles';
 
-export const ExpGrantModal = ({ visible, closeModal, time = 800 }) => {
+export const ExpGrantModal = ({visible, closeModal, time = 800}) => {
   useEffect(() => {
     // console.log('effect -->');
     if (visible) {
@@ -24,22 +24,19 @@ export const ExpGrantModal = ({ visible, closeModal, time = 800 }) => {
         contentContainerStyle={{
           flex: 1,
           ...GStyles.containView,
-        }}
-      >
+        }}>
         <View
           style={{
             // backgroundColor: AppColors.white,
             borderRadius: 30,
             width: 250,
             ...GStyles.containView,
-          }}
-        >
+          }}>
           <View
             style={{
               height: 150,
               width: 120,
-            }}
-          >
+            }}>
             <LottieView
               // ref={animation => {
               //   this.animation = animation;
