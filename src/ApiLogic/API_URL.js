@@ -1,5 +1,5 @@
 // export
-const PROD_URL = 'https://memofac.in/api';
+const PROD_URL = 'https://app.memofac.in/api';
 const DEV_URL = 'https://dev.memofac.in/api';
 const BASE_URL = PROD_URL;
 // const BASE_URL = DEV_URL;
